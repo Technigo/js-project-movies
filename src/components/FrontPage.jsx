@@ -56,7 +56,7 @@ const Overlay = styled.div`
   bottom: 0;
   width: 100%;
   height: 40%;
-  background: linear-gradient(0deg, rgba(40,40,40,0.85) 80%, rgba(40,40,40,0.0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 80%, rgba(0, 0, 0, 0) 100%);
   opacity: 0;
   display: flex;
   flex-direction: column;
