@@ -7,12 +7,12 @@ export const App = () => {
   return (
 
     <BrowserRouter>
-    <main>
-      <Routes>
-      <Route path="/" element={< FrontPage />} />
-      <Route path="/movies/:id" element={< MovieDetails />} />
-      </Routes>
-    </main>
+      <main>
+        <Routes>
+        <Route path="/" element={< FrontPage />} />
+        <Route path="/movies/:id" element={< MovieDetails />} />
+        </Routes>
+      </main>
 
     </BrowserRouter>
   );

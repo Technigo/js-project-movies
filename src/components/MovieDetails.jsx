@@ -12,7 +12,6 @@ const MovieBackground = styled.div`
 
 const MoviePoster = styled.div`
   background-image: url(https://image.tmdb.org/t/p/original${props => props.poster});
-  cover: fit;
   width: 200px;
   height: 200px;
   border: 5px solid green;
