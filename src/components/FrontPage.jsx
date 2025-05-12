@@ -1,7 +1,7 @@
-import { useMovies } from '../hooks/fetch.js';
+import { movieList } from '../hooks/fetch.js';
 
 export const FrontPage = () => {
-  const { movies, loading, error } = useMovies();
+  const { movies, loading, error } = movieList();
 
   return (
     <div>
