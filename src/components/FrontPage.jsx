@@ -1,4 +1,5 @@
 import { movieList } from '../hooks/fetch.js';
+import { Link } from 'react-router-dom';
 
 export const FrontPage = () => {
   const { movies, loading, error } = movieList();
@@ -10,7 +11,9 @@ export const FrontPage = () => {
       {error && <p>Error: {error}</p>}
       <ul>
         {movies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
+          <Link key={movie.id} to={`/movies/${movie.id}`}>
+          <h2>{movie.title}</h2>
+          </ Link>
         ))}
       </ul>
     </div>
