@@ -112,7 +112,7 @@ export const FrontPage = () => {
                 <MovieBackground backdrop={movie.poster_path} aria-hidden="true" />
                 <Overlay aria-hidden="false">
                   <MovieTitle>{movie.title}</MovieTitle>
-                  <ReleaseDate>Release Date: {movie.release_date}</ReleaseDate>
+                  <ReleaseDate>Released: {movie.release_date}</ReleaseDate>
                 </Overlay>
               </MovieLink>
             </MovieItemWrapper>
