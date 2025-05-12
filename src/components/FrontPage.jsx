@@ -11,9 +11,11 @@ export const FrontPage = () => {
       {error && <p>Error: {error}</p>}
       <ul>
         {movies.map(movie => (
-          <Link key={movie.id} to={`/movies/${movie.id}`}>
-          <h2>{movie.title}</h2>
-          </ Link>
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>
+              <h2>{movie.title}</h2>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -34,17 +34,44 @@ export const movieList = () => {
 };
 
 
+// export const movieDetails = (movieId) => {
+//   const [movieDetails, setMovieDetails] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState('');
+
+//   useEffect(() => {
+    
+//     const fetchMovieDetails = async () => {
+//       setLoading(true);
+//       try {
+//         const response = await fetch(API_URL_DETAILS);
+//         if (!response.ok) throw new Error('Failed to fetch');
+//         const data = await response.json();
+//         setMovieDetails(data);
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchMovieDetails();
+//   }, [movieId]);
+
+//   return { movieDetails, loading, error };
+// };
+
+
 export const movieDetails = (movieId) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    
     const fetchMovieDetails = async () => {
       setLoading(true);
       try {
-        const response = await fetch(API_URL_DETAILS);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`);
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
         setMovieDetails(data);
@@ -55,11 +82,10 @@ export const movieDetails = (movieId) => {
       }
     };
 
-    fetchMovieDetails();
+    if (movieId) {
+      fetchMovieDetails();
+    }
   }, [movieId]);
 
   return { movieDetails, loading, error };
 };
-
-
-

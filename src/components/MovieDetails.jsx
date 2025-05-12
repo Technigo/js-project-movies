@@ -1,11 +1,9 @@
 import { movieDetails } from '../hooks/fetch.js';
 import { useParams } from 'react-router-dom';
 
-export const MovieDetails = ({ movieId }) => {
-  const params = useParams(); 
-  const movieMatch = movies.find((movie) => movie.id === params.id)
-  console.log(movieMatch)
-  const { movieDetails: details, loading, error } = movieDetails(movieId);
+export const MovieDetails = () => {
+  const { id } = useParams();
+  const { movieDetails: details, loading, error } = movieDetails(id);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -13,10 +11,12 @@ export const MovieDetails = ({ movieId }) => {
 
   return (
     <div>
-      <h2>{details.title}</h2>
+ <h2>{details.title}</h2>
       <p>{details.overview}</p>
       <p>Release Date: {details.release_date}</p>
       <p>Rating: {details.vote_average}/10</p>
     </div>
   );
 };
+
+
