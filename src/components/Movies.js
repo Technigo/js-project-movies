@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react-router-dom'
 import { Movies } from 'components/Movies'
 import movies from 'components/data/data/movies.json'
 

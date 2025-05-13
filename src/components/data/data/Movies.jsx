@@ -4,9 +4,11 @@ const Movies = () => {
 
     useEffect(() => {
         // Fetch popular movies from the API
+
+        
         
         // Example API endpoint:
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=YOUR_API_KEY&language=en-US&page=1')
+        fetch('https://api.themoviedb.org/3/movie/popular?api_key=fa4e953ba904f2b280d0a4c5b6beb8ba&language=en-US&page=1')
             .then((response) => response.json())
             .then((data) => setMovies(data.results))
             .catch((error) => console.error('Error fetching movies:', error));
