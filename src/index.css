@@ -1,3 +1,43 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+/* Removed invalid width property */
+
+
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; /* Fixed font-family name and added missing comma */
+}
+
+main {
+  margin: 20px;
+}
+ul {
+  padding: 0;
+  margin:0;
+  list-style-type: none;
+
+}
+
+li {
+  display: inline-block;
+  margin-left: 10px; /* Fixed spacing issue */
+}
+
+
+
+
+
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+}
+
+article {
+  border: 1px solid red;
+  margin-bottom: 10px; /* Fixed typo in margin-bottom */
+  padding: 10px;
 }

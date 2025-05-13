@@ -13,7 +13,7 @@ export const ShowMovies = () => {
             <div className="ShowmoviesPage">
                 <Movies name={moviesMatch.name} image={moviesMatch.image} />
                 <div className="actions">
-                    <button type="button">Order Movie!</button>
+                    <button type="button">Select Movie!</button>
                 </div>
             </div>
             <div>Show movies page</div>
