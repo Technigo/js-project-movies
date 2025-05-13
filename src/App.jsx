@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header.jsx'
 import { Home } from './pages/Home.jsx'
 import { MovieInfo } from './pages/MovieInfo.jsx'
+import { api } from './api/api.js'
 
 export const App = () => {
   return (
