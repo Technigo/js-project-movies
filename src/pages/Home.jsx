@@ -35,8 +35,11 @@ const Home = () => {
 
   // 4. Once we have the data, render the list
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Popular Movies</h1>
+    // 5. Use Tailwind CSS classes to style the page
+    // 6. Use React Router <Link> to navigate to the movie detail page
+    // 7. Use the movie title and release date in the link
+    <main className="p-4"> 
+      <h1 className="text-2xl font-bold mb-4">Popular Movies</h1> 
       <ul className="space-y-2">
         {movies.map((movie) => (
           <li key={movie.id}>
