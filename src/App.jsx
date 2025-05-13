@@ -11,7 +11,6 @@ export const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/movie/:id' element={<MovieInfo />} />
-          <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>
