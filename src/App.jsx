@@ -1,5 +1,9 @@
+import { Header } from './components/Header.jsx'
+
 export const App = () => {
   return (
-    <h1>Movies</h1>
+    <>
+      <Header />
+    </>
   )
 }
