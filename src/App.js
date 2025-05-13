@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Welcome }  from './Welcome'
 import { About } from './About'
