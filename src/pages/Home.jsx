@@ -1,4 +1,6 @@
-import { movies } from "../data/movies.json";
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { API_KEY, BASE_URL } from '../api'
 
 const Home = () => {
   return (
