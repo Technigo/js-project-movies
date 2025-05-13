@@ -16,13 +16,13 @@ const MovieCard = ({ id, title, release_date, vote_average, poster_path }) => {
       {/* Hover overlay */}
       {/* This div will show up when the user hovers over the image */}
       {/* It will contain the movie title, release date, and rating */}
-      {/* The opacity is set to 0 by default and changes to 100 on hover */}
+      {/* The opacity is set to 0 by default and changes to 70 on hover */}
       {/* The flex classes center the text inside the div */}
       {/* The transition class makes the opacity change smooth */}
       <div className="
         absolute inset-0 
         bg-black bg-opacity-70 
-        opacity-0 hover:opacity-100 
+        opacity-0 hover:opacity-70 
         flex flex-col justify-center items-center
         text-white p-4
         transition-opacity
