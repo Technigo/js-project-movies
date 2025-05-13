@@ -1,5 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Movies from './pages/Movies.jsx'
+import MovieDetail from './pages/MovieDetail'
+
 export const App = () => {
   return (
-    <h1>Movies</h1>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Movies />} />
+          <Route path="/moviedetail" element={<MovieDetail />} />
+        </Routes>
+      </BrowserRouter>
+
+    </>
   )
 }
