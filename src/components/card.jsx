@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from "react-router-dom"
 
 const CardContainer = styled.div`
   background-image: ${({ backdrop }) => `url(https://image.tmdb.org/t/p/w1280${backdrop})`};
@@ -6,7 +7,7 @@ const CardContainer = styled.div`
   background-position: center;
   height: 600px;
   color: white;
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -32,14 +33,17 @@ display: flex;
 
 const Card = ({ movie }) => {
   return (
+//Jasmin added link so that the card on homepage movies links to the moviedetail
+    <Link to={`/movies/${movie.id}`}> 
     <CardContainer backdrop={movie.poster_path}>
       <h2>{movie.title}</h2>
-      {/* <img
+      {/* <img 
         src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
         alt={movie.title}
       /> */}
       <p>{movie.release_date}</p>
     </CardContainer>
+    </Link>
   )
 }
 export default Card

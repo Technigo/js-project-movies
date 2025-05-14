@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 import Card from "../components/card.jsx"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const MoviesContainer = styled.div`
   display: grid;
@@ -30,7 +30,7 @@ const Movies = () => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey2}&language=en-US&page=1`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("What is happening", data.results)
+    
         setMovies(data.results || [])
       })
       .catch((error) => console.error('Error fetching movies:', error))
