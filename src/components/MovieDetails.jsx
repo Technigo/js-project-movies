@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { movieDetails } from "../hooks/fetch.js";
 import { useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
-import { IoCaretBackCircle } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { BackLink } from "./BackLink";
+import { MoviePoster } from "./MoviePoster";
+import { Rating } from "./Rating";
 
 const PosterBackground = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%),
@@ -14,18 +14,6 @@ const PosterBackground = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   color: white;
-`;
-
-const BackLink = styled(Link)`
-  position: absolute;
-  top: 16px;
-  left: 50px;
-  text-decoration: none;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  font-weight: 700;
-  filter: drop-shadow(2px 3px 4px rgb(0 0 0 / 0.5));
 `;
 
 const MovieInfoWrapper = styled.div`
@@ -40,6 +28,7 @@ const MovieInfoWrapper = styled.div`
 `;
 
 const MovieDetailsWrapper = styled.div`
+  max-width: 400px;
   @media (min-width: 577px) {
     margin: 0 0 0 20px;
   }
@@ -59,31 +48,6 @@ const Title = styled.span`
   margin: 0 10px 0 0;
   text-shadow: 1px 1px #4d4d4d;
 `;
-const Rating = styled.span`
-  background-color: white;
-  color: black;
-  padding: 0 5px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-`;
-
-const MoviePoster = styled.img`
-  width: 190px;
-  height: 285px;
-  border: 5px solid white;
-  object-fit: cover;
-
-  @media (min-width: 577px) {
-    width: 240px;
-    height: 360px;
-  }
-
-  @media (min-width: 770px) {
-    width: 352px;
-    height: 523px;
-  }
-`;
 
 export const MovieDetails = () => {
   const { id } = useParams();
@@ -96,36 +60,16 @@ export const MovieDetails = () => {
   return (
     <div>
       <PosterBackground poster={details.backdrop_path}>
-        <BackLink to='/'>
-          <IoCaretBackCircle
-            style={{
-              color: "white",
-              marginRight: "4px",
-              height: "30px",
-              width: "30px",
-            }}
-          />
-          Movies
-        </BackLink>
+        <BackLink />
         <MovieInfoWrapper>
           <MoviePoster
             src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-            alt='Movie Poster'
+            alt={`Movie Poster of ${details.title}`}
           />
           <MovieDetailsWrapper>
             <StyledH1>
               <Title>{details.title}</Title>
-              <Rating>
-                <FaStar
-                  style={{
-                    color: "gold",
-                    marginRight: "4px",
-                    height: "18px",
-                    width: "18px",
-                  }}
-                />
-                {Number(details.vote_average).toFixed(1)}
-              </Rating>
+              <Rating value={details.vote_average} />
             </StyledH1>
             <p>{details.overview}</p>
           </MovieDetailsWrapper>
