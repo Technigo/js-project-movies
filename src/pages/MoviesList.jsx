@@ -26,11 +26,20 @@ const MoviesList = () => {
   }, [apiUrl]);
 
   return (
-    <>
+    <div>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movieTitle={movie.title} />
+        <MovieCard
+          key={movie.id}
+          id={movie.id}
+          movieTitle={movie.title}
+          releaseDate={movie.release_date}
+          overview={movie.overview}
+          poster={movie.poster_path}
+          backdrop={movie.backdrop_path}
+          rating={movie.vote_average}
+        />
       ))}
-    </>
+    </div>
   );
 };
 
