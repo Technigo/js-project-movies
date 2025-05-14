@@ -8,9 +8,9 @@ import { device } from '../styles/media.js'
 
 export const StyledMovieInfo = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: 3rem;
-  margin: 10rem 2rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 
   .movieDetails {
     display: flex;
@@ -21,7 +21,15 @@ export const StyledMovieInfo = styled.div`
   .overview {
     font-size: 1.2rem;
     margin: 1rem 0;
-    width: 60%;
+    width: 100%;
+  }
+
+  img {
+    max-width: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevents the image from shrinking */
   }
 
   p {
@@ -30,7 +38,16 @@ export const StyledMovieInfo = styled.div`
   }
 
   ${device.tablet} {
+    flex-direction: row;
+    padding: 3rem;
     margin: 10rem 2rem;
+    margin: 10rem 2rem;
+
+    .overview {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      width: 60%;
+    }
   }
 `
 
