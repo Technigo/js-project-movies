@@ -65,9 +65,9 @@ export const StyledCard = styled.div`
 export const Card = ({ movie }) => {
   const [isHovering, hoverProps] = useHover()
 
-  // if (!movie) {
-  //   return <div>Loading movie...</div>
-  // }
+  if (!movie) {
+    return <div>Loading movie...</div>
+  }
 
   return (
     <StyledCard>
