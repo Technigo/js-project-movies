@@ -40,14 +40,11 @@ const MovieLink = styled(Link)`
   color: inherit;
 `;
 
-const MovieBackground = styled.div`
+const MoviePosterImg = styled.img`
   width: 100%;
   height: 100%;
-  background-image: url(https://image.tmdb.org/t/p/w780${props => props.backdrop || ''});
-  background-size: cover;
-  background-position: center;
-  transition: filter 0.3s;
-  filter: brightness(0.85);
+  object-fit: cover;
+  display: block;
 `;
 
 const Overlay = styled.div`
@@ -91,8 +88,8 @@ const MovieItemWrapper = styled.div`
     opacity: 1;
     pointer-events: auto;
   }
-  &:hover ${MovieBackground},
-  &:focus-within ${MovieBackground} {
+  &:hover ${MoviePosterImg},
+  &:focus-within ${MoviePosterImg} {
     filter: brightness(0.5);
   }
 `;
@@ -109,7 +106,11 @@ export const FrontPage = () => {
           <MovieItem key={movie.id} role="listitem">
             <MovieItemWrapper>
               <MovieLink to={`/movies/${movie.id}`} aria-label={`View details for ${movie.title}`} tabIndex={0}>
-                <MovieBackground backdrop={movie.poster_path} aria-hidden="true" />
+                <MoviePosterImg
+                  src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
+                  alt={movie.title ? `${movie.title} poster` : 'Movie poster'}
+                  loading="lazy"
+                />
                 <Overlay aria-hidden="false">
                   <MovieTitle>{movie.title}</MovieTitle>
                   <ReleaseDate>Released: {movie.release_date}</ReleaseDate>
