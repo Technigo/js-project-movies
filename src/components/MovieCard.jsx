@@ -4,6 +4,14 @@ import styled from 'styled-components';
 
 const MoviePoster = styled.img`
   width: 100%;
+
+  @media (min-width: 425px) {
+    width: 50%;
+  }
+  
+  @media (min-width: 769px) {
+    width: 33%;
+  }
 `
 
 const MovieCard = ({ movieTitle, id, poster }) => {
