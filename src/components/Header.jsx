@@ -1,4 +1,6 @@
 import React from "react";
+import '.compoponents/pages/Header.css'
+
 const Header = () => {
     return (
         <>

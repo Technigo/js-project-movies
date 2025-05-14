@@ -1,39 +1,37 @@
 import { ThemeConsumer } from 'styled-components'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Welcome } from './Welcome';
-import { About } from './About';
-import { Contact } from './Contact';
-import { NavBar } from "./NavBar";
 import { GlobalStyle } from './GlobalStyles';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme } from './themes';
-import { Movies } from './Movies';
-import { MoviesList } from './MoviesList';
-import { ShowMovies } from './ShowMovies';
-import { Header } from './Header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Welcome } from './components/pages/PopularListWelcome';
+import { About } from './components/pages/About';
+import { Contact } from './components/pages/Contact';
+import { NavBar } from "./components/pages/NavBar";
+import { Header } from './components/pages/Header';
+import { Movies } from  './components/pages/Movies';
+import { MoviesList } from './components/pages/MoviesList';
+import { ShowMovies } from './components/pages/ShowMovies';
+import { MovieDetails} from './components/pages/MovieDetails';
+import { NotFound } from './components/pages/NotFound'
 
+// The Header component will show in all "pages" It is outside of the routing scope.
+// The NavBar component will show in all "pages" It is outside of the routing scope.
 
 export const App = () => {
   return (
     <>
-      <ThemeProvider theme={lightTheme}>
-        <GlobalStyle />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Movies />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-      <h1>Movies</h1>
+      <Header />
+
       <BrowserRouter>
-        <NavBar />
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route path="/" element={<Movies />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/movies/:movieId" exact element={<MovieDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
     </>
   )
 }
+
+
+// Removed duplicate App component declaration
