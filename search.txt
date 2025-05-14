@@ -1,0 +1,9 @@
+OK, let's get search to work now. What I want to happen: 
+
+1. The user searches in a search bar
+2. When hitting enter, ther's a call to the api search endpoint
+3. The results that are returned with the api should be displayed like the movies on frontpage
+4. IF there are no results, the user should see that visibly on the screen
+
+
+I'm not picky on how this all is achieved, but I want the UX to be intuitive. 

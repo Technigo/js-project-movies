@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from "styled-components";
-import { movieList } from "../hooks/fetch.js";
-import { Link } from "react-router-dom";
-
+import { movieList } from '../hooks/fetch.js';
+import { Link, useLocation } from 'react-router-dom';
+import { NoResults } from './NoResults.jsx';
+import { useMovieSearch } from '../hooks/search.js';
 const Grid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -97,15 +99,34 @@ const MovieItemWrapper = styled.div`
   }
 `;
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 export const FrontPage = () => {
+  const query = useQuery().get('search');
   const { movies, loading, error } = movieList();
+  const { results, loading: searchLoading, error: searchError, searchMovies } = useMovieSearch();
+
+  React.useEffect(() => {
+    if (query) {
+      searchMovies(query);
+    }
+    // eslint-disable-next-line
+  }, [query]);
+
+  const displayMovies = query ? results : movies;
+  const isLoading = query ? searchLoading : loading;
+  const isError = query ? searchError : error;
+  const showNoResults = query && !isLoading && !isError && displayMovies.length === 0;
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error: {isError}</p>}
+      {showNoResults && <NoResults />}
       <Grid role='list'>
-        {movies.map((movie) => (
+        {displayMovies.map((movie) => (
           <MovieItem key={movie.id} role='listitem'>
             <MovieItemWrapper>
               <MovieLink to={`/movies/${movie.id}`} aria-label={`View details for ${movie.title}`} tabIndex={0}>
