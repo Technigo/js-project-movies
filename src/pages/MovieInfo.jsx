@@ -5,6 +5,11 @@ export const MovieInfo = () => {
   const params = useParams()
   //const [movieInfo SetMovieInfo] = useState({}) // Recieves an object with the movie info
 
+  //Check if the movieID exists
+  //if (!params.id) {
+  //  return <p>Movie not found</p>
+  //}
+
   useEffect(() => {
     // Fetch info
   }, [])
