@@ -8,29 +8,45 @@ import { device } from '../styles/media.js'
 
 export const StyledMovieInfo = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: 3rem;
-  margin: 10rem 2rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 
   .movieDetails {
     display: flex;
     flex-direction: column;
-    padding: 0rem 2rem;
+    padding: 0.5rem;
   }
 
   .overview {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 1rem 0;
-    width: 60%;
+    width: 100%;
+  }
+
+  img {
+    max-width: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevents the image from shrinking */
   }
 
   p {
     margin: 0.3rem 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   ${device.tablet} {
+    flex-direction: row;
+    padding: 2rem;
     margin: 10rem 2rem;
+
+    .overview {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      width: 60%;
+    }
   }
 `
 
