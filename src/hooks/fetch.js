@@ -70,7 +70,7 @@ export const movieDetails = (movieId) => {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
         );
-        if (!response.ok) throw new Error("Failed to fetch");
+        if (!response.ok) throw new Error("Movie not found");
         const data = await response.json();
         setMovieDetails(data);
       } catch (err) {
