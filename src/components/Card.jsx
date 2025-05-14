@@ -6,7 +6,9 @@ export const StyledCard = styled.div`
   position: relative;
   display: block;
   width: 100%;
-  max-width: 342px;
+  max-width: 300px;
+  overflow: hidden;
+  border: 3px solid black;
 
   &hover {
     transform: translateY(-5px);
