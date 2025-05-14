@@ -12,7 +12,7 @@ const defaultOptions = {
 }
 
 export const api = {
-  fetchMovies: async () => {
+  fetchHorrorMovies: async () => {
     const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27`
     const response = await fetch(url, defaultOptions)
     if (!response.ok) {

@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import { useEffect, useState } from 'react'
 import { api } from '../api/api'
 import { Card } from '../components/Card.jsx'
@@ -9,7 +8,7 @@ export const Home = () => {
 
   useEffect(() => {
     api
-      .fetchMovies()
+      .fetchHorrorMovies()
       .then((data) => {
         setMovies(data.results)
       })

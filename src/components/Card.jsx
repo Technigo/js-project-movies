@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 export const Card = ({ movie }) => {
+  console.log(movie)
   return (
     <Link to={`/movies/${movie.title}`}>
       <h2>{movie.title}</h2>
