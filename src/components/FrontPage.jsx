@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { movieList } from '../hooks/fetch.js';
 import { useMovieSearch } from '../hooks/search.js';
 import { Link, useLocation } from 'react-router-dom';
+import { NoResults } from './NoResults.jsx';
 
 const Grid = styled.ul`
   display: grid;
@@ -121,7 +122,7 @@ export const FrontPage = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error: {isError}</p>}
-      {showNoResults && <p style={{textAlign: 'center', fontSize: '1.5rem', marginTop: '2rem'}}>No movies found for your search.</p>}
+      {showNoResults && <NoResults />}
       <Grid role="list">
         {displayMovies.map(movie => (
           <MovieItem key={movie.id} role="listitem">
