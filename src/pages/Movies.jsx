@@ -21,11 +21,10 @@ const MoviesContainer = styled.div`
 const Movies = () => {
   const [movies, setMovies] = useState([]) //variabel that can change and rerender at update
 
-  //const apiKey = import.meta.env.VITE_TMDB_API_KEY
-  const apiKey2 = "7ddd993a77dbdd9eee8744a30159efbb"
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey2}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
       .then((response) => response.json())
       .then((data) => {
 
