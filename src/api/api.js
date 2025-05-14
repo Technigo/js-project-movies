@@ -1,23 +1,40 @@
-const API_BASE_URL = 'https://api.themoviedb.org/3'
+const API_BASE_URL = "https://api.themoviedb.org/3";
 const AUTH_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTAyZmFjNWU3ODQ4MjI2NWYzYzVhMmNkNDhhNTEyMyIsIm5iZiI6MTc0NzAzODI1NS4yMzYsInN1YiI6IjY4MjFiMDJmZThhYjJlYzM4YjRiNDNhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ukocEtoyisWi6NskXjCfazfLJ5eCTn4wr0cVd3dZcI0'
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTAyZmFjNWU3ODQ4MjI2NWYzYzVhMmNkNDhhNTEyMyIsIm5iZiI6MTc0NzAzODI1NS4yMzYsInN1YiI6IjY4MjFiMDJmZThhYjJlYzM4YjRiNDNhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ukocEtoyisWi6NskXjCfazfLJ5eCTn4wr0cVd3dZcI0";
 
 // Default request options with authorization
 const defaultOptions = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${AUTH_TOKEN}`
-  }
-}
+    accept: "application/json",
+    Authorization: `Bearer ${AUTH_TOKEN}`,
+  },
+};
 
+// This function fetches all horror movies from the API
 export const api = {
   fetchHorrorMovies: async () => {
     const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27`
     const response = await fetch(url, defaultOptions)
     if (!response.ok) {
-      throw new Error(`API error: ${response.status}`)
+      throw new Error(`API error: ${response.status}`);
     }
-    return response.json()
-  }
-}
+    return response.json();
+  },
+
+  // This function fetching the moviedetails by ID
+  fetchMovieById: async (id) => {
+    const url = `${API_BASE_URL}/movie/${id}?language=en-US`;
+    const response = await fetch(url, defaultOptions);
+    if (!response.ok) {
+      throw new Error(`Movie fetch error: ${response.status}`);
+    }
+    return response.json();
+  },
+};
+
+/* Calling the fetchMovies function to test it, this snippet should be removed because we are using it in the Home.jsx file */
+api
+  .fetchMovies()
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
