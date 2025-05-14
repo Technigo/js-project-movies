@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { SearchBar } from './SearchBar.jsx';
 
 const Nav = styled.nav`
   width: 100vw;
@@ -21,6 +22,7 @@ const HomeLink = styled(Link)`
 
 export const Navbar = () => (
   <Nav aria-label="Main navigation">
-    <HomeLink to="/">Movies</HomeLink>
+    <HomeLink to="/">Movies movies movies</HomeLink>
+    <SearchBar />
   </Nav>
 ); 
