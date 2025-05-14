@@ -1,14 +1,29 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useHover } from '../hooks/useHover'
+import { device } from '../styles/media.js'
 
 export const StyledCard = styled.div`
   position: relative;
   display: block;
   width: 100%;
-  max-width: 300px;
+  max-width: 95px;
   overflow: hidden;
-  border: 3px solid black;
+  border: 1px solid black;
+  font-size: 0.8rem;
+
+  ${device.tablet} {
+    max-width: 200px;
+  }
+
+  ${device.laptop} {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    border: 3px solid black;
+  }
 
   &hover {
     transform: translateY(-5px);
@@ -34,28 +49,44 @@ export const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 1.5rem;
+    padding: 0.5rem;
     box-sizing: border-box;
     color: white;
+
+    ${device.tablet} {
+      padding: 1.5rem;
+    }
   }
 
   .movieTitle {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     margin: 0 0 0.5rem;
     font-weight: bold;
+
+    ${device.tablet} {
+      font-size: 1.2rem;
+    }
   }
 
   .movieRelease {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     margin: 0 0 0.5rem;
     opacity: 0.9;
+
+    ${device.tablet} {
+      font-size: 0.9rem;
+    }
   }
 
   .movieRating {
-    font-size: 1rem;
+    font-size: 0.7rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+
+    ${device.tablet} {
+      font-size: 1rem;
+    }
   }
 
   .movieRating span {

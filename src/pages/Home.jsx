@@ -3,21 +3,28 @@ import { useEffect, useState } from 'react'
 import { api } from '../api/api'
 import { Card } from '../components/Card.jsx'
 import { Link } from 'react-router-dom'
+import { device } from '../styles/media.js'
 
 export const StyledHome = styled.section`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem;
 
   .movies {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    justify-content: flex-start;
+  }
+
+  ${device.tablet} {
+    padding: 1rem;
+
+    .movies {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
   }
 `
 
@@ -42,22 +49,19 @@ export const Home = () => {
   }
 
   return (
-    <>
-      <h1>Popular Horror Movies 👻</h1>
-      <StyledHome>
-        <div className='movies'>
-          {movies.map((movie) => (
-            <Card key={movie.id} movie={movie}>
-              <h2>{movie.title}</h2>
-              <p>Releasedate: {movie.release_date}</p>
-              <img
-                src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                alt={`Poster for ${movie.title}`}
-              />
-            </Card>
-          ))}
-        </div>
-      </StyledHome>
-    </>
+    <StyledHome>
+      <div className='movies'>
+        {movies.map((movie) => (
+          <Card key={movie.id} movie={movie}>
+            <h2>{movie.title}</h2>
+            <p>Releasedate: {movie.release_date}</p>
+            <img
+              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+              alt={`Poster for ${movie.title}`}
+            />
+          </Card>
+        ))}
+      </div>
+    </StyledHome>
   )
 }
