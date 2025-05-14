@@ -3,11 +3,12 @@ import Card from "../components/card.jsx"
 
 const Movies = () => {
   const [movies, setMovies] = useState([]) //variabel that can change and rerender at update
-  
-  const apiKey = import.meta.env.VITE_TMDB_API_KEY
+
+  //const apiKey = import.meta.env.VITE_TMDB_API_KEY
+  const apiKey2 = "7ddd993a77dbdd9eee8744a30159efbb"
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey2}&language=en-US&page=1`)
       .then((response) => response.json())
       .then((data) => {
         console.log("What is happening", data.results)
@@ -26,7 +27,7 @@ const Movies = () => {
       ) : (
         <p>Loading...</p>
       )}
-    </> 
+    </>
   )
 }
 
