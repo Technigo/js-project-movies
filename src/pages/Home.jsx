@@ -33,7 +33,7 @@ const Home = () => {
         console.error('Fetch error:', err)
         setLoading(false)          // even on error, stop showing "Loading…"
       })
-  }, []) // empty array means "this runs once on mount"
+  }, []) // empty array means "this runs once on mount", its called a "dependency array". If we put something in there, it will run again when that thing changes.
 
   // 3. Show a simple loading message while we wait (when loading is true)
   if (loading) {
@@ -49,12 +49,16 @@ const Home = () => {
     // 5. Use Tailwind CSS classes to style the page
     // 6. Use React Router <Link> to navigate to the movie detail page
     // 7. Use the movie title and release date in the link
-    <main className="p-4"> 
-      <h1 className="text-2xl font-bold mb-4">Popular Movies</h1> 
-      <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3"> {/* Use Tailwind CSS grid classes to create a responsive grid layout */}
-        {movies.map((m) => (
-          <li key={m.id}>
-            <Link to={`/movie/${m.id}`}>
+    <main className="p-2"> 
+      <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-2"> {/* Use Tailwind CSS grid classes to create a responsive grid layout */}
+        {movies.map((m) => ( // Loop through the movies array and create a list item for each movie
+          <li key={m.id}> {/* Use the movie ID as the key for each list item */}
+            {/* Use the Link component to create a link to the movie detail page */}
+            {/* The to prop is the URL we want to navigate to */}
+            {/* The Link component will render an anchor tag (<a>) with the href set to the URL */}
+            {/* The Link component will also prevent the default behavior of the anchor tag, which is to reload the page */}
+            {/* The Link component will also use the history API to change the URL without reloading the page */}
+            <Link to={`/movie/${m.id}`}> {/* Use the movie ID to create a unique link for each movie */}
               <MovieCard {...m} /> {/* Spread operator to pass all movie props. Here, the {...m} spread gives MovieCard all of m.id, m.title, m.release_date, m.vote_average, and m.poster_path automatically. */}
             </Link>
           </li>
