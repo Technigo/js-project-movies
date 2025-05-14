@@ -15,11 +15,11 @@ export const StyledMovieInfo = styled.div`
   .movieDetails {
     display: flex;
     flex-direction: column;
-    padding: 0rem 2rem;
+    padding: 0.5rem;
   }
 
   .overview {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 1rem 0;
     width: 100%;
   }
@@ -34,13 +34,12 @@ export const StyledMovieInfo = styled.div`
 
   p {
     margin: 0.3rem 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   ${device.tablet} {
     flex-direction: row;
-    padding: 3rem;
-    margin: 10rem 2rem;
+    padding: 2rem;
     margin: 10rem 2rem;
 
     .overview {
