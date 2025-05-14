@@ -62,13 +62,12 @@ export const StyledCard = styled.div`
 `
 
 // Create Card component that takes a movie object as a prop
-// First it only displays the poster image but on hover it displays a darker overlay with the title, release date and rating
-
-// The movie object should contain the following properties: title, release_date, vote_average, poster_path
-// The movie object should be passed as a prop to the Card component
-
 export const Card = ({ movie }) => {
   const [isHovering, hoverProps] = useHover()
+
+  // if (!movie) {
+  //   return <div>Loading movie...</div>
+  // }
 
   return (
     <StyledCard>
