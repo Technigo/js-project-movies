@@ -54,7 +54,7 @@ export const MovieInfo = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
   const [error, setError] = useState(null)
-  const [isLoading, setIsLoading, withLoading] = useLoader(true)
+  const [isLoading, , withLoading] = useLoader(true)
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
