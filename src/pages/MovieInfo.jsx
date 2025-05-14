@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 
 export const MovieInfo = () => {
   const params = useParams()
-  const [movieInfo SetMovieInfo] = useState({}) // Recieves an object with the movie info
+  //const [movieInfo SetMovieInfo] = useState({}) // Recieves an object with the movie info
 
   useEffect(() => {
     // Fetch info
