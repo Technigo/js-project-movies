@@ -30,8 +30,3 @@ export const MovieInfo = () => {
     </>
   )
 }
-
-// Link to go back to the homepage
-// <Link to='/'>Back</Link>
-
-// Dynamic segments
