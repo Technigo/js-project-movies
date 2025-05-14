@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom"
 
 const CardContainer = styled.div`
+position: relative;
   background-image: ${({ backdrop }) => `url(https://image.tmdb.org/t/p/w1280${backdrop})`};
   background-size: cover;
   background-position: center;

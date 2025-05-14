@@ -36,7 +36,7 @@ const Movies = () => {
 
   return (
     <>
-      <h1>The Popular Movies</h1>
+      {/* <h1>The Popular Movies</h1> */}
       <MoviesContainer>
         {movies.length > 0 ? (
           movies.map(movie => (
