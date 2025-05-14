@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import MovieInfo from './pages/MovieInfo'
 
@@ -9,7 +9,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movieinfo" element={<MovieInfo />} />
+        <Route path="/movie/:id" element={<MovieInfo />} />
       </Routes>
     </BrowserRouter>
     </>
