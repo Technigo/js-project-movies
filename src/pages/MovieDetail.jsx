@@ -26,7 +26,7 @@ const Background = styled.div`
   padding: 0;
   color: white;
 `
- 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ const Poster = styled.img`
   @media (min-width: 668px) {
    width: 250px;
    max-width: 250px;
-  
+  }
 
   @media (min-width: 1024px) {
     width: 300px;
@@ -74,6 +74,7 @@ const InfoWrapper = styled.div`
 
   @media (min-width: 668px) {
     max-width: 300px;
+  }
     
 `
 
@@ -121,25 +122,25 @@ const MovieDetail = () => {
 
   return (
     <>
-  
-  <Background $backgroundUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
-      <Container>
-      <BackLink to="/"> ⬅ Back to Movies</BackLink>
-        {movie.poster_path && (
-          <Poster
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-        )}
-        <InfoWrapper>
-        <HeadText>
-          <h1>{movie.title}</h1>
-          <p>⭐ {movie.vote_average}</p>
-          </HeadText>
-          <Overview>{movie.overview}</Overview>
+
+      <Background $backgroundUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
+        <Container>
+          <BackLink to="/"> ⬅ Back to Movies</BackLink>
+          {movie.poster_path && (
+            <Poster
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+          )}
+          <InfoWrapper>
+            <HeadText>
+              <h1>{movie.title}</h1>
+              <p>⭐ {movie.vote_average}</p>
+            </HeadText>
+            <Overview>{movie.overview}</Overview>
           </InfoWrapper>
-      </Container>
-    </Background>
+        </Container>
+      </Background>
     </>
   )
 }

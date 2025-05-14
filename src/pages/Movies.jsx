@@ -5,8 +5,6 @@ import styled from "styled-components"
 const MoviesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  /* gap: 20px;
-  padding: 20px; */
   background-color: #333;
   border-radius: 10px;
 
@@ -30,7 +28,7 @@ const Movies = () => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey2}&language=en-US&page=1`)
       .then((response) => response.json())
       .then((data) => {
-    
+
         setMovies(data.results || [])
       })
       .catch((error) => console.error('Error fetching movies:', error))
