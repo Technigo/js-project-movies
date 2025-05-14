@@ -1,4 +1,4 @@
-import { DotLottieReact } from '@dotlottie/react-player'
+import { DotLottieReact } from 'dotlottie-react'
 
 export const Loader = () => {
   return (

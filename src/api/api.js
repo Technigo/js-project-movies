@@ -14,21 +14,31 @@ const defaultOptions = {
 // This function fetches all horror movies from the API
 export const api = {
   fetchHorrorMovies: async () => {
-    const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27`
-    const response = await fetch(url, defaultOptions)
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`)
+    try {
+      const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27`
+      const response = await fetch(url, defaultOptions)
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`)
+      }
+      return response.json()
+    } catch (error) {
+      console.error('Error fetching horror movies:', error)
+      throw error
     }
-    return response.json()
   },
 
   // This function fetching the moviedetails by ID
   fetchMovieById: async (id) => {
-    const url = `${API_BASE_URL}/movie/${id}?language=en-US`
-    const response = await fetch(url, defaultOptions)
-    if (!response.ok) {
-      throw new Error(`Movie fetch error: ${response.status}`)
+    try {
+      const url = `${API_BASE_URL}/movie/${id}?language=en-US`
+      const response = await fetch(url, defaultOptions)
+      if (!response.ok) {
+        throw new Error(`Movie fetch error: ${response.status}`)
+      }
+      return response.json()
+    } catch (error) {
+      console.error('Error fetching movie details:', error)
+      throw error
     }
-    return response.json()
   }
 }

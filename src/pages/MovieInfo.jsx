@@ -1,25 +1,33 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { api } from "../api/api";
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { api } from '../api/api'
+import { useLoader } from '../hooks/useLoader'
+import { Loader } from '../components/Loader'
 
 export const MovieInfo = () => {
-  const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const { id } = useParams()
+  const [movie, setMovie] = useState(null)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading, withLoading] = useLoader(true)
 
   useEffect(() => {
-    const getMovie = async () => {
+    const fetchMovieDetails = async () => {
       try {
-        const data = await api.fetchMovieById(id);
-        setMovie(data);
+        // Replace the direct API call with withLoading
+        const data = await withLoading(() => api.fetchMovieById(id))
+        setMovie(data)
       } catch (error) {
-        console.error("Error fetching movie data:", error);
+        console.error('Error fetching movie data:', error)
+        setError('Failed to load movie details.')
       }
-    };
+    }
 
-    getMovie();
-  }, [id]);
+    fetchMovieDetails()
+  }, [id])
 
-  if (!movie) return <p>Loading movie info...</p>; //spinner here to show loading instead of text?
+  if (isLoading) return <Loader />
+  if (error) return <p>{error}</p>
+  if (!movie) return <p>No movie found.</p>
 
   return (
     <div>
@@ -35,5 +43,5 @@ export const MovieInfo = () => {
       <p>Rating: {movie.vote_average} / 10</p>
       <p>Runtime: {movie.runtime} min</p>
     </div>
-  );
-};
+  )
+}
