@@ -7,7 +7,7 @@ export const StyledCard = styled.div`
   position: relative;
   display: block;
   width: 100%;
-  max-width: 95px;
+  max-width: 150px;
   overflow: hidden;
   border: 1px solid black;
   font-size: 0.8rem;
@@ -20,7 +20,7 @@ export const StyledCard = styled.div`
     position: relative;
     display: block;
     width: 100%;
-    max-width: 300px;
+    max-width: 240px;
     overflow: hidden;
     border: 3px solid black;
   }
