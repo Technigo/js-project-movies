@@ -7,6 +7,9 @@ import styled from "styled-components";
 const MoviesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  row-gap: 1rem;
+  background-color: black;
+  height: 100vh;
 
   @media (min-width: 550px) {
     grid-template-columns: repeat(2, 1fr);
@@ -19,10 +22,6 @@ const MoviesGrid = styled.div`
   @media (min-width: 820px) {
     grid-template-columns: repeat(4, 1fr);
   }
-`;
-
-const MovieCardContainer = styled.div`
-  margin-bottom: 1rem;
 `;
 
 const MoviesList = () => {
@@ -50,18 +49,16 @@ const MoviesList = () => {
   return (
     <MoviesGrid>
       {movies.map((movie) => (
-        <MovieCardContainer>
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            movieTitle={movie.title}
-            releaseDate={movie.release_date}
-            overview={movie.overview}
-            poster={movie.poster_path}
-            backdrop={movie.backdrop_path}
-            rating={movie.vote_average}
-          />
-        </MovieCardContainer>
+        <MovieCard
+          key={movie.id}
+          id={movie.id}
+          movieTitle={movie.title}
+          releaseDate={movie.release_date}
+          overview={movie.overview}
+          poster={movie.poster_path}
+          backdrop={movie.backdrop_path}
+          rating={movie.vote_average}
+        />
       ))}
     </MoviesGrid>
   );
