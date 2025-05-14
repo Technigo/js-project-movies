@@ -1,5 +1,24 @@
 import { useEffect, useState } from 'react'
 import Card from "../components/card.jsx"
+import styled from 'styled-components'
+
+const MoviesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  /* gap: 20px;
+  padding: 20px; */
+  background-color: #333;
+  border-radius: 10px;
+
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+`
 
 const Movies = () => {
   const [movies, setMovies] = useState([]) //variabel that can change and rerender at update
@@ -20,13 +39,15 @@ const Movies = () => {
   return (
     <>
       <h1>The Popular Movies</h1>
-      {movies.length > 0 ? (
-        movies.map(movie => (
-          <Card key={movie.id} movie={movie} />
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
+      <MoviesContainer>
+        {movies.length > 0 ? (
+          movies.map(movie => (
+            <Card key={movie.id} movie={movie} />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </MoviesContainer>
     </>
   )
 }
