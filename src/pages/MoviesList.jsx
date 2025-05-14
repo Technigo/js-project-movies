@@ -21,6 +21,10 @@ const MoviesGrid = styled.div`
   }
 `;
 
+const MovieCardContainer = styled.div`
+  margin-bottom: 1rem;
+`;
+
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
@@ -46,16 +50,18 @@ const MoviesList = () => {
   return (
     <MoviesGrid>
       {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          id={movie.id}
-          movieTitle={movie.title}
-          releaseDate={movie.release_date}
-          overview={movie.overview}
-          poster={movie.poster_path}
-          backdrop={movie.backdrop_path}
-          rating={movie.vote_average}
-        />
+        <MovieCardContainer>
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            movieTitle={movie.title}
+            releaseDate={movie.release_date}
+            overview={movie.overview}
+            poster={movie.poster_path}
+            backdrop={movie.backdrop_path}
+            rating={movie.vote_average}
+          />
+        </MovieCardContainer>
       ))}
     </MoviesGrid>
   );
