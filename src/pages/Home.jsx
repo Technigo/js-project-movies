@@ -1,7 +1,25 @@
+import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { api } from '../api/api'
 import { Card } from '../components/Card.jsx'
 import { Link } from 'react-router-dom'
+
+export const StyledHome = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+
+  .movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+`
 
 export const Home = () => {
   const [movies, setMovies] = useState([])
@@ -24,12 +42,12 @@ export const Home = () => {
   }
 
   return (
-    <section>
+    <>
       <h1>Popular Horror Movies 👻</h1>
-      <div className='movie-list'>
-        {movies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <Card movie={movie}>
+      <StyledHome>
+        <div className='movies'>
+          {movies.map((movie) => (
+            <Card key={movie.id} movie={movie}>
               <h2>{movie.title}</h2>
               <p>Releasedate: {movie.release_date}</p>
               <img
@@ -37,9 +55,9 @@ export const Home = () => {
                 alt={`Poster for ${movie.title}`}
               />
             </Card>
-          </Link>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </StyledHome>
+    </>
   )
 }
