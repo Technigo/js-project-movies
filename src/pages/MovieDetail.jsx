@@ -7,6 +7,10 @@ const BackLink = styled(Link)`
   color: white;
   margin-bottom: 16px;
   align-items: right;
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 20px;
 
 
 `
@@ -28,6 +32,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 8px;
+  min-height: 100vh;
+  justify-content: flex-end;
+  backdrop-filter: brightness(0.4);
+  gap: 10px;
+
+  @media (min-width: 668px) {
+    flex-direction: row; 
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 50px;
+  }
 
 `
 
@@ -37,6 +53,15 @@ const Poster = styled.img`
   max-width: 300px;
   box-shadow: 4px 6px 10px rgba(0,0,0,0.8);
 
+  @media (min-width: 668px) {
+   width: 250px;
+   max-width: 250px;
+  
+
+  @media (min-width: 1024px) {
+    width: 300px;
+    max-width: 300px;
+      }
 `
 
 const InfoWrapper = styled.div`
@@ -45,7 +70,11 @@ const InfoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: left;
-  }
+  
+
+  @media (min-width: 668px) {
+    max-width: 300px;
+    
 `
 
 const HeadText = styled.div`
@@ -53,8 +82,7 @@ const HeadText = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0 16px;
-
-  
+ 
 `
 const Overview = styled.p`
   margin-bottom: 16px;
