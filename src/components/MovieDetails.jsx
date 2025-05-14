@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { BackLink } from "./BackLink";
 import { MoviePoster } from "./MoviePoster";
 import { Rating } from "./Rating";
+import { ComingSoonTag } from "./ComingSoonTag";
 
 const PosterBackground = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%),
@@ -16,10 +17,11 @@ const PosterBackground = styled.div`
   color: white;
 `;
 
-const MovieInfoWrapper = styled.div`
+const MovieWrapper = styled.div`
   padding: 50px;
   display: flex;
   flex-direction: column;
+  margin-top: 24px;
 
   @media (min-width: 577px) {
     flex-direction: row;
@@ -61,7 +63,7 @@ export const MovieDetails = () => {
     <div>
       <PosterBackground poster={details.backdrop_path}>
         <BackLink />
-        <MovieInfoWrapper>
+        <MovieWrapper>
           <MoviePoster
             src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
             alt={`Movie Poster of ${details.title}`}
@@ -69,11 +71,15 @@ export const MovieDetails = () => {
           <MovieDetailsWrapper>
             <StyledH1>
               <Title>{details.title}</Title>
-              <Rating value={details.vote_average} />
+              <Rating
+                value={details.vote_average}
+                releaseDate={details.release_date}
+              />
             </StyledH1>
+            <ComingSoonTag releaseDate={details.release_date} />
             <p>{details.overview}</p>
           </MovieDetailsWrapper>
-        </MovieInfoWrapper>
+        </MovieWrapper>
       </PosterBackground>
     </div>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { movieList } from '../hooks/fetch.js';
-import { Link } from 'react-router-dom';
+import { movieList } from "../hooks/fetch.js";
+import { Link } from "react-router-dom";
 
 const Grid = styled.ul`
   display: grid;
@@ -43,7 +43,8 @@ const MovieLink = styled(Link)`
 const MovieBackground = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(https://image.tmdb.org/t/p/w780${props => props.backdrop || ''});
+  background-image: url(https://image.tmdb.org/t/p/w780${(props) =>
+    props.backdrop || ""});
   background-size: cover;
   background-position: center;
   transition: filter 0.3s;
@@ -56,7 +57,11 @@ const Overlay = styled.div`
   bottom: 0;
   width: 100%;
   height: 40%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 80%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.85) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -86,13 +91,11 @@ const MovieItemWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  &:hover ${Overlay},
-  &:focus-within ${Overlay} {
+  &:hover ${Overlay}, &:focus-within ${Overlay} {
     opacity: 1;
     pointer-events: auto;
   }
-  &:hover ${MovieBackground},
-  &:focus-within ${MovieBackground} {
+  &:hover ${MovieBackground}, &:focus-within ${MovieBackground} {
     filter: brightness(0.5);
   }
 `;
@@ -104,13 +107,20 @@ export const FrontPage = () => {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <Grid role="list">
-        {movies.map(movie => (
-          <MovieItem key={movie.id} role="listitem">
+      <Grid role='list'>
+        {movies.map((movie) => (
+          <MovieItem key={movie.id} role='listitem'>
             <MovieItemWrapper>
-              <MovieLink to={`/movies/${movie.id}`} aria-label={`View details for ${movie.title}`} tabIndex={0}>
-                <MovieBackground backdrop={movie.poster_path} aria-hidden="true" />
-                <Overlay aria-hidden="false">
+              <MovieLink
+                to={`/movies/${movie.id}`}
+                aria-label={`View details for ${movie.title}`}
+                tabIndex={0}
+              >
+                <MovieBackground
+                  backdrop={movie.poster_path}
+                  aria-hidden='true'
+                />
+                <Overlay aria-hidden='false'>
                   <MovieTitle>{movie.title}</MovieTitle>
                   <ReleaseDate>Released: {movie.release_date}</ReleaseDate>
                 </Overlay>

@@ -18,8 +18,16 @@ const StarIcon = styled(FaStar)`
   width: 18px;
 `;
 
-export const Rating = ({ value }) => {
+export const Rating = ({ value, releaseDate }) => {
+  if (!value || !releaseDate) return null;
+
+  const now = new Date();
+  const release = new Date(releaseDate);
+
+  if (release > now) return null;
+
   const rounded = Number(value).toFixed(1);
+
   return (
     <RatingWrapper>
       <StarIcon />
