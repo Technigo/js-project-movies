@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import { useEffect, useState } from 'react'
 import { api } from '../api/api'
+import { Card } from '../components/Card.jsx'
 
 export const Home = () => {
   const [movies, setMovies] = useState([])
@@ -27,14 +28,7 @@ export const Home = () => {
       <h1>Popular Horror Movies 👻</h1>
       <div className='movie-list'>
         {movies.map((movie) => (
-          <article key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>Releasedate: {movie.release_date}</p>
-            <img
-              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-              alt={`Posters fo ${movie.title}`}
-            />
-          </article>
+          <Card key={movie.id} movie={movie} />
         ))}
       </div>
     </section>
