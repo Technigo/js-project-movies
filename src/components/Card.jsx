@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { useHover } from '../hooks/useHover'
-import { device } from '../styles/media.js'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useHover } from "../hooks/useHover";
+import { device } from "../styles/media.js";
 
 export const StyledCard = styled.div`
   position: relative;
@@ -92,33 +92,33 @@ export const StyledCard = styled.div`
   .movieRating span {
     color: gold;
   }
-`
+`;
 
 // Create Card component that takes a movie object as a prop
 export const Card = ({ movie }) => {
-  const [isHovering, hoverProps] = useHover()
+  const [isHovering, hoverProps] = useHover();
 
   if (!movie) {
-    return <div>Loading movie...</div>
+    return <div>Loading movie...</div>;
   }
 
   return (
     <StyledCard>
-      <Link to={`/movies/${movie.title}`}>
-        <div className='cardContainer' {...hoverProps}>
+      <Link to={`/movies/${movie.id}`}>
+        <div className="cardContainer" {...hoverProps}>
           {/* The movie poster */}
           <img
             src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-            alt={`Poster for ${movie.title}`}
-            className='moviePoster'
+            alt={`Poster for ${movie.id}`}
+            className="moviePoster"
           />
 
           {/* Overlay that appears on hover */}
           {isHovering && (
-            <div className='cardOverlay'>
-              <h2 className='movieTitle'>{movie.title}</h2>
-              <p className='movieRelease'>Released: {movie.release_date}</p>
-              <div className='movieRating'>
+            <div className="cardOverlay">
+              <h2 className="movieTitle">{movie.title}</h2>
+              <p className="movieRelease">Released: {movie.release_date}</p>
+              <div className="movieRating">
                 <span>★</span> {movie.vote_average.toFixed(1)}/10
               </div>
             </div>
@@ -126,5 +126,5 @@ export const Card = ({ movie }) => {
         </div>
       </Link>
     </StyledCard>
-  )
-}
+  );
+};
