@@ -1,5 +1,7 @@
-import { BrowserRoute, Routes, Router } from "react-router"
-
+import { BrowserRouter, Routes, Route } from "react-router"
+import Header from "./components/Header"
+import Movies from "./pages/Movies"
+import About from "./pages/About"
 
 export const App = () => {
   return (
@@ -7,13 +9,12 @@ export const App = () => {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/" element={<Movies />} />
+          <Route path="/about" element={<About />} />
         </Routes>
+      </BrowserRouter>
 
 
-
-        <h1>Movies</h1>
-      </>
-      )
+    </>
+  )
 }
