@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from "styled-components";
 import { movieList } from '../hooks/fetch.js';
-import { Link } from 'react-router-dom';
+import { useMovieSearch } from '../hooks/search.js';
+import { Link, useLocation } from 'react-router-dom';
 
 const Grid = styled.ul`
   display: grid;
@@ -40,14 +42,11 @@ const MovieLink = styled(Link)`
   color: inherit;
 `;
 
-const MovieBackground = styled.div`
+const MoviePosterImg = styled.img`
   width: 100%;
   height: 100%;
-  background-image: url(https://image.tmdb.org/t/p/w780${props => props.backdrop || ''});
-  background-size: cover;
-  background-position: center;
-  transition: filter 0.3s;
-  filter: brightness(0.85);
+  object-fit: cover;
+  display: block;
 `;
 
 const Overlay = styled.div`
@@ -91,25 +90,48 @@ const MovieItemWrapper = styled.div`
     opacity: 1;
     pointer-events: auto;
   }
-  &:hover ${MovieBackground},
-  &:focus-within ${MovieBackground} {
+  &:hover ${MoviePosterImg},
+  &:focus-within ${MoviePosterImg} {
     filter: brightness(0.5);
   }
 `;
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 export const FrontPage = () => {
+  const query = useQuery().get('search');
   const { movies, loading, error } = movieList();
+  const { results, loading: searchLoading, error: searchError, searchMovies } = useMovieSearch();
+
+  React.useEffect(() => {
+    if (query) {
+      searchMovies(query);
+    }
+    // eslint-disable-next-line
+  }, [query]);
+
+  const displayMovies = query ? results : movies;
+  const isLoading = query ? searchLoading : loading;
+  const isError = query ? searchError : error;
+  const showNoResults = query && !isLoading && !isError && displayMovies.length === 0;
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error: {isError}</p>}
+      {showNoResults && <p style={{textAlign: 'center', fontSize: '1.5rem', marginTop: '2rem'}}>No movies found for your search.</p>}
       <Grid role="list">
-        {movies.map(movie => (
+        {displayMovies.map(movie => (
           <MovieItem key={movie.id} role="listitem">
             <MovieItemWrapper>
               <MovieLink to={`/movies/${movie.id}`} aria-label={`View details for ${movie.title}`} tabIndex={0}>
-                <MovieBackground backdrop={movie.poster_path} aria-hidden="true" />
+                <MoviePosterImg
+                  src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
+                  alt={movie.title ? `${movie.title} poster` : 'Movie poster'}
+                  loading="lazy"
+                />
                 <Overlay aria-hidden="false">
                   <MovieTitle>{movie.title}</MovieTitle>
                   <ReleaseDate>Released: {movie.release_date}</ReleaseDate>

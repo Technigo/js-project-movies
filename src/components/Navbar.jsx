@@ -10,7 +10,16 @@ const Nav = styled.nav`
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0.5rem;
+    gap: 0.5rem;
+  }
 `;
 
 const HomeLink = styled(Link)`
@@ -18,11 +27,16 @@ const HomeLink = styled(Link)`
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
+  @media (max-width: 600px) {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
 `;
 
 export const Navbar = () => (
   <Nav aria-label="Main navigation">
-    <HomeLink to="/">Movies movies movies</HomeLink>
+    <HomeLink to="/">Popflix 🍿</HomeLink>
     <SearchBar />
   </Nav>
 ); 
