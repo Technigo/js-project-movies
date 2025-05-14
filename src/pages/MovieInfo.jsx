@@ -3,6 +3,36 @@ import { useEffect, useState } from 'react'
 import { api } from '../api/api'
 import { useLoader } from '../hooks/useLoader'
 import { Loader } from '../components/Loader'
+import styled from 'styled-components'
+import { device } from '../styles/media.js'
+
+export const StyledMovieInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+  margin: 10rem 2rem;
+
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 2rem;
+  }
+
+  .overview {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    width: 60%;
+  }
+
+  p {
+    margin: 0.3rem 0;
+    font-size: 1.2rem;
+  }
+
+  ${device.tablet} {
+    margin: 10rem 2rem;
+  }
+`
 
 export const MovieInfo = () => {
   const { id } = useParams()
@@ -30,18 +60,21 @@ export const MovieInfo = () => {
   if (!movie) return <p>No movie found.</p>
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
+    <StyledMovieInfo>
       <img
         src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
         alt={movie.title}
       />
-      <p>{movie.overview}</p>
-      <p>Original title: {movie.original_title}</p>
-      <p>Language: {movie.original_language.toUpperCase()}</p>
-      <p>Release date: {movie.release_date}</p>
-      <p>Rating: {movie.vote_average} / 10</p>
-      <p>Runtime: {movie.runtime} min</p>
-    </div>
+      <div className='movieDetails'>
+        <h1>{movie.title}</h1>
+        <p className='overview'>{movie.overview}</p>
+        <p>Original title: {movie.original_title}</p>
+        <p>Genres: {movie.genres.map((genre) => genre.name).join(', ')}</p>
+        <p>Language: {movie.original_language.toUpperCase()}</p>
+        <p>Release date: {movie.release_date}</p>
+        <p>Rating: {movie.vote_average} / 10</p>
+        <p>Runtime: {movie.runtime} min</p>
+      </div>
+    </StyledMovieInfo>
   )
 }
