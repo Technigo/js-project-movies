@@ -8,7 +8,6 @@ import { device } from '../styles/media.js'
 
 export const StyledMovieInfo = styled.div`
   position: relative;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -50,6 +49,9 @@ export const StyledMovieInfo = styled.div`
     font-size: 1rem;
   }
 
+  ${device.mobileL} {
+  }
+
   ${device.tablet} {
     .backdropContainer {
       display: block;
@@ -88,11 +90,10 @@ export const StyledMovieInfo = styled.div`
       z-index: 1;
       display: flex;
       flex-direction: row;
-      padding: 2.5rem;
-      margin: 300px 2rem 2rem 2rem; // Key change: this creates the overlap
+      padding: 1rem;
+      margin: 300px 2rem 2rem 2rem;
       margin-top: 350px; // This pulls it up to create overlap
       background-color: rgba(20, 20, 20, 0.95);
-      border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); // Add shadow for depth
     }
 
@@ -104,7 +105,7 @@ export const StyledMovieInfo = styled.div`
     .overview {
       font-size: 1.2rem;
       margin: 1rem 0;
-      width: 100%;
+      width: 90%;
     }
 
     img {
@@ -113,7 +114,6 @@ export const StyledMovieInfo = styled.div`
       height: auto;
       object-fit: contain;
       flex-shrink: 0; /* Prevents the image from shrinking */
-      padding-top: 1rem;
     }
   }
   ${device.laptop} {
@@ -128,8 +128,6 @@ export const StyledMovieInfo = styled.div`
     .contentContainer {
       margin-top: 400px; // Pull content up more on larger screens for bigger overlap
       max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .movieDetails {
