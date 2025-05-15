@@ -14,14 +14,17 @@ const DetailsContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  min-height: 100vh;
   `;
 
   const StyledLink = styled(Link)`
-    display: block;
+    display: flex;
+    align-items: left;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: ;
+    padding-top: 20px;
+    text-shadow: 1px 1px slategray;
     
     &:hover {
       transform: scale(1.1);
@@ -31,9 +34,7 @@ const DetailsContainer = styled.div`
 const PageBackground = styled.div`
   background: linear-gradient (rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
   width: 100%;
-  min-height: 100vh;
   background-size: cover;
-  
 `;
 
 const DetailsCard = styled.div`
@@ -42,7 +43,7 @@ const DetailsCard = styled.div`
   position: absolute;
   inset: 0;
   padding: 50px;
-  gap: 10px;
+  gap: 20px;
   margin-top: 3rem;
 `;
 
@@ -51,20 +52,26 @@ const MoviePoster = styled.img`
   border: 5px solid white;
 `
 
+const MovieTitle = styled.h1`
+  text-shadow: 1px 1px slategray;
+`
+
 const MovieRating = styled.span`
   background: white;
   color: black;
   margin-left: 15px;
+  padding: 5px;
+  font-size: 1.5rem;
 `
 
 // Inline MovieOverview Component
 const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
   <div>
-    <h1>{movieTitle}
+    <MovieTitle>{movieTitle}
       <MovieRating>
         ⭐️ {rating}
       </MovieRating>
-    </h1>
+    </MovieTitle>
     <p>
       <strong>Popularity:</strong> {popularity}
     </p>
