@@ -29,11 +29,7 @@ h1 {
   }
   }
 
-h2 {
-    font-size: 20px;
-@media (width: 1024px) {
-    font-size: 28px;
-  }
+
 
 p {
 font-size: 16px;

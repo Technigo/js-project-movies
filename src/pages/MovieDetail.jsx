@@ -11,6 +11,11 @@ const BackLink = styled(Link)`
   top: 5px;
   position: fixed;
  
+ &:hover {
+ cursor: pointer;
+ transform: translateY(-2px);
+ transition: transform 0.3s;
+ }
  
 
   @media (min-width: 668px) {
@@ -22,7 +27,7 @@ const BackLink = styled(Link)`
 
 `
 const Background = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${props => props.$backgroundUrl});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${props => props.$backgroundUrl});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -121,6 +126,7 @@ const Rating = styled.p`
 const Description = styled.p`
  margin-top: 0;
  max-width: 400px;
+ padding-right: 5px;
 
   
 `
