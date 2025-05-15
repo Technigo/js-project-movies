@@ -1,7 +1,6 @@
 import { ThemeConsumer } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Welcome } from './components/pages/welcome.jsx';
-import { About } from './components/pages/About.jsx';
 import { Contact } from './components/pages/contact.js';
 import { Nav } from "./components/pages/Nav.js";
 import { Header } from './components/pages/Header.jsx';
