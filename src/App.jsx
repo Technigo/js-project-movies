@@ -1,6 +1,5 @@
 import { ThemeConsumer } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Main } from './components/pages/main.jsx';
 import { Welcome } from './components/pages/welcome.jsx';
 import { About } from './components/pages/About.jsx';
 import { Contact } from './components/pages/contact.js';
