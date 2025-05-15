@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IoCaretBackCircle } from "react-icons/io5";
-import styled from "styled-components";
 
 const StyledLink = styled(Link)`
   position: absolute;

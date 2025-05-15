@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Navbar } from "./Navbar.jsx";
+import { Navbar } from "../components/Navbar.jsx";
 import { MovieList } from "../hooks/fetch.js";
 import { Link, useLocation } from "react-router-dom";
-import { NoResults } from "./NoResults.jsx";
+import { NoResults } from "../components/NoResults.jsx";
 import { useMovieSearch } from "../hooks/search.js";
-import { ComingSoonTag } from "./ComingSoonTag.jsx";
+import { ComingSoonTag } from "../components/ComingSoonTag.jsx";
 
 const Grid = styled.ul`
   display: grid;

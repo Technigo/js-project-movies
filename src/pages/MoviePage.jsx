@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useMovieDetails } from "../hooks/fetch.js";
 import { useParams } from "react-router-dom";
-import { BackLink } from "./BackLink.jsx";
-import { MoviePoster } from "./MoviePoster.jsx";
-import { Rating } from "./Rating.jsx";
-import { ComingSoonTag } from "./ComingSoonTag.jsx";
-import { ErrorComponent } from "./ErrorComponent.jsx";
+import { BackLink } from "../components/BackLink.jsx";
+import { MoviePoster } from "../components/MoviePoster.jsx";
+import { Rating } from "../components/Rating.jsx";
+import { ComingSoonTag } from "../components/ComingSoonTag.jsx";
+import { ErrorComponent } from "../components/ErrorComponent.jsx";
 
 const PosterBackground = styled.div`
   background-image: ${({ poster }) => `

@@ -1,5 +1,5 @@
-import { FrontPage } from "./components/FrontPage.jsx";
-import { MoviePage } from "./components/MoviePage.jsx";
+import { FrontPage } from "./pages/FrontPage.jsx";
+import { MoviePage } from "./pages/MoviePage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SplashScreen } from "./components/SplashScreen.jsx";
