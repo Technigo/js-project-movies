@@ -11,6 +11,7 @@ const StyledLink = styled(Link)`
 
 const MovieContainer = styled.div`
   width: 100%;
+  background: black;
   
   @media (min-width: 425px) {
     width: 50%;
