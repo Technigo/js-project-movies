@@ -1,18 +1,25 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: black;
+  background-color: ${(props) =>
+    props.$isTransparent ? "transparent" : "black"};
   color: white;
-  padding: 0;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 `;
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 const Nav = styled.nav`
@@ -24,16 +31,22 @@ const Nav = styled.nav`
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
-
-    &:hover {
-      text-decoration: none;
-    }
   }
 `;
 
 export const Header = () => {
+  const location = useLocation();
+  const [isTransparent, setIsTransparent] = useState(false);
+
+  useEffect(() => {
+    const isMovieInfoPage = location.pathname.startsWith("/movies/");
+    setIsTransparent(isMovieInfoPage);
+  }, [location]);
+
   return (
-    <StyledHeader>
+    <StyledHeader $isTransparent={isTransparent}>
+      {" "}
+      {/* Använd $isTransparent */}
       <Title>🎬 ScreamFlix </Title>
       <Nav>
         <Link to="/">Home</Link>

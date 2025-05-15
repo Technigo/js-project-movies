@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { api } from '../api/api'
-import { useLoader } from '../hooks/useLoader'
-import { Loader } from '../components/Loader'
-import styled from 'styled-components'
-import { device } from '../styles/media.js'
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../api/api";
+import { useLoader } from "../hooks/useLoader";
+import styled from "styled-components";
+import { device } from "../styles/media.js";
+import { Loader } from "../components/Loader";
 
 export const StyledMovieInfo = styled.div`
   position: relative;
@@ -67,11 +67,11 @@ export const StyledMovieInfo = styled.div`
       background-image: ${(props) =>
         props.$backdrop
           ? `url(https://image.tmdb.org/t/p/w780${props.$backdrop})`
-          : 'none'};
+          : "none"};
       z-index: 0;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -122,7 +122,7 @@ export const StyledMovieInfo = styled.div`
       background-image: ${(props) =>
         props.$backdrop
           ? `url(https://image.tmdb.org/t/p/w1280${props.$backdrop})`
-          : 'none'};
+          : "none"};
     }
 
     .contentContainer {
@@ -139,62 +139,62 @@ export const StyledMovieInfo = styled.div`
       background-image: ${(props) =>
         props.$backdrop
           ? `url(https://image.tmdb.org/t/p/original${props.$backdrop})`
-          : 'none'};
+          : "none"};
     }
   }
-`
+`;
 
 export const MovieInfo = () => {
-  const { id } = useParams()
-  const [movie, setMovie] = useState(null)
-  const [error, setError] = useState(null)
-  const [isLoading, withLoading] = useLoader(true)
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [error, setError] = useState(null);
+  const { isLoading, withLoading } = useLoader(true);
 
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
 
     const fetchMovieDetails = async () => {
       try {
-        const data = await withLoading(() => api.fetchMovieById(id))
+        const data = await withLoading(() => api.fetchMovieById(id));
         if (isMounted) {
-          setMovie(data)
-          console.log('Backdrop path:', data.backdrop_path)
+          setMovie(data);
+          console.log("Backdrop path:", data.backdrop_path);
         }
       } catch (error) {
         if (isMounted) {
-          console.error('Error fetching movie data:', error)
-          setError('Failed to load movie details.')
+          console.error("Error fetching movie data:", error);
+          setError("Failed to load movie details.");
         }
       }
-    }
+    };
 
-    fetchMovieDetails()
+    fetchMovieDetails();
 
     return () => {
-      isMounted = false
-    }
-  }, [id])
+      isMounted = false;
+    };
+  }, [id, withLoading]);
 
-  if (isLoading) return <Loader />
-  if (error) return <p>{error}</p>
-  if (!movie) return <p>No movie found.</p>
+  if (isLoading) return <Loader />;
+  if (error) return <p>{error}</p>;
+  if (!movie) return <p>No movie found.</p>;
 
   return (
-    <StyledMovieInfo $backdrop={movie.backdrop_path || ''}>
+    <StyledMovieInfo $backdrop={movie.backdrop_path || ""}>
       {/* Backdrop Container */}
-      <div className='backdropContainer'></div>
-      <div className='contentContainer'>
+      <div className="backdropContainer"></div>
+      <div className="contentContainer">
         <img
-          src={`https://image.tmdb.org/t/p/w300${movie.poster_path || ''}`}
-          alt={movie.title || 'Movie Poster'}
+          src={`https://image.tmdb.org/t/p/w300${movie.poster_path || ""}`}
+          alt={movie.title || "Movie Poster"}
         />
-        <div className='movieDetails'>
+        <div className="movieDetails">
           <h1>{movie.title}</h1>
-          <p className='overview'>{movie.overview}</p>
+          <p className="overview">{movie.overview}</p>
           <p>Original title: {movie.original_title}</p>
           <p>
-            Genres:{' '}
-            {movie.genres?.map((genre) => genre.name).join(', ') || 'N/A'}
+            Genres:{" "}
+            {movie.genres?.map((genre) => genre.name).join(", ") || "N/A"}
           </p>
           <p>Language: {movie.original_language.toUpperCase()}</p>
           <p>Release date: {movie.release_date}</p>
@@ -203,5 +203,5 @@ export const MovieInfo = () => {
         </div>
       </div>
     </StyledMovieInfo>
-  )
-}
+  );
+};
