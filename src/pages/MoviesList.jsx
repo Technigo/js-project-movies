@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Card from '../components/Card'
+import Card from '../components/Card.jsx'
 
 
 const MoviesList = () => {
@@ -22,7 +22,7 @@ const MoviesList = () => {
   return (
     <>
       <div>Movies</div>
-      {movies.map(movie => <Card movie={movie.title} />)}
+      {movies.length ? movies.map(movie => <Card movie={movie.title} />) : <p>Loading...</p>}
     </>
   )
 }

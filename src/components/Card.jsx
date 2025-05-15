@@ -1,11 +1,12 @@
 import './Card.css';
 
-const Card = ({ movieTitle }) => {
+const Card = ({ movie }) => {
   return (
     <div className="card">
-      <h2>{movieTitle}</h2>
-      <p>Movie description goes here.</p>
+      <h2>{movie}</h2>
     </div>
   );
 
 }
+
+export default Card;
