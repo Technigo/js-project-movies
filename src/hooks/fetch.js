@@ -1,23 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-let movieId = 1241436
-const API_KEY = '830e7f8d39529be36377801e8d5b2393';
-const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-const API_URL_DETAILS = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-
-
+let movieId = 1241436;
+const apikey = import.meta.env.VITE_MOVIE_API_KEY;
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`;
+const API_URL_DETAILS = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`;
 
 export const movieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
       setLoading(true);
       try {
         const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Failed to fetch');
+        if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
         setMovies(data.results);
       } catch (err) {
@@ -33,14 +31,13 @@ export const movieList = () => {
   return { movies, loading, error };
 };
 
-
 // export const movieDetails = (movieId) => {
 //   const [movieDetails, setMovieDetails] = useState(null);
 //   const [loading, setLoading] = useState(false);
 //   const [error, setError] = useState('');
 
 //   useEffect(() => {
-    
+
 //     const fetchMovieDetails = async () => {
 //       setLoading(true);
 //       try {
@@ -61,18 +58,19 @@ export const movieList = () => {
 //   return { movieDetails, loading, error };
 // };
 
-
 export const movieDetails = (movieId) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`);
-        if (!response.ok) throw new Error('Failed to fetch');
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
+        );
+        if (!response.ok) throw new Error("Movie not found");
         const data = await response.json();
         setMovieDetails(data);
       } catch (err) {

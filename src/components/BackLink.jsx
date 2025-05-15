@@ -13,6 +13,10 @@ const StyledLink = styled(Link)`
   font-size: 16px;
   font-weight: 700;
   filter: drop-shadow(2px 3px 4px rgb(0 0 0 / 0.5));
+
+  @media (min-width: 577px) {
+    top: 50px;
+  }
 `;
 
 const BackIcon = styled(IoCaretBackCircle)`
