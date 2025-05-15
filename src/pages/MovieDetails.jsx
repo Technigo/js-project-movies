@@ -115,8 +115,8 @@ const MovieRating = styled.span`
 
 // Inline MovieOverview Component
 const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
-  <div>
-    <MovieTitle>{movieTitle}
+  <section aria-labelledby="movie-title">
+    <MovieTitle id="movie-title">{movieTitle}
       <MovieRating>
         ⭐️ {rating.toFixed(1)}
       </MovieRating>
@@ -125,7 +125,7 @@ const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
       <strong>Popularity:</strong> {popularity.toFixed(0)}
     </Popularity>
     <TextOverview>{overview}</TextOverview>
-  </div>
+  </section>
 );
 
 // Main Component
@@ -155,13 +155,14 @@ const MovieDetails = () => {
     fetchMovie();
   }, [movieid]);
 
-  if (loading) return <p style={{ color: "white" }}>Loading movie details…</p>;
+  if (loading) return <p aria-live="polite" style={{ color: "white" }}>Loading movie details…</p>;
   if (error || !movie)
-    return <p style={{ color: "white" }}>Movie not found.</p>;
+    return <p role="alert" style={{ color: "white" }}>Movie not found.</p>;
 
   return (
+    <main role="main">
     <DetailsContainer>
-      <StyledLink to="/">← Back to movies list</StyledLink>
+      <StyledLink to="/" aria-label="Go back to movie list">← Back to movies list</StyledLink>
 
       <PageBackground $image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} />
 
@@ -169,7 +170,7 @@ const MovieDetails = () => {
       <DetailsCard>
         <MoviePoster
           src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-          alt={movie.title}/>
+          alt={`Poster for ${movie.title}`}/>
         <MovieOverview
           movieTitle={movie.original_title}
           rating={movie.vote_average}
@@ -179,6 +180,7 @@ const MovieDetails = () => {
       </DetailsCard>
 
     </DetailsContainer>
+    </main>
   );
 };
 
