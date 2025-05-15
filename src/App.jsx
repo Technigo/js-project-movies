@@ -1,19 +1,12 @@
-import { ThemeConsumer } from 'styled-components'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';g
-import { Header } from './components/pages/Header.jsx';
-import { Movies } from  './components/data/data/Movies.jsx';
-import { MoviesList } from './components/pages/MoviesList.js';
-import { ShowMovies } from './components/pages/ShowMovies.js';
-import { MovieDetails} from './components/pages/MovieDetails.jsx';
-import { NotFound } from './components/pages/NotFound.jsx'
-import { PopularList } from './components/pages/PopularList.jsx';
-import { MovieList } from './/components/pages/MoviesList.js';
-import { Card } from './components/pages/Card.jsx';
 
-
+import { BrowserRouter, Routes, Route } from "react-router"
+import Header from './components/Header'
+import Movies from './pages/Movies'
+import About from './pages/About'
+import MovieDetails from './pages/MovieDetails'
+import NotFound from './pages/NotFound'
 
 // The Header component will show in all "pages" It is outside of the routing scope.
-// The NavBar component will show in all "pages" It is outside of the routing scope.
 
 export const App = () => {
   return (
@@ -32,6 +25,3 @@ export const App = () => {
     </>
   )
 }
-
-
-// Removed duplicate App component declaration
