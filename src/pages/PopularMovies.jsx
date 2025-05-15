@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< Updated upstream
 import styled from "styled-components";
 
 const PosterSection = styled.section`
@@ -51,6 +52,9 @@ const StyledLink = styled(Link)`
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+=======
+// import { MoviePoster } from "../components/MoviePoster";
+>>>>>>> Stashed changes
 
 export const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
