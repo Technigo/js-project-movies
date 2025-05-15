@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< Updated upstream
+=======
+import { MoviePoster } from "../components/MoviePoster";
+>>>>>>> Stashed changes
 
 export const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const MovieList = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
   useEffect(() => {
@@ -26,9 +30,7 @@ export const PopularMovies = () => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-
             <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-
           </li>
         ))}
       </ul>
