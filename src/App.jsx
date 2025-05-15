@@ -1,5 +1,4 @@
 import { ThemeConsumer } from 'styled-components'
-import { GlobalStyle } from './GlobalStyles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Welcome } from './components/pages/PopularListWelcome';
 import { About } from './components/pages/About';
