@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-const PosterSection = styled.section`
+
+export const PosterSection = styled.section`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
+  gap: 5px;
   gap: 5px;
   height: 100vh;
 
@@ -19,33 +21,54 @@ const PosterSection = styled.section`
     grid-auto-rows: 250px;
   }
 `;
-const MoviePoster = styled.article`
+export const MoviePoster = styled.article`
   outline: 6px solid white;
-  padding: 10px;
-  background: #fafafa;
   display: flex;
   flex-direction: column;
-  grid-column: span ${(props) => props.colSpan};
-  grid-row: span ${(props) => props.rowSpan};
-  background-image: ${(props) =>
-    props.bgImage ? `url(${props.bgImage})` : "none"};
+  grid-column: span ${props => props.colSpan};
+  grid-row: span ${props => props.rowSpan};
+  background-image: ${props => props.bgImage ? `url(${props.bgImage})` : 'none'};
   background-size: cover;
   background-position: center;
   position: relative;
-  color: #fff;
   min-height: 150px;
-`;
-const StyledLink = styled(Link)`
-  font-weight: bold;
-  font-size: 1rem;
-  color: #0055aa;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
+
   &:hover {
-    text-decoration: underline;
-    color: #003377;
+ 
   }
 `;
+
+export const StyledLink = styled(Link)`
+  display: flex;
+  font-family: 'Notable', serif;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  align-items: center;
+  padding: 10px;
+  height: 100%;
+  color: #FFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 6vw;
+  word-break: break-word; 
+  white-space: normal;    
+  text-align: center;
+  transition: opacity 0.3s, text-shadow 0.3s;
+
+  &:hover {
+    opacity: 1;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 2px #000;
+  }
+
+  @media (min-width: 600px) {
+    font-size: 3vw;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2vw;
+  }
+`;
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -66,12 +89,13 @@ export const PopularMovies = () => {
     fetchMovies();
   }, [MovieList]);
   return (
+
     <PosterSection>
       {movies.map((movie) => {
         const colSpan = randomBetween(1, 2);
         const rowSpan = randomBetween(1, 2);
-        const bgImage = movie.poster_path
-          ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
+        const bgImage = movie.backdrop_path
+          ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
           : null;
         return (
           <MoviePoster
@@ -81,10 +105,11 @@ export const PopularMovies = () => {
             bgImage={bgImage}
           >
             <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
-            <p>Release date: {movie.release_date}</p>
+
           </MoviePoster>
         );
       })}
     </PosterSection>
+
   );
 };
