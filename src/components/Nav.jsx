@@ -17,18 +17,19 @@ align-items: center;
 gap: 30px;
 padding: 10px;
 text-transform: uppercase;
-font-family: 'Agdasima', serif;
-letter-spacing: 1px;
+font-family: Urbanist, sans-serif;
+
 `
 
 const StyledNavLink = styled(NavLink)`
   color: #000;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 22px;
 
 
   &.active {
     border-bottom: 4px solid  #000;
+    padding-bottom: 2px;
   }
 
   &:hover {

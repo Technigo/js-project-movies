@@ -30,7 +30,7 @@ export const MoviePoster = styled.article`
   background-position: center;
   opacity: 0.8;
   position: relative;
-  min-height: 150px;
+  min-height: 120px;
 
   &:hover {
    opacity: 1;
