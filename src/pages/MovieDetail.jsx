@@ -9,7 +9,7 @@ const BackLink = styled(Link)`
   align-items: right;
   left: 30px;
   top: 5px;
-  position: fixed;
+  position: absolute;
  
  &:hover {
  cursor: pointer;
@@ -22,12 +22,11 @@ const BackLink = styled(Link)`
   margin-top: 5px;
   margin-left: 50px;
  
-  
   }
 
 `
 const Background = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${props => props.$backgroundUrl});
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 80%,  rgba(0, 0, 0, 100%)), url(${props => props.$backgroundUrl});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,6 +37,13 @@ const Background = styled.div`
   padding: 0;
   color: white;
  
+
+  @media (max-width: 668px) {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.6),  
+      rgba(0, 0, 0, 0.6)
+    ), url(${props => props.$backgroundUrl});;
+  }
 `
 
 
@@ -74,15 +80,12 @@ const Poster = styled.img`
  
   @media (min-width: 668px) {
    width: 250px;
-   max-width: 250px;
-   justify-self: start;
-   margin: 0;
-   padding: 0;
+  
   }
 
   @media (min-width: 1024px) {
     width: 300px;
-    max-width: 300px;
+   
   }
 `
 
@@ -93,7 +96,6 @@ const InfoWrapper = styled.div`
   width: 100%;
   align-selft: start;
   
-
 
   @media (min-width: 668px) {
    max-width: 300px;
@@ -115,20 +117,31 @@ const HeadText = styled.div`
   }
 
 `
-const Rating = styled.p`
+const Rating = styled.div`
+  display: inline-flex;
   background-color: var(--color-white);
   color: var(--color-error);
-  padding: 0 8px;
+  padding: 0 5px;
   font-weight: bold;
-  
+  font-size: 24px;
+
+  & > span {
+    margin-left: 2px;
+  }
 `
 
 const Description = styled.p`
  margin-top: 0;
- max-width: 400px;
+ max-width: 300px;
+ width: 90%;
  padding-right: 5px;
+ border-bottom: 10px;
 
-  
+
+ @media (min-width: 668px) {
+  font-size: 14px;      
+  line-height: 1.3;  
+  width: 400px;
 `
 
 const ErrorMessage = styled.p`
@@ -183,7 +196,7 @@ const MovieDetail = () => {
           <InfoWrapper>
             <HeadText>
               <h1>{movie.title}</h1>
-              <Rating>⭐ {Math.round (movie.vote_average)}</Rating>
+              <Rating>⭐<span>{Math.round (movie.vote_average)}</span></Rating>
             </HeadText>
             <Description>{movie.overview}</Description>
           </InfoWrapper>
