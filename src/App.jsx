@@ -1,10 +1,10 @@
 
 import { BrowserRouter, Routes, Route } from "react-router"
-import Header from './components/Header'
-import Movies from './pages/Movies'
-import About from './pages/About'
-import MovieDetails from './pages/MovieDetails'
-import NotFound from './pages/NotFound'
+import Header from './components/Header.jsx'
+import Movies from './pages/Movies.jsx'
+import About from './pages/About.jsx'
+import MovieDetails from './pages/MovieDetails.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 // The Header component will show in all "pages" It is outside of the routing scope.
 
