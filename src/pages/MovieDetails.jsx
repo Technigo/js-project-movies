@@ -10,9 +10,6 @@ const DetailsContainer = styled.div`
   color: #fff;
   margin: 0 auto;
   display: flex;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   position: relative;
   min-height: 100vh;
   z-index: 5;
@@ -21,7 +18,7 @@ const DetailsContainer = styled.div`
   const StyledLink = styled(Link)`
     position: absolute;
     top: 20px;
-    left: 50px; 
+    left: clamp(20px, 5vw, 100px);
     display: block;
     color: white;
     text-decoration: none;
@@ -41,7 +38,7 @@ const PageBackground = styled.div`
       rgba(0, 0, 0, 0) 50%,
       rgb(0, 0, 0) 100%
     ),
-    url(${props => props.image});
+    url(${props => props.$image});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,7 +49,6 @@ const PageBackground = styled.div`
 const DetailsCard = styled.div`
   display: flex;
   flex-direction: column;
-  
   align-items: center;
   position: relative;
   inset: 0;
@@ -61,9 +57,17 @@ const DetailsCard = styled.div`
   margin-top: 3rem;
 
   @media (min-width: 768px) {
+    position: absolute;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: flex-end;
+    padding: 50px;
+    max-width: 1200px;
+  }
+
+  @media (min-width: 1025px) {
+    justify-content: center;
+    margin: 0 auto;
   }
 `;
 
@@ -75,12 +79,16 @@ const MoviePoster = styled.img`
 
   @media (min-width: 768px) {
     width: auto; 
-    max-width: none;
   }
 `
 
 const MovieTitle = styled.h1`
   text-shadow: 1px 1px slategray;
+  font-size: 1.8rem;
+
+  @media (min-width: 1440px) {
+    font-size: 2.5rem;
+  }
 `
 
 const Popularity = styled.p`
@@ -88,14 +96,21 @@ const Popularity = styled.p`
 `
 const TextOverview = styled.p`
   margin: 16px 0;
+  font-size: 1rem;
+
+  @media (min-width: 1440px) {
+    font-size: 1.25rem;
+  }
 `
 
 const MovieRating = styled.span`
+  display: inline-block;
   background: white;
   color: black;
   margin-left: 15px;
   padding: 5px 10px;
   font-size: 1.5rem;
+  white-space: nowrap;
 `
 
 // Inline MovieOverview Component
@@ -148,7 +163,7 @@ const MovieDetails = () => {
     <DetailsContainer>
       <StyledLink to="/">← Back to movies list</StyledLink>
 
-      <PageBackground image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} />
+      <PageBackground $image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} />
 
 
       <DetailsCard>
