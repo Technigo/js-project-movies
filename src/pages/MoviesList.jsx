@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const Movies = () => {
+const MoviesList = () => {
   // here we can use the useEffect hook to fetch data from the API
 
 
@@ -8,7 +8,7 @@ const Movies = () => {
 
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=99&sort_by=release_date.desc&page=1&api_key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => console.log(data.results))
       .catch((error) => console.error('Error fetching Movies:', error));
@@ -20,9 +20,9 @@ const Movies = () => {
 
 
   return (
-    <div>Movies </div>
+    <div>Movies</div>
   )
 }
 
-export default Movies
+export default MoviesList
 

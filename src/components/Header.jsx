@@ -2,7 +2,7 @@
 
 function Header() {
   return (
-    <header>Header</header>
+    <header>Docu news</header>
   )
 }
 

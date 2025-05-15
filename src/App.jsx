@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router"
 import Header from "./components/Header"
-import Movies from "./pages/Movies"
-import About from "./pages/About"
+import MoviesList from "./pages/MoviesList"
+import MovieDetails from "./pages/MovieDetails"
+
 
 export const App = () => {
   return (
@@ -9,8 +10,8 @@ export const App = () => {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Movies />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/" element={<MoviesList />} />
+          <Route path="/about" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
 
