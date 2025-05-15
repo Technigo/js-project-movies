@@ -13,7 +13,11 @@ body {
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.5;
-  color: smokewhite;
+  color: whitesmoke;
+  background-color: #1e1e1e;
+}
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -23,6 +27,7 @@ a {
 img {
   font-size: 0;
   display: block;
+  filter: brightness(0.8);
 }
 body {
   background-color: #1e1e1e;
