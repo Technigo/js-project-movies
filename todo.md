@@ -1,6 +1,5 @@
 To do:
-[] add backdrop-image to imageInfo background
 [] header??
 [] Favicon
-[] stretch goal: handle loading states - useState
+[?] stretch goal: handle loading states - useState - färdig??
 [] stretch goal: toggle with different genres

@@ -1,6 +1,7 @@
 // Media query breakpoints for responsive design
 const size = {
   mobile: '320px',
+  mobileL: '425px',
   tablet: '768px',
   laptop: '1024px',
   desktop: '1920px'
@@ -9,6 +10,7 @@ const size = {
 // Media queries for use with styled-components
 export const device = {
   mobile: `@media (min-width: ${size.mobile})`,
+  mobileL: `@media (min-width: ${size.mobileL})`,
   tablet: `@media (min-width: ${size.tablet})`,
   laptop: `@media (min-width: ${size.laptop})`,
   desktop: `@media (min-width: ${size.desktop})`
