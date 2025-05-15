@@ -68,6 +68,13 @@ const MovieTitle = styled.h1`
   text-shadow: 1px 1px slategray;
 `
 
+const Popularity = styled.p`
+  margin: 16px 0;
+`
+const TextOverview = styled.p`
+  margin: 16px 0;
+`
+
 const MovieRating = styled.span`
   background: white;
   color: black;
@@ -84,10 +91,10 @@ const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
         ⭐️ {rating.toFixed(1)}
       </MovieRating>
     </MovieTitle>
-    <p>
+    <Popularity>
       <strong>Popularity:</strong> {popularity.toFixed(0)}
-    </p>
-    <p>{overview}</p>
+    </Popularity>
+    <TextOverview>{overview}</TextOverview>
   </div>
 );
 
