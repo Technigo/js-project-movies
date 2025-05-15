@@ -14,37 +14,39 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const MovieContainer = styled.div`
+const DetailsContainer = styled.div`
   width: 100%;
   max-width: 900px;
   background: #000;
-  padding: 1.5rem;
-  box-sizing: border-box;
   color: #fff;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-const MoviePoster = styled.img`
+const PageBackground = styled.div`
+  background: linear-gradient (rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
   width: 100%;
-  max-width: 800px;
-  display: block;
-  height: auto;
-  border-radius: 0.5rem;
-  margin-bottom: 1.5rem;
+  min-height: 100vh;
+  background-size: cover;
+  position: relative;
 `;
 
-const StyledOverviewWrapper = styled.div`
-  color: #fff;
-  width: 100%;
-  background-color: #1a1a1a;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-sizing: border-box;
-  margin-bottom: 1.5rem;
+const DetailsCard = styled.div`
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  inset: 0;
+  padding: 50px;
+  gap: 10px;
 `;
+
+const MoviePoster = styled.img`
+  width: auto;
+  border: 5px solid white;
+`
 
 // Inline MovieOverview Component
 const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
@@ -92,26 +94,30 @@ const MovieDetails = () => {
     return <p style={{ color: "white" }}>Movie not found.</p>;
 
   return (
-    <MovieContainer>
-      <h1>Movie Details</h1>
-      <h2>{movie.title}</h2>
+    <DetailsContainer>
+      {/* <h1>Movie Details</h1>
+      <h2>{movie.title}</h2> */}
 
-      <MoviePoster
-        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-        alt={movie.title}
-      />
+      <PageBackground>
+        <img
+        src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+        alt={movie.title}/>
+      </PageBackground>
 
-      <StyledOverviewWrapper>
+      <DetailsCard>
+        <MoviePoster
+          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+          alt={movie.title}/>
         <MovieOverview
           movieTitle={movie.original_title}
           rating={movie.vote_average}
           overview={movie.overview}
           popularity={movie.popularity}
         />
-      </StyledOverviewWrapper>
+      </DetailsCard>
 
       <StyledLink to="/">← Back to movie list</StyledLink>
-    </MovieContainer>
+    </DetailsContainer>
   );
 };
 
