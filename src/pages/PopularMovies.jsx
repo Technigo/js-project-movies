@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 const PosterSection = styled.section`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
   gap: 5px;
+  gap: 5px;
   height: 100vh;
- 
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -21,8 +20,8 @@ const PosterSection = styled.section`
     grid-auto-rows: 250px;
   }
 `;
-
 const MoviePoster = styled.article`
+  outline: 6px solid white;
   outline: 6px solid white;
   padding: 10px;
   background: #fafafa;
@@ -67,16 +66,13 @@ const StyledLink = styled(Link)`
 
   }
 `;
-
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 export const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const MovieList = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -87,10 +83,8 @@ export const PopularMovies = () => {
         console.error("Error fetching movies:", error);
       }
     };
-
     fetchMovies();
   }, [MovieList]);
-
   return (
 
     <PosterSection>

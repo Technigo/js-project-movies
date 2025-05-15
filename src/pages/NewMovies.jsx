@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NewMovies = () => {
   const [movies, setMovies] = useState([]);
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const MovieList = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
   useEffect(() => {
@@ -26,9 +26,7 @@ export const NewMovies = () => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-
             <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-
           </li>
         ))}
       </ul>
