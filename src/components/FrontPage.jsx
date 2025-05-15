@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { Navbar } from "./Navbar.jsx";
 import { MovieList } from "../hooks/fetch.js";
 import { Link, useLocation } from "react-router-dom";
 import { NoResults } from "./NoResults.jsx";
 import { useMovieSearch } from "../hooks/search.js";
+import { ComingSoonTag } from "./ComingSoonTag.jsx";
+
 const Grid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -127,6 +130,7 @@ export const FrontPage = () => {
 
   return (
     <>
+      <Navbar />
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error: {isError}</p>}
       {showNoResults && <NoResults />}
@@ -145,6 +149,7 @@ export const FrontPage = () => {
                   loading='lazy'
                 />
                 <Overlay aria-hidden='false'>
+                  <ComingSoonTag releaseDate={movie.release_date} short />
                   <MovieTitle>{movie.title}</MovieTitle>
                   <ReleaseDate>Released: {movie.release_date}</ReleaseDate>
                 </Overlay>

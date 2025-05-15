@@ -1,7 +1,6 @@
 import { FrontPage } from "./components/FrontPage.jsx";
 import { MoviePage } from "./components/MoviePage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar.jsx";
 import { useState, useEffect } from "react";
 import { SplashScreen } from "./components/SplashScreen.jsx";
 
@@ -21,7 +20,6 @@ export const App = () => {
   }
   return (
     <BrowserRouter>
-      <Navbar />
       <main>
         <Routes>
           <Route path='/' element={<FrontPage />} />
