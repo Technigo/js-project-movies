@@ -57,91 +57,61 @@ const MovieInfo = () => {
       )}
 
       {/* Content */}
-
-      {/* <div className="relative z-10 p-8 max-w-3xl mx-auto"> */}
-      <div className="
-        relative z-10
-        p-4 /* mobile padding */
-        lg:p-8 /* larger padding on desktop */
-        max-w-full  /* mobile width */
-        lg:max-w-5xl /* cap width at desktop */
-        mx-auto /* center horizontally */
-        lg:flex lg:items-start lg:gap-8 /* align items on desktop */
-      ">
-        {/* <Link to="/" className="inline-block mb-4 text-blue-300 hover:underline drop-shadow-lg/50"> */}
+      <div
+        className="
+          relative z-10
+          p-4 lg:p-8
+          max-w-full lg:max-w-5xl
+          mx-auto
+        "
+      >
+         {/* 1) Link sits by itself at the top */}
         <Link
-          to="/"
-          className="
-            inline-block mb-4
-            text-blue-300 hover:underline
-            drop-shadow-lg/50
-            lg:mb-6 /* larger margin on desktop */
-          "
-        >
-          ← Back to Movies
-        </Link>
-
-        {/* <h1 className="text-3xl font-bold mb-2 drop-shadow-lg/50">{movieDetails.title}</h1> */}
-        <h1 className="
-            text-2xl /* slightly smaller on mobile */
-            lg:text-4xl /* larger font size on desktop */
-            font-bold mb-2
-            drop-shadow-lg/50
-          ">
-          {movieDetails.title}
-        </h1>
-        {/* <p className="text-sm text-gray-300 mb-4"> */}
-        <p className="
-            text-sm /* mobile */
-            lg:text-base /* larger font size on desktop */
-            text-gray-300 mb-4
-          ">
-          {movieDetails.release_date?.slice(0, 4)} &middot; {movieDetails.vote_average?.toFixed(1)} ⭐
-        </p>
-
-        {movieDetails.poster_path && (
-          <img
-            src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
-            alt={`${movieDetails.title} poster`}
-            // className="w-full max-w-md rounded shadow mb-6 border-6 border-white"
+            to="/"
             className="
-              w-full /* mobile */
-              lg:w-1/3 /* one-third width on desktop */
-              rounded shadow mb-6
-              lg:mb-0 /* remove mobile gap when side-by-side */
-              border-6 border-white
+              inline-block
+              text-blue-300 hover:underline
+              drop-shadow-lg/50
             "
-          />
-        )}
+          >
+            ← Back to Movies
+          </Link>
 
-        {/* {movieDetails.overview && (
-          <section className="text-center">
-            <h2 className="text-2xl font-semibold mb-2 drop-shadow-md/40">About:</h2>
-            <p className="text-base leading-relaxed drop-shadow-sm/40">{movieDetails.overview}</p>
-          </section>
-        )} */}
+        {/* 2) Poster + details flex row on desktop */}
+        <div className="mt-6 lg:mt-20 flex flex-col lg:flex-row lg:items-start lg:gap-8">
+          {/* Poster */}
+          {movieDetails.poster_path && (
+            <img
+              src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
+              alt={`${movieDetails.title} poster`}
+              className="
+                w-full
+                lg:w-1/3
+                rounded shadow mb-6 lg:mb-0
+                border-6 border-white
+              "
+            />
+          )}
 
-        {/* Wrap overview & meta in a second flex child on desktop */}
-        <div className="mt-6 lg:mt-0 lg:flex-1">
+          {/* Details */}
+          <div className="flex-1 lg:pl-8">
+            <h1 className="text-2xl lg:text-4xl font-bold mb-2 drop-shadow-lg">
+              {movieDetails.title}
+            </h1>
+            <p className="text-sm lg:text-base text-gray-300 mb-4">
+              {movieDetails.release_date?.slice(0,4)} &middot; {movieDetails.vote_average?.toFixed(1)} ⭐
+            </p>
             {movieDetails.overview && (
               <section className="text-center lg:text-left">
-                <h2 className="
-                  text-xl lg:text-2xl 
-                  font-semibold mb-2
-                  drop-shadow-md/40
-                ">
-                About:
-              </h2>
-              <p className="
-                  text-base
-                  lg:text-lg
-                  leading-relaxed
-                  drop-shadow-sm/40
-                ">
-                {movieDetails.overview}
-              </p>
-            </section>
-          )}  
+                <h2 className="text-xl lg:text-2xl font-semibold mb-2 drop-shadow-md">
+                  About:
+                </h2>
+                <p className="text-base lg:text-lg leading-relaxed drop-shadow-sm">
+                  {movieDetails.overview}
+                </p>
+              </section>
+            )}
+          </div>
         </div>
       </div>
     </main>
