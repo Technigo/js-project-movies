@@ -1,19 +1,19 @@
 import { ThemeConsumer } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Main } from './components/pages/Main';
-import { Welcome } from './components/pages/Welcome';
-import { About } from './components/pages/About';
-import { Contact } from './components/pages/Contact';
-import { Nav } from "./components/pages/Nav";
-import { Header } from './components/pages/Header';
-import { Movies } from  './components/pages/Movies';
-import { MoviesList } from './components/pages/MoviesList';
-import { ShowMovies } from './components/pages/ShowMovies';
-import { MovieDetails} from './components/pages/MovieDetails';
-import { NotFound } from './components/pages/NotFound'
-import { PopularList } from './components/pages/PopularList';
-import { MovieList } from './/components/pages/MoviesList';
-import { Card } from './components/pages/Card';
+import { Main } from './components/pages/main.jsx';
+import { Welcome } from './components/pages/welcome.jsx';
+import { About } from './components/pages/About.jsx';
+import { Contact } from './components/pages/contact.js';
+import { Nav } from "./components/pages/Nav.js";
+import { Header } from './components/pages/Header.jsx';
+import { Movies } from  './components/data/data/Movies.jsx';
+import { MoviesList } from './components/pages/MoviesList.js';
+import { ShowMovies } from './components/pages/ShowMovies.js';
+import { MovieDetails} from './components/pages/MovieDetails.jsx';
+import { NotFound } from './components/pages/NotFound.jsx'
+import { PopularList } from './components/pages/PopularList.jsx';
+import { MovieList } from './/components/pages/MoviesList.js';
+import { Card } from './components/pages/Card.jsx';
 
 
 
