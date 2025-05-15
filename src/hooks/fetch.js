@@ -5,7 +5,7 @@ const apikey = import.meta.env.VITE_MOVIE_API_KEY;
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`;
 const API_URL_DETAILS = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`;
 
-export const movieList = () => {
+export const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -58,7 +58,7 @@ export const movieList = () => {
 //   return { movieDetails, loading, error };
 // };
 
-export const movieDetails = (movieId) => {
+export const useMovieDetails = (movieId) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

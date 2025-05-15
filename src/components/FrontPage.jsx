@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import { movieList } from '../hooks/fetch.js';
-import { Link, useLocation } from 'react-router-dom';
-import { NoResults } from './NoResults.jsx';
-import { useMovieSearch } from '../hooks/search.js';
+import { MovieList } from "../hooks/fetch.js";
+import { Link, useLocation } from "react-router-dom";
+import { NoResults } from "./NoResults.jsx";
+import { useMovieSearch } from "../hooks/search.js";
 const Grid = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -93,8 +93,7 @@ const MovieItemWrapper = styled.div`
     opacity: 1;
     pointer-events: auto;
   }
-  &:hover ${MoviePosterImg},
-  &:focus-within ${MoviePosterImg} {
+  &:hover ${MoviePosterImg}, &:focus-within ${MoviePosterImg} {
     filter: brightness(0.5);
   }
 `;
@@ -104,9 +103,14 @@ function useQuery() {
 }
 
 export const FrontPage = () => {
-  const query = useQuery().get('search');
-  const { movies, loading, error } = movieList();
-  const { results, loading: searchLoading, error: searchError, searchMovies } = useMovieSearch();
+  const query = useQuery().get("search");
+  const { movies, loading, error } = MovieList();
+  const {
+    results,
+    loading: searchLoading,
+    error: searchError,
+    searchMovies,
+  } = useMovieSearch();
 
   React.useEffect(() => {
     if (query) {
@@ -118,7 +122,8 @@ export const FrontPage = () => {
   const displayMovies = query ? results : movies;
   const isLoading = query ? searchLoading : loading;
   const isError = query ? searchError : error;
-  const showNoResults = query && !isLoading && !isError && displayMovies.length === 0;
+  const showNoResults =
+    query && !isLoading && !isError && displayMovies.length === 0;
 
   return (
     <>
@@ -129,13 +134,17 @@ export const FrontPage = () => {
         {displayMovies.map((movie) => (
           <MovieItem key={movie.id} role='listitem'>
             <MovieItemWrapper>
-              <MovieLink to={`/movies/${movie.id}`} aria-label={`View details for ${movie.title}`} tabIndex={0}>
+              <MovieLink
+                to={`/movies/${movie.id}`}
+                aria-label={`View details for ${movie.title}`}
+                tabIndex={0}
+              >
                 <MoviePosterImg
                   src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
-                  alt={movie.title ? `${movie.title} poster` : 'Movie poster'}
-                  loading="lazy"
+                  alt={movie.title ? `${movie.title} poster` : "Movie poster"}
+                  loading='lazy'
                 />
-                <Overlay aria-hidden="false">
+                <Overlay aria-hidden='false'>
                   <MovieTitle>{movie.title}</MovieTitle>
                   <ReleaseDate>Released: {movie.release_date}</ReleaseDate>
                 </Overlay>

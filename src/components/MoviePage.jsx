@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import { movieDetails } from "../hooks/fetch.js";
+import { useMovieDetails } from "../hooks/fetch.js";
 import { useParams } from "react-router-dom";
-import { BackLink } from "./BackLink";
-import { MoviePoster } from "./MoviePoster";
-import { Rating } from "./Rating";
-import { ComingSoonTag } from "./ComingSoonTag";
-import { ErrorComponent } from "./ErrorComponent";
-import { LoadingComponent } from "./LoadingComponent.jsx";
+import { BackLink } from "./BackLink.jsx";
+import { MoviePoster } from "./MoviePoster.jsx";
+import { Rating } from "./Rating.jsx";
+import { ComingSoonTag } from "./ComingSoonTag.jsx";
+import { ErrorComponent } from "./ErrorComponent.jsx";
 
 const PosterBackground = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%),
-    url(https://image.tmdb.org/t/p/original${(props) => props.poster});
+  background-image: ${({ poster }) => `
+  linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%),
+  url(https://image.tmdb.org/t/p/original${poster})
+`};
   min-height: 100vh;
   display: flex;
   background-size: cover;
@@ -53,17 +54,17 @@ const Title = styled.span`
   text-shadow: 1px 1px #4d4d4d;
 `;
 
-export const MovieDetails = () => {
+export const MoviePage = () => {
   const { id } = useParams();
-  const { movieDetails: details, loading, error } = movieDetails(id);
+  const { movieDetails: details, loading, error } = useMovieDetails(id);
 
-  if (loading) return <LoadingComponent />;
+  if (loading) return <p>Loading...</p>;
   if (error) return <ErrorComponent message={error} />;
   if (!details) return null;
 
   return (
     <div>
-      <PosterBackground poster={details.backdrop_path}>
+      <PosterBackground poster={details.backdrop_path || ""}>
         <BackLink />
         <MovieWrapper>
           <MoviePoster

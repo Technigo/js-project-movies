@@ -1,11 +1,9 @@
-import { FrontPage } from './components/FrontPage.jsx';
-import { MovieDetails } from './components/MovieDetails.jsx';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/Navbar.jsx';
-import { useState, useEffect } from 'react';
-import SplashScreen from './components/SplashScreen.jsx';
-
-
+import { FrontPage } from "./components/FrontPage.jsx";
+import { MoviePage } from "./components/MoviePage.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar.jsx";
+import { useState, useEffect } from "react";
+import { SplashScreen } from "./components/SplashScreen.jsx";
 
 export const App = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -27,7 +25,7 @@ export const App = () => {
       <main>
         <Routes>
           <Route path='/' element={<FrontPage />} />
-          <Route path='/movies/:id' element={<MovieDetails />} />
+          <Route path='/movies/:id' element={<MoviePage />} />
         </Routes>
       </main>
     </BrowserRouter>

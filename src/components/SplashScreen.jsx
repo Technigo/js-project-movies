@@ -44,10 +44,10 @@ const LogoText = styled.h1`
   }
 `;
 
-export default function SplashScreen() {
+export const SplashScreen = () => {
   return (
     <SplashContainer>
       <LogoText>POPFLIX🍿</LogoText>
     </SplashContainer>
   );
-}
+};
