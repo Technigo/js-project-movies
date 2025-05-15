@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from './components/Header.jsx'
 import Movies from './pages/Movies.jsx'
 import About from './pages/About.jsx'
