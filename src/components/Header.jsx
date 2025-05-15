@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 // Hero-sektion med bakgrundsbild
 const Hero = styled.header`
-background-image: url('/images/cinema.jpg');
+background-image: url('/images/cinema.webp');
   background-size: cover;
   background-position: center;
   height: 50vh;

@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
 `
 
 const CardWrapper = styled.div`
-  background-color: #1f1f1f;  // Mörk bakgrund
+  background-color: #1f1f1f;
   color: white;
   border: 1px solid #333;
   padding: 1rem;
@@ -15,6 +15,9 @@ const CardWrapper = styled.div`
   transition: transform 0.2s ease;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  width: 190px;
+  height: 100%;
+  margin: 0 auto;
 
   &:hover {
     transform: scale(1.03);
@@ -26,17 +29,19 @@ const CardWrapper = styled.div`
   }
 `
 
-
 const Poster = styled.img`
-  width: 100%;
-  height: auto;
+  width: 190px;
+  height: 254px;
+  object-fit: cover;
   border-radius: 4px;
+  display: block;
 `
 
 const Title = styled.p`
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-weight: 600;
   font-size: 1rem;
+  color: white;
 
   @media (max-width: 767px) {
     font-size: 0.9rem;
@@ -44,17 +49,20 @@ const Title = styled.p`
 `
 
 const Card = ({ movie }) => {
-  const posterUrl = `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+  const posterUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+    : '/images/fallback.png' // se till att ha en fallback-bild
 
   return (
     <StyledLink to={`/movies/${movie.id}`}>
       <CardWrapper>
         <Poster
-          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+          src={posterUrl}
           alt={`Poster of ${movie.title}`}
+          width="190"
+          height="254"
           loading="lazy"
         />
-
         <Title>{movie.title}</Title>
       </CardWrapper>
     </StyledLink>
