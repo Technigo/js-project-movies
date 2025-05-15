@@ -47,13 +47,7 @@ const StyledOverviewWrapper = styled.div`
 `;
 
 // Inline MovieOverview Component
-const MovieOverview = ({
-  movieTitle,
-  rating,
-  overview,
-  popularity,
-  voteAverage,
-}) => (
+const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
   <div>
     <h3>{movieTitle}</h3>
     <p>
@@ -61,9 +55,6 @@ const MovieOverview = ({
     </p>
     <p>
       <strong>Popularity:</strong> {popularity}
-    </p>
-    <p>
-      <strong>Vote Average:</strong> {voteAverage}
     </p>
     <p>{overview}</p>
   </div>
