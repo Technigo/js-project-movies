@@ -10,9 +10,9 @@ const DetailsContainer = styled.div`
   color: #fff;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   position: relative;
   min-height: 100vh;
   z-index: 5;
@@ -38,7 +38,7 @@ const PageBackground = styled.div`
   position: absolute;
   inset: 0;
   background: linear-gradient(
-      rgba(0, 0, 0, 0) 70%,
+      rgba(0, 0, 0, 0) 50%,
       rgb(0, 0, 0) 100%
     ),
     url(${props => props.image});
@@ -51,17 +51,32 @@ const PageBackground = styled.div`
 
 const DetailsCard = styled.div`
   display: flex;
-  align-items: flex-end;
-  position: absolute;
+  flex-direction: column;
+  
+  align-items: center;
+  position: relative;
   inset: 0;
-  padding: 50px;
+  padding: 20px;
   gap: 20px;
   margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+  }
 `;
 
 const MoviePoster = styled.img`
-  width: auto;
+  width: 80%; 
+  max-width: 300px; 
+  height: auto;
   border: 5px solid white;
+
+  @media (min-width: 768px) {
+    width: auto; 
+    max-width: none;
+  }
 `
 
 const MovieTitle = styled.h1`
