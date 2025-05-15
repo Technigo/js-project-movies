@@ -9,7 +9,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MoviesList />} />
-          <Route path="/movies/:movieTitle" element={<MovieDetails />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
 

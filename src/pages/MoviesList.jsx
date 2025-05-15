@@ -23,7 +23,7 @@ const MoviesList = () => {
   return (
     <>
       <Header />
-      {movies.length && movies.map(movie => <Card key={movie.id} movie={movie.title} />)}
+      {movies.length && movies.map(movie => <Card key={movie.id} movie={movie} />)}
     </>
   )
 }
