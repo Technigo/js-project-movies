@@ -47,21 +47,33 @@ const StyledOverviewWrapper = styled.div`
 `;
 
 // Inline MovieOverview Component
-const MovieOverview = ({ movieTitle, rating, overview, popularity, voteAverage }) => (
+const MovieOverview = ({
+  movieTitle,
+  rating,
+  overview,
+  popularity,
+  voteAverage,
+}) => (
   <div>
     <h3>{movieTitle}</h3>
-    <p><strong>Rating:</strong> {rating}</p>
-    <p><strong>Popularity:</strong> {popularity}</p>
-    <p><strong>Vote Average:</strong> {voteAverage}</p>
+    <p>
+      <strong>Rating:</strong> {rating}
+    </p>
+    <p>
+      <strong>Popularity:</strong> {popularity}
+    </p>
+    <p>
+      <strong>Vote Average:</strong> {voteAverage}
+    </p>
     <p>{overview}</p>
   </div>
 );
 
 // Main Component
 const MovieDetails = () => {
-  const { movieId } = useParams();
+  const { movieid } = useParams();
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-  const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+  const apiUrl = `https://api.themoviedb.org/3/movie/${movieid}?api_key=${apiKey}&language=en-US`;
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,10 +94,11 @@ const MovieDetails = () => {
       }
     };
     fetchMovie();
-  }, [movieId]);
+  }, [movieid]);
 
   if (loading) return <p style={{ color: "white" }}>Loading movie details…</p>;
-  if (error || !movie) return <p style={{ color: "white" }}>Movie not found.</p>;
+  if (error || !movie)
+    return <p style={{ color: "white" }}>Movie not found.</p>;
 
   return (
     <MovieContainer>
@@ -103,7 +116,6 @@ const MovieDetails = () => {
           rating={movie.vote_average}
           overview={movie.overview}
           popularity={movie.popularity}
-          
         />
       </StyledOverviewWrapper>
 
