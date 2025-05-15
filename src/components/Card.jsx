@@ -1,10 +1,14 @@
 import './Card.css';
+import { Link } from 'react-router'
+
 
 const Card = ({ movie }) => {
   return (
-    <div className="card">
-      <h2>{movie}</h2>
-    </div>
+    <Link to={`/movies/${movie}`}>
+      <div className="card">
+        <h2>{movie}</h2>
+      </div>
+    </Link >
   );
 
 }
