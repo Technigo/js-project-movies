@@ -5,18 +5,15 @@ import { IMAGE_BASE } from '../api'
 
 const MovieCard = ({ id, title, release_date, vote_average, poster_path }) => {
   return (
-    <div className="relative group"> {/* This div will contain the movie poster and the hover overlay */}
-      {/* The relative class is used to position the hover overlay */}
-      {/* The group class is used to apply styles to child elements when the parent is hovered */}
-
-      {/* Poster image */}
-      <img
-        src={`${IMAGE_BASE}/w342${poster_path}`} // Use the IMAGE_BASE and append the size and path
-        alt={`${title} poster`} // Use the movie title as the alt text for accessibility
-        className="w-full h-auto block" // The w-full class is used to set the width to 100% of the parent container
-        // The h-auto class is used to set the height to auto, maintaining the aspect ratio
-        // The block class is used to set the display to block, removing any extra space below the image
-      />
+    <div className="relative group">
+      {/* Poster with fixed aspect ratio */}
+      <div className="aspect-[2/3] w-full">
+        <img
+          src={`${IMAGE_BASE}/w342${poster_path}`}
+          alt={`${title} poster`}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* Hover overlay */}
       {/* This div will be shown when the user hovers over the movie poster */}
