@@ -1,35 +1,78 @@
-// this is the "main" page. When you get to the website you should get to this page. 
-// It will show the movies that we fetch from the API
-
 import { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import Card from '../components/Card'
+
+const Grid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+
+  @media (max-width: 767px) {
+    gap: 1rem;
+    padding: 1rem;
+  }
+`
+
+const Heading = styled.h1`
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+`
+
+const SelectWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 0 1rem;
+`
+
+const Select = styled.select`
+  padding: 0.5rem;
+  font-size: 1rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+`
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
-
-  // Do not expose the API key but add it to an env file instead.
+  const [loading, setLoading] = useState(true)
+  const [category, setCategory] = useState('popular')
   const apiKey = import.meta.env.VITE_TMDB_API_KEY
-  console.log("API KEY:", apiKey);
 
-  // Fetch the data in the useEffect hook with empty dependecy array []
-  // Do proper error handling, and use asyns/await or .then()
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
-      .then((response) => response.json())
-      .then((data) => setMovies(data.results)) // save the movies to the state variable
-      .catch((error) => console.error('Error fetching movies:', error));
-
-  }, []);
-
-
+    setLoading(true)
+    fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&language=en-US&page=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Error fetching movies:', error)
+        setLoading(false)
+      })
+  }, [category])
 
   return (
     <>
-      <h1>The Popular Movies</h1>
-      {movies.length && movies.map(movie => <Card key={movie.id} movie={movie} />)}
+      <Heading>Movies – {category.charAt(0).toUpperCase() + category.slice(1)}</Heading>
+      <SelectWrapper>
+        <Select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="popular">Popular</option>
+          <option value="top_rated">Top Rated</option>
+          <option value="upcoming">Upcoming</option>
+        </Select>
+      </SelectWrapper>
+      {loading ? <p>Loading...</p> : <Grid>{movies.map((movie) => <Card key={movie.id} movie={movie} />)}</Grid>}
     </>
-
-
   )
 }
 
