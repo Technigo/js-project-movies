@@ -6,7 +6,7 @@ display: flex;
 justify-content: flex-start;
 align-content: center;
 gap: 20px;
-border: 2px solid red;
+
 padding: 20px;
 font-size: 18px;
 `

@@ -7,7 +7,7 @@ const PosterSection = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
-  gap: 0px;
+  gap: 5px;
   height: 100vh;
  
 
@@ -23,28 +23,48 @@ const PosterSection = styled.section`
 `;
 
 const MoviePoster = styled.article`
-  border: 1px solid red;
+  outline: 6px solid white;
   padding: 10px;
   background: #fafafa;
   display: flex;
   flex-direction: column;
-
-  /* Random span values passed as props */
   grid-column: span ${props => props.colSpan};
   grid-row: span ${props => props.rowSpan};
+  background-image: ${props => props.bgImage ? `url(${props.bgImage})` : 'none'};
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+  min-height: 150px;
 `;
 
-
 const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  
+  width: 100%;
+  height: 100%;
   font-weight: bold;
-  font-size: 1rem;
-  color: #0055aa;
+  color: #FFF;
+  text-transform: uppercase;
   text-decoration: none;
-  margin-bottom: 0.5rem;
+  font-size: 6vw;
+  border: 1px solid red;
+  word-break: break-word; 
+  white-space: normal;    
+ 
 
   &:hover {
     text-decoration: underline;
-    color: #003377;
+  }
+
+@media (min-width: 600px) {
+    font-size: 3vw;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2vw;
+
   }
 `;
 
@@ -72,19 +92,27 @@ export const PopularMovies = () => {
   }, [MovieList]);
 
   return (
-    <>
-      <PosterSection>
-        {movies.map((movie) => {
-          const colSpan = randomBetween(1, 2);
-          const rowSpan = randomBetween(1, 2);
-          return (
-            <MoviePoster key={movie.id} colSpan={colSpan} rowSpan={rowSpan}>
-              <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
-              <p>Release date: {movie.release_date}</p>
-            </MoviePoster>
-          );
-        })}
-      </PosterSection>
-    </>
+
+    <PosterSection>
+      {movies.map((movie) => {
+        const colSpan = randomBetween(1, 2);
+        const rowSpan = randomBetween(1, 2);
+        const bgImage = movie.backdrop_path
+          ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+          : null;
+        return (
+          <MoviePoster
+            key={movie.id}
+            colSpan={colSpan}
+            rowSpan={rowSpan}
+            bgImage={bgImage}
+          >
+            <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
+
+          </MoviePoster>
+        );
+      })}
+    </PosterSection>
+
   );
 };
