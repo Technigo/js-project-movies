@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Form = styled.form`
   display: flex;
@@ -8,7 +8,7 @@ const Form = styled.form`
   background: #181818;
   border-radius: 2rem;
   padding: 0.2rem 0.5rem 0.2rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   min-width: 0;
   max-width: 340px;
   width: 100%;
@@ -31,19 +31,20 @@ const Form = styled.form`
     }
   }
   button {
-    background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
-    color: #fff;
+    background: #ffffff;
+    color: #121212;
     border: none;
     border-radius: 1.5rem;
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
     transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    &:hover, &:focus {
-      background: linear-gradient(90deg, #ffb74d 0%, #ff7043 100%);
-      outline: none;
+    &:hover,
+    &:focus {
+      background-color: #ff5050;
+      color: white;
+      transform: scale(1.05);
     }
   }
 
@@ -66,7 +67,7 @@ const Form = styled.form`
 `;
 
 export const SearchBar = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -77,15 +78,15 @@ export const SearchBar = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} role="search" aria-label="Movie search">
+    <Form onSubmit={handleSubmit} role='search' aria-label='Movie search'>
       <input
-        type="text"
-        placeholder="Search for a movie"
+        type='text'
+        placeholder='Search for a movie'
         value={query}
-        onChange={e => setQuery(e.target.value)}
-        aria-label="Search movies"
+        onChange={(e) => setQuery(e.target.value)}
+        aria-label='Search movies'
       />
-      <button type="submit">Search</button>
+      <button type='submit'>Search</button>
     </Form>
   );
-}; 
+};
