@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { PosterSection, MoviePoster, StyledLink } from "./PopularMovies";
+
+
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 export const NewMovies = () => {
   const [movies, setMovies] = useState([]);
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const MovieList = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const MovieList = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&region=US&sort_by=popularity.desc&primary_release_date.gte=2025-01-01&primary_release_date.lte=${today}&page=1`;
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -23,13 +31,26 @@ export const NewMovies = () => {
   return (
     <>
       <h2>List of New Movies</h2>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <PosterSection>
+        {movies.map((movie) => {
+          const colSpan = randomBetween(1, 2);
+          const rowSpan = randomBetween(1, 2);
+          const bgImage = movie.backdrop_path
+            ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+            : null;
+          return (
+            <MoviePoster
+              key={movie.id}
+              colSpan={colSpan}
+              rowSpan={rowSpan}
+              bgImage={bgImage}
+            >
+              <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
+
+            </MoviePoster>
+          );
+        })}
+      </PosterSection>
     </>
   );
 };
