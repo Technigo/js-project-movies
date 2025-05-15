@@ -46,7 +46,7 @@ export const Home = () => {
     }
 
     fetchMovies()
-  },[])
+  },[withLoading])
 
   if (isLoading) return <Loader />
   if (error) return <p>{error}</p>
