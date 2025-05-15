@@ -47,13 +47,6 @@ const Form = styled.form`
     }
   }
 
-  @media (max-width: 900px) {
-    max-width: 60%;
-    width: 60%;
-    input {
-      width: 60%;
-    }
-  }
   @media (max-width: 600px) {
     max-width: 100%;
     width: 100%;
