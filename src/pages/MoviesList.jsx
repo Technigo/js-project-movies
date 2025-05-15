@@ -2,6 +2,27 @@
 
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import styled from "styled-components";
+
+const MoviesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 1rem;
+  background-color: black;
+  height: 100vh;
+
+  @media (min-width: 550px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 570px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
@@ -26,7 +47,7 @@ const MoviesList = () => {
   }, [apiUrl]);
 
   return (
-    <div>
+    <MoviesGrid>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
@@ -39,7 +60,7 @@ const MoviesList = () => {
           rating={movie.vote_average}
         />
       ))}
-    </div>
+    </MoviesGrid>
   );
 };
 
