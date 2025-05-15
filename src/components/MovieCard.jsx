@@ -56,7 +56,7 @@ const MovieCard = ({ id, title, release_date, vote_average, poster_path }) => {
         {/* The vote_average is displayed with a star emoji */}
         <h2 className="text-lg font-bold">{title}</h2>
         <p className="text-sm">{release_date.slice(0, 4)}</p>
-        <p className="text-sm">{vote_average} ⭐</p>
+        <p className="text-sm">{vote_average.toFixed(1)} ⭐</p>
       </div>
     </div>
   )

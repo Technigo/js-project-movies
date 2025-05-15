@@ -44,46 +44,46 @@ const MovieInfo = () => {
   }
 
   return (
-    <main className="p-4 max-w-3xl mx-auto">
-      {/* back link */}
-      <Link to="/" className="inline-block mb-4 text-blue-600 hover:underline">
-        ← Back to Movies
-      </Link>
-
-      {/* title + metadata */}
-      <h1 className="text-3xl font-bold mb-2">{movieDetails.title}</h1>
-      <p className="text-sm text-gray-500 mb-4">
-        {movieDetails.release_date?.slice(0,4)} &middot; {movieDetails.vote_average} ⭐
-      </p>
-
-      {/* poster */}
-      {movieDetails.poster_path && ( // Check if poster_path exists before rendering the image
-        // Use the IMAGE_BASE and append the size and path
-        // The w500 class is used to set the width to 500px
-        // The h-auto class is used to set the height to auto, maintaining the aspect ratio
-        <img
-          src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
-          alt={`${movieDetails.title} poster`}
-          className="w-full rounded shadow mb-6"
-        />
-      )}
-
-      {/* backdrop */}
+    <main className="relative min-h-screen text-white">
+      {/* Backdrop */}
       {movieDetails.backdrop_path && (
-        <img
-          src={`${IMAGE_BASE}/w1280${movieDetails.backdrop_path}`}
-          alt={`${movieDetails.title} backdrop`}
-          className="w-full rounded shadow mb-6"
-        />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+          style={{
+            backgroundImage: `url(${IMAGE_BASE}/w1280${movieDetails.backdrop_path})`,
+          }}
+        >
+          {/* Overlay with correct opacity */}
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
       )}
 
-      {/* overview */}
-      {movieDetails.overview && (   
-        <section>
-          <h2 className="text-2xl font-semibold mb-2">Overview</h2>
-          <p className="text-base leading-relaxed">{movieDetails.overview}</p>
-        </section>
-      )}
+      {/* Content */}
+      <div className="relative z-10 p-8 max-w-3xl mx-auto">
+        <Link to="/" className="inline-block mb-4 text-blue-300 hover:underline">
+          ← Back to Movies
+        </Link>
+
+        <h1 className="text-3xl font-bold mb-2">{movieDetails.title}</h1>
+        <p className="text-sm text-gray-300 mb-4">
+          {movieDetails.release_date?.slice(0, 4)} &middot; {movieDetails.vote_average?.toFixed(1)} ⭐
+        </p>
+
+        {movieDetails.poster_path && (
+          <img
+            src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
+            alt={`${movieDetails.title} poster`}
+            className="w-full max-w-md rounded shadow mb-6 border-6 border-white"
+          />
+        )}
+
+        {movieDetails.overview && (
+          <section className="text-center">
+            <h2 className="text-2xl font-semibold mb-2">About:</h2>
+            <p className="text-base leading-relaxed">{movieDetails.overview}</p>
+          </section>
+        )}
+      </div>
     </main>
   )
 }
