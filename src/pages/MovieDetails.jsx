@@ -5,6 +5,9 @@ import { Link, useParams } from "react-router"
 const MovieDetails = () => {
   const { movieId } = useParams()
   const [movieDetails, setMovieDetails] = useState({})
+
+
+
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
   // https://api.themoviedb.org/3/movie/{movie_id}?api_key=YOUR_API_KEY

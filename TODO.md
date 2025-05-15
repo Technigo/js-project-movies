@@ -6,4 +6,7 @@
 - [x] how should the routes look?  
 - [x] set up new project
 - [x] fetch API 
-- [] 
+- [] import img, ranking, release date, background img
+- [] style the app, make it mobile first
+- [] add hover effect to card
+- [] implement a loader
