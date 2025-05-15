@@ -4,20 +4,25 @@ import { Link, useParams } from "react-router-dom"
 
 const BackLink = styled(Link)`
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
   margin-bottom: 16px;
   align-items: right;
-  margin-left: 15px;
-  top: 10px;
-  left: 20px;
+  left: 30px;
+  top: 5px;
+  position: fixed;
+ 
+ 
 
   @media (min-width: 668px) {
-  position: absolute;
+  margin-top: 5px;
+  margin-left: 50px;
+ 
+  
   }
 
 `
 const Background = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(${props => props.$backgroundUrl});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${props => props.$backgroundUrl});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +32,9 @@ const Background = styled.div`
   margin: 0; 
   padding: 0;
   color: white;
+ 
 `
+
 
 const Container = styled.div`
   display: grid;
@@ -36,9 +43,8 @@ const Container = styled.div`
   align-items: end;
   padding: 8px;
   min-height: 100vh;
-  backdrop-filter: brightness(0.6);
-  gap: 10px;
-
+  margin-left: 25px;
+  
 
   @media (min-width: 668px) {
     grid-template-columns: auto 1fr;
@@ -47,62 +53,85 @@ const Container = styled.div`
     justify-items: start;
     padding: 50px;
     gap: 20px;
+    
   }
 
 `
 const Poster = styled.img`
   width: 200px;
-  border: 5px solid var(--color-border);
+  border: 5px solid var(--color-white);
   max-width: 300px;
   box-shadow: 4px 6px 10px rgba(0,0,0,0.8);
-  margin: 0 auto;
-
-
+  justify-self: start;
+  margin-top: 30px;
+  margin-bottom: 0;
+ 
+ 
   @media (min-width: 668px) {
    width: 250px;
    max-width: 250px;
    justify-self: start;
    margin: 0;
-  
-  
+   padding: 0;
   }
 
   @media (min-width: 1024px) {
     width: 300px;
     max-width: 300px;
-      }
+  }
 `
 
 const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
   max-width: 300px;
   width: 100%;
+  align-selft: start;
   
 
+
   @media (min-width: 668px) {
-    max-width: 300px;
-    align-items: flex-start;
-    text-align: left;
-    justify-self: start;
+   max-width: 300px;
+   align-items: flex-start;
+   text-align: left;
+   justify-self: start;
   }
 `
 const HeadText = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0 16px;
+  gap: 7px;
+  margin-right: 18px;
+
+
+  @media (min-width: 668px) {
+  margin-right: 25px;
  
+  }
+
 `
-const Description = styled.p`
-  margin-bottom: 16px;
-  text-align: left;
-  padding: 0 16px;
+const Rating = styled.p`
+  background-color: var(--color-white);
+  color: var(--color-error);
+  padding: 0 8px;
+  font-weight: bold;
   
 `
+
+const Description = styled.p`
+ margin-top: 0;
+ max-width: 400px;
+
+  
+`
+
+const ErrorMessage = styled.p`
+  color: var(--color-error);
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+`
+
 
 const MovieDetail = () => {
   const [movie, setMovie] = useState(null)
@@ -125,16 +154,17 @@ const MovieDetail = () => {
   }, [id, apiKey])
 
   if (loading) {
-    return <p>Loading movie details...</p>
+    return <ErrorMessage>Loading movie details...</ErrorMessage>
   }
 
   if (!movie) {
-    return <p>Movie not found. Try again.</p>
+    return <ErrorMessage>Movie not found. Try again.</ErrorMessage>
   }
 
   return (
     <>
       <main aria-label="Movie Details">
+       
       <Background $backgroundUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
         <Container>
         <BackLink to="/"> ⬅ Back to Movies</BackLink>
@@ -147,12 +177,13 @@ const MovieDetail = () => {
           <InfoWrapper>
             <HeadText>
               <h1>{movie.title}</h1>
-              <p>⭐ {movie.vote_average}</p>
+              <Rating>⭐ {Math.round (movie.vote_average)}</Rating>
             </HeadText>
             <Description>{movie.overview}</Description>
           </InfoWrapper>
         </Container>
       </Background>
+     
       </main>
     </>
   )
