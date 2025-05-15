@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react' // Import useState and useEffect from React to manage state and side effects
-import { Link } from 'react-router-dom' // Import Link from react-router-dom to create links to other pages
+import { Link } from 'react-router' // Import Link from react-router-dom to create links to other pages
 import { API_KEY, BASE_URL } from '../api' // Import the API_KEY and BASE_URL from the api.js file
 import MovieCard from '../components/MovieCard' // Import the MovieCard component to display each movie
 

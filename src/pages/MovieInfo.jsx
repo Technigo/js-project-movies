@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'  // Import Link from react-router-dom to create links to other pages
+import { Link, useParams } from 'react-router'  // Import Link from react-router-dom to create links to other pages
 import { API_KEY, BASE_URL, IMAGE_BASE } from '../api' 
 
 const MovieInfo = () => {
