@@ -32,7 +32,7 @@ export const StyledHome = styled.section`
 export const Home = () => {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(null)
-  const [isLoading, setIsLoading, withLoading] = useLoader(true)
+  const [isLoading, withLoading] = useLoader(true)
 
   useEffect(() => {
     const fetchMovies = async () => {
