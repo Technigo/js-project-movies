@@ -15,14 +15,19 @@ const DetailsContainer = styled.div`
   align-items: center;
   position: relative;
   min-height: 100vh;
+  z-index: 5;
   `;
 
   const StyledLink = styled(Link)`
+    position: absolute;
+    top: 20px;
+    left: 50px; 
     display: block;
     color: white;
     text-decoration: none;
     font-weight: bold;
     text-shadow: 1px 1px slategray;
+    z-index: 10;
     
     &:hover {
       transform: scale(1.1);
