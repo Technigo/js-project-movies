@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+
+
 import { Link, useParams } from 'react-router'
 
 const MovieDetails = () => {
@@ -8,13 +10,13 @@ const MovieDetails = () => {
   // Do not expose the API key but add it to an env file instead.
   const apiKey = import.meta.env.VITE_TMDB_API_KEY
 
-  // https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US
+  // https://api.themoviedb.org/3/movie/{movie_id}?api_key={906841aea0b8a72698aa6edfc03531dd}&language=en-US
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`)
       .then((response) => response.json())
       .then((data) => setMovieDetails(data)) // save the movie details to the state variable
       .catch((error) => console.error('Error fetching movie details:', error));
-  }, [])
+  }, [apiKey, movieId])
 
 
   return (
