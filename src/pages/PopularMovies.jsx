@@ -40,7 +40,7 @@ export const MoviePoster = styled.article`
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: 'Notable', serif;
+  font-family: 'Alfa Slab One', serif;
   letter-spacing: 2px;
   opacity: 0.6;
   align-items: center;
@@ -57,6 +57,7 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     opacity: 1;
+    
     text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 2px #000;
   }
 

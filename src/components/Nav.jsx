@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const Logo = styled.h1`
+const LogoText = styled.h1`
+display: none;
 padding: 0;
 margin: 0;
+`
+const Logo = styled.img`
+height: 50px;
+width: 50px;
 `
 
 const NavBar = styled.nav`
@@ -12,8 +17,8 @@ align-items: center;
 gap: 30px;
 padding: 20px;
 text-transform: uppercase;
-font-family: 'Notable', serif;
-letter-spacing: 2px;
+font-family: 'Alfa Slab One', serif;
+letter-spacing: 1px;
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -26,7 +31,7 @@ const StyledNavLink = styled(NavLink)`
   }
 
   &:hover {
-    color: #0077cc;
+  
   }
 
    @media (min-width: 600px) {
@@ -37,7 +42,8 @@ const StyledNavLink = styled(NavLink)`
 export const Nav = () => {
   return (
     <NavBar>
-      <Logo>Movie-logo</Logo>
+      <Logo src="../public/movie.svg" />
+      <LogoText>Movies</LogoText>
       <StyledNavLink to="/" end>
         Most popular
       </StyledNavLink>

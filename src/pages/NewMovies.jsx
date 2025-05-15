@@ -29,28 +29,25 @@ export const NewMovies = () => {
   }, [MovieList]);
 
   return (
-    <>
-      <h2>List of New Movies</h2>
-      <PosterSection>
-        {movies.map((movie) => {
-          const colSpan = randomBetween(1, 2);
-          const rowSpan = randomBetween(1, 2);
-          const bgImage = movie.backdrop_path
-            ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-            : null;
-          return (
-            <MoviePoster
-              key={movie.id}
-              colSpan={colSpan}
-              rowSpan={rowSpan}
-              bgImage={bgImage}
-            >
-              <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
+    <PosterSection>
+      {movies.map((movie) => {
+        const colSpan = randomBetween(1, 2);
+        const rowSpan = randomBetween(1, 2);
+        const bgImage = movie.backdrop_path
+          ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+          : null;
+        return (
+          <MoviePoster
+            key={movie.id}
+            colSpan={colSpan}
+            rowSpan={rowSpan}
+            bgImage={bgImage}
+          >
+            <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
 
-            </MoviePoster>
-          );
-        })}
-      </PosterSection>
-    </>
+          </MoviePoster>
+        );
+      })}
+    </PosterSection>
   );
 };
