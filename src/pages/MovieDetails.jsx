@@ -3,20 +3,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Styled Components
-const StyledLink = styled(Link)`
-  display: inline-block;
-  margin-top: 2rem;
-  color: #e60026;
-  text-decoration: none;
-  font-weight: bold;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
 
 const DetailsContainer = styled.div`
   width: 100%;
-  max-width: 900px;
   background: #000;
   color: #fff;
   margin: 0 auto;
@@ -24,14 +13,27 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+  position: relative;
+  `;
+
+  const StyledLink = styled(Link)`
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: ;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  `;
 
 const PageBackground = styled.div`
   background: linear-gradient (rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
   width: 100%;
   min-height: 100vh;
   background-size: cover;
-  position: relative;
+  
 `;
 
 const DetailsCard = styled.div`
@@ -41,6 +43,7 @@ const DetailsCard = styled.div`
   inset: 0;
   padding: 50px;
   gap: 10px;
+  margin-top: 3rem;
 `;
 
 const MoviePoster = styled.img`
@@ -48,13 +51,20 @@ const MoviePoster = styled.img`
   border: 5px solid white;
 `
 
+const MovieRating = styled.span`
+  background: white;
+  color: black;
+  margin-left: 15px;
+`
+
 // Inline MovieOverview Component
 const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
   <div>
-    <h3>{movieTitle}</h3>
-    <p>
-      <strong>Rating:</strong> {rating}
-    </p>
+    <h1>{movieTitle}
+      <MovieRating>
+        ⭐️ {rating}
+      </MovieRating>
+    </h1>
     <p>
       <strong>Popularity:</strong> {popularity}
     </p>
@@ -95,8 +105,7 @@ const MovieDetails = () => {
 
   return (
     <DetailsContainer>
-      {/* <h1>Movie Details</h1>
-      <h2>{movie.title}</h2> */}
+      <StyledLink to="/">← Back to movies list</StyledLink>
 
       <PageBackground>
         <img
@@ -116,7 +125,6 @@ const MovieDetails = () => {
         />
       </DetailsCard>
 
-      <StyledLink to="/">← Back to movie list</StyledLink>
     </DetailsContainer>
   );
 };
