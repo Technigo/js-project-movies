@@ -18,12 +18,10 @@ const DetailsContainer = styled.div`
   `;
 
   const StyledLink = styled(Link)`
-    display: flex;
-    align-items: left;
+    display: block;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding-top: 20px;
     text-shadow: 1px 1px slategray;
     
     &:hover {
@@ -32,10 +30,19 @@ const DetailsContainer = styled.div`
   `;
 
 const PageBackground = styled.div`
-  background: linear-gradient (rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
-  width: 100%;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0) 70%,
+      rgb(0, 0, 0) 100%
+    ),
+    url(${props => props.image});
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
 `;
+
 
 const DetailsCard = styled.div`
   display: flex;
@@ -114,11 +121,8 @@ const MovieDetails = () => {
     <DetailsContainer>
       <StyledLink to="/">← Back to movies list</StyledLink>
 
-      <PageBackground>
-        <img
-        src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
-        alt={movie.title}/>
-      </PageBackground>
+      <PageBackground image={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} />
+
 
       <DetailsCard>
         <MoviePoster
