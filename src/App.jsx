@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router"
 import Header from "./components/Header"
-import MoviesList from "./pages/MoviesList"
-import MovieDetails from "./pages/MovieDetails"
+import MoviesList from "./pages/MoviesList.jsx"
+import MovieDetails from "./pages/MovieDetails.jsx"
 
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MoviesList />} />
-          <Route path="/about" element={<MovieDetails />} />
+          <Route path="/MovieDetails" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
 

@@ -1,8 +1,8 @@
 
-function About() {
+function MovieDetails() {
   return (
-    <div>About</div>
+    <div>Details</div>
   )
 }
 
-export default About
+export default MovieDetails
