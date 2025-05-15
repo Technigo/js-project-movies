@@ -2,8 +2,14 @@ import {Link} from 'react-router'
 import styled from 'styled-components'
 import { useState } from 'react'
 
-const MovieContainer = styled.div`
+const StyledLink = styled(Link)`
+  display: block;
+  width: 100%;
+  height: 100%;
   position: relative;
+`
+
+const MovieContainer = styled.div`
   width: 100%;
   
   @media (min-width: 425px) {
@@ -17,7 +23,8 @@ const MovieContainer = styled.div`
 
 const MoviePoster = styled.img`
   width: 100%;
-
+  display: block;
+  height: auto;
 `
 
 const HoverCard = styled.div`
@@ -43,25 +50,25 @@ const MovieCard = ({ movieTitle, id, poster, releaseDate }) => {
   const HandleMouseOut = () => setIsHovered(false)
 
   return (
-    <Link to={`/movies/${id}`}>
-      <MovieContainer
-        onMouseEnter={HandleMouseOver}
-        onMouseLeave={HandleMouseOut}
-        >
-
-        <MoviePoster 
-          src={`https://image.tmdb.org/t/p/w342${poster}`}
-          alt={movieTitle}
-          />
+    <MovieContainer
+      onMouseEnter={HandleMouseOver}
+      onMouseLeave={HandleMouseOut}>
+      
+    <StyledLink to={`/movies/${id}`}>
+      
+      <MoviePoster 
+        src={`https://image.tmdb.org/t/p/w342${poster}`}
+        alt={movieTitle}
+        />
           
-          {isHovered &&  (<HoverCard>
-            <h2>{movieTitle}</h2>
-            <p>Released {releaseDate}</p>
-          </HoverCard>
+        {isHovered &&  (<HoverCard>
+          <h2>{movieTitle}</h2>
+          <p>Released {releaseDate}</p>
+        </HoverCard>
         )}
 
-      </MovieContainer>
-    </Link>
+      </StyledLink> 
+    </MovieContainer>
   )
 };
 
