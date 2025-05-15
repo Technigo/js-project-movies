@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from '../components/Card.jsx'
+import Header from '../components/Header.jsx';
 
 
 const MoviesList = () => {
@@ -21,7 +22,7 @@ const MoviesList = () => {
 
   return (
     <>
-      <div>Movies</div>
+      <Header />
       {movies.length && movies.map(movie => <Card key={movie.id} movie={movie.title} />)}
     </>
   )
