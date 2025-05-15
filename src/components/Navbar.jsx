@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { SearchBar } from './SearchBar.jsx';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { SearchBar } from "./SearchBar.jsx";
 
 const Nav = styled.nav`
   width: 100vw;
@@ -12,31 +11,30 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  flex-wrap: wrap;
 
   @media (max-width: 600px) {
     flex-direction: column;
-    align-items: stretch;
-    padding: 0.5rem 0.5rem;
     gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
   }
 `;
 
 const HomeLink = styled(Link)`
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+
   @media (max-width: 600px) {
-    text-align: center;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
   }
 `;
 
 export const Navbar = () => (
-  <Nav aria-label="Main navigation">
-    <HomeLink to="/">Popflix 🍿</HomeLink>
+  <Nav aria-label='Main navigation'>
+    <HomeLink to='/'>Popflix 🍿</HomeLink>
     <SearchBar />
   </Nav>
-); 
+);

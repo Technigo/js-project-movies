@@ -66,13 +66,13 @@ const MovieLink = styled(Link)`
 const MovieTitle = styled.h2`
   font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 0.2rem 0;
+  margin: 0.5rem 0 0.2rem 0;
   text-align: left;
 `;
 
 const ReleaseDate = styled.p`
   font-size: 0.95rem;
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   text-align: left;
 `;
 
