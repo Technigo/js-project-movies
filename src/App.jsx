@@ -3,6 +3,7 @@ import { FrontPage } from "./components/FrontPage.jsx";
 import { MovieDetails } from "./components/MovieDetails.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
+import { LoadingComponent } from "./components/LoadingComponent.jsx";
 
 export const App = () => {
   const [showSplash, setShowSplash] = useState(true);

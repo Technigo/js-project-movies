@@ -6,6 +6,7 @@ import { MoviePoster } from "./MoviePoster";
 import { Rating } from "./Rating";
 import { ComingSoonTag } from "./ComingSoonTag";
 import { ErrorComponent } from "./ErrorComponent";
+import { LoadingComponent } from "./LoadingComponent.jsx";
 
 const PosterBackground = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%),
@@ -56,7 +57,7 @@ export const MovieDetails = () => {
   const { id } = useParams();
   const { movieDetails: details, loading, error } = movieDetails(id);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingComponent />;
   if (error) return <ErrorComponent message={error} />;
   if (!details) return null;
 
