@@ -3,7 +3,7 @@ import { IMAGE_BASE } from '../api'
 // It will be used in the Home component to display a list of movies
 // and in the MovieDetail component to display the movie's poster
 
-const MovieCard = ({ id, title, release_date, vote_average, poster_path }) => {
+const MovieCard = ({ title, release_date, vote_average, poster_path }) => {
   return (
     <div className="relative group">
       {/* Poster with fixed aspect ratio */}
