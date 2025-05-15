@@ -19,7 +19,7 @@ const Backdrop = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  background-color: rgba(214, 214, 214, 0.7);
+  background-color: rgba(214, 214, 214, 0.9);
   max-width: 800px;
   align-items: flex-start;
   justify-content: center;
@@ -43,12 +43,11 @@ const DetailsH3 = styled.h3`
 `;
 
 export const Details = () => {
-  const { id } = useParams(); // Assuming your route is /details/:id
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Replace with your actual API endpoint
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=6e12c92fda59e113d79a5c9c5abd897b`
     )
@@ -79,11 +78,10 @@ export const Details = () => {
               <p>
                 <h2>{movie.title}</h2>
               </p>
-              <h3>About:</h3> <p>{movie.overview}</p>
-              <p>
-                <h3>Release date:</h3> {movie.release_date}
-              </p>
-              {/* Add more fields as needed */}
+              <p>{movie.overview}</p>
+              <p>{movie.release_date}</p>
+              <h3>{movie.vote_average ? movie.vote_average.toFixed(1) : ""}</h3>
+              <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
             </div>
           </ContentWrapper>
         </>

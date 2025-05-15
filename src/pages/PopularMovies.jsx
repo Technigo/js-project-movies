@@ -25,39 +25,40 @@ export const MoviePoster = styled.article`
   outline: 6px solid white;
   display: flex;
   flex-direction: column;
-  grid-column: span ${props => props.colSpan};
-  grid-row: span ${props => props.rowSpan};
-  background-image: ${props => props.bgImage ? `url(${props.bgImage})` : 'none'};
+  grid-column: span ${(props) => props.colSpan};
+  grid-row: span ${(props) => props.rowSpan};
+  background-image: ${(props) =>
+    props.bgImage ? `url(${props.bgImage})` : "none"};
   background-size: cover;
   background-position: center;
   position: relative;
   min-height: 150px;
 
   &:hover {
- 
   }
 `;
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: 'Notable', serif;
+  font-family: "Arial";
+  font-weight: bold;
   letter-spacing: 2px;
   opacity: 0.6;
   align-items: center;
   padding: 10px;
   height: 100%;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   font-size: 6vw;
-  word-break: break-word; 
-  white-space: normal;    
+  word-break: break-word;
+  white-space: normal;
   text-align: center;
   transition: opacity 0.3s, text-shadow 0.3s;
 
   &:hover {
     opacity: 1;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 2px #000;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 0 2px #000;
   }
 
   @media (min-width: 600px) {
@@ -89,7 +90,6 @@ export const PopularMovies = () => {
     fetchMovies();
   }, [MovieList]);
   return (
-
     <PosterSection>
       {movies.map((movie) => {
         const colSpan = randomBetween(1, 2);
@@ -105,11 +105,9 @@ export const PopularMovies = () => {
             bgImage={bgImage}
           >
             <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
-
           </MoviePoster>
         );
       })}
     </PosterSection>
-
   );
 };
