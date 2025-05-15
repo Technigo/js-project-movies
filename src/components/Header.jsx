@@ -1,23 +1,40 @@
 import styled from 'styled-components'
 
-// Hero-sektion med bakgrundsbild
-const Hero = styled.header`
-background-image: url('/images/cinema.webp');
-  background-size: cover;
-  background-position: center;
+// Laddar bilden som img istället för background-image
+const HeroWrapper = styled.header`
+  position: relative;
   height: 50vh;
   min-height: 300px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-  padding: 2rem;
+  overflow: hidden;
   text-align: center;
+  color: white;
 
   @media (max-width: 767px) {
     height: 40vh;
+  }
+`
+
+const HeroImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+`
+
+const HeroContent = styled.div`
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 767px) {
     padding: 1.5rem;
   }
 `
@@ -42,10 +59,20 @@ const Subtitle = styled.p`
 
 const Header = () => {
   return (
-    <Hero>
-      <Title>Sofia's Movie App</Title>
-      <Subtitle>Discover popular, top-rated and upcoming films</Subtitle>
-    </Hero>
+    <HeroWrapper>
+      <HeroImage
+        src="/images/cinema.webp"
+        alt="A cinema with red seats and a glowing screen"
+        width="1600"
+        height="500"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <HeroContent>
+        <Title>Sofia's Movie App</Title>
+        <Subtitle>Discover popular, top-rated and upcoming films</Subtitle>
+      </HeroContent>
+    </HeroWrapper>
   )
 }
 

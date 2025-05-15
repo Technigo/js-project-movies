@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+  display: block;
 `
 
 const CardWrapper = styled.div`
@@ -16,7 +17,7 @@ const CardWrapper = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   width: 190px;
-  height: 100%;
+  height: auto;
   margin: 0 auto;
 
   &:hover {
@@ -51,10 +52,10 @@ const Title = styled.p`
 const Card = ({ movie }) => {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-    : '/images/fallback.png' // se till att ha en fallback-bild
+    : '/images/fallback.png'
 
   return (
-    <StyledLink to={`/movies/${movie.id}`}>
+    <StyledLink to={`/movies/${movie.id}`} aria-label={`Open details for ${movie.title}`}>
       <CardWrapper>
         <Poster
           src={posterUrl}

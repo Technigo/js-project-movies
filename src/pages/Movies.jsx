@@ -62,6 +62,15 @@ const Message = styled.p`
   color: #bbbbbb;
 `
 
+const getCategoryLabel = (key) => {
+  const map = {
+    popular: 'Popular',
+    top_rated: 'Top Rated',
+    upcoming: 'Upcoming',
+  }
+  return map[key] || key
+}
+
 const Movies = () => {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
@@ -97,9 +106,7 @@ const Movies = () => {
 
   return (
     <>
-      <Heading>
-        Movies – {category.charAt(0).toUpperCase() + category.slice(1)}
-      </Heading>
+      <Heading>Movies – {getCategoryLabel(category)}</Heading>
 
       <SelectWrapper>
         <Label htmlFor="category">Choose category</Label>
