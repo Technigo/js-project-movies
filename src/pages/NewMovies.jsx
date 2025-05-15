@@ -12,7 +12,7 @@ export const NewMovies = () => {
 
   const today = new Date().toISOString().split("T")[0];
 
-  const MovieList = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&region=US&sort_by=popularity.desc&primary_release_date.gte=2025-01-01&primary_release_date.lte=${today}&page=1`;
+  const MovieList = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&region=US&sort_by=popularity.desc&primary_release_date.gte=2025-04-01&primary_release_date.lte=${today}`;
 
   useEffect(() => {
     const fetchMovies = async () => {
