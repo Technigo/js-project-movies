@@ -25,6 +25,7 @@ const MoviesGrid = styled.div`
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
@@ -39,11 +40,15 @@ const MoviesList = () => {
         setMovies(data.results);
       } catch (error) {
         console.error("There was a problem fetching data", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [apiUrl]);
+
+  if (loading) return <div>Loading movies...</div>;
 
   return (
     <MoviesGrid>
