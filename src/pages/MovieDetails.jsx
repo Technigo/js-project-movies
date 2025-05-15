@@ -60,7 +60,7 @@ const MovieRating = styled.span`
   background: white;
   color: black;
   margin-left: 15px;
-  padding: 5px;
+  padding: 5px 10px;
   font-size: 1.5rem;
 `
 
@@ -69,11 +69,11 @@ const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
   <div>
     <MovieTitle>{movieTitle}
       <MovieRating>
-        ⭐️ {rating}
+        ⭐️ {rating.toFixed(1)}
       </MovieRating>
     </MovieTitle>
     <p>
-      <strong>Popularity:</strong> {popularity}
+      <strong>Popularity:</strong> {popularity.toFixed(0)}
     </p>
     <p>{overview}</p>
   </div>
