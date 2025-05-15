@@ -13,10 +13,12 @@ const NotFoundWrapper = styled.div`
 
 const NotFound = () => {
   return (
+    <main aria-label="Not Found Page">
     <NotFoundWrapper>
       <h1>Page not found</h1>
-      <p>The page you’re looking for doesn’t exist.</p>
+      <p>The page you’re looking for doesn’t exist. Please select a new movie.</p>
     </NotFoundWrapper>
+    </main>
   )
 }
 

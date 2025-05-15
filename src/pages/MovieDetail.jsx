@@ -7,11 +7,13 @@ const BackLink = styled(Link)`
   color: white;
   margin-bottom: 16px;
   align-items: right;
-  position: absolute;
-  z-index: 10;
+  margin-left: 15px;
   top: 10px;
   left: 20px;
 
+  @media (min-width: 668px) {
+  position: absolute;
+  }
 
 `
 const Background = styled.div`
@@ -28,34 +30,41 @@ const Background = styled.div`
 `
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  align-items: end;
   padding: 8px;
   min-height: 100vh;
-  justify-content: flex-end;
-  backdrop-filter: brightness(0.4);
+  backdrop-filter: brightness(0.6);
   gap: 10px;
 
+
   @media (min-width: 668px) {
-    flex-direction: row; 
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 20px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: end;
+    justify-items: start;
     padding: 50px;
+    gap: 20px;
   }
 
 `
-
 const Poster = styled.img`
   width: 200px;
   border: 5px solid var(--color-border);
   max-width: 300px;
   box-shadow: 4px 6px 10px rgba(0,0,0,0.8);
+  margin: 0 auto;
+
 
   @media (min-width: 668px) {
    width: 250px;
    max-width: 250px;
+   justify-self: start;
+   margin: 0;
+  
+  
   }
 
   @media (min-width: 1024px) {
@@ -70,14 +79,17 @@ const InfoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: left;
+  max-width: 300px;
+  width: 100%;
   
 
   @media (min-width: 668px) {
     max-width: 300px;
+    align-items: flex-start;
+    text-align: left;
+    justify-self: start;
   }
-    
 `
-
 const HeadText = styled.div`
   display: flex;
   align-items: center;
@@ -85,7 +97,7 @@ const HeadText = styled.div`
   padding: 0 16px;
  
 `
-const Overview = styled.p`
+const Description = styled.p`
   margin-bottom: 16px;
   text-align: left;
   padding: 0 16px;
@@ -122,10 +134,10 @@ const MovieDetail = () => {
 
   return (
     <>
-
+      <main aria-label="Movie Details">
       <Background $backgroundUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
         <Container>
-          <BackLink to="/"> ⬅ Back to Movies</BackLink>
+        <BackLink to="/"> ⬅ Back to Movies</BackLink>
           {movie.poster_path && (
             <Poster
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -137,10 +149,11 @@ const MovieDetail = () => {
               <h1>{movie.title}</h1>
               <p>⭐ {movie.vote_average}</p>
             </HeadText>
-            <Overview>{movie.overview}</Overview>
+            <Description>{movie.overview}</Description>
           </InfoWrapper>
         </Container>
       </Background>
+      </main>
     </>
   )
 }

@@ -40,7 +40,7 @@ const Overlay = styled.div`
     opacity: 1;
   }
 
-  h2 {
+  h1 {
     margin-bottom: 0.5rem;
     font-size: 2rem;
   }
@@ -57,7 +57,7 @@ const Card = ({ movie }) => {
     <Link to={`/movies/${movie.id}`}>
       <CardContainer backdrop={movie.poster_path}>
         <Overlay>
-          <h2>{movie.title}</h2>
+          <h1>{movie.title}</h1>
           <p>Released {movie.release_date}</p>
         </Overlay>
       </CardContainer>

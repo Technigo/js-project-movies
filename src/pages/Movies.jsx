@@ -35,6 +35,7 @@ const Movies = () => {
 
   return (
     <>
+    <main aria-label="Popular Movies Page">
       {/* <h1>The Popular Movies</h1> */}
       <MoviesContainer>
         {movies.length > 0 ? (
@@ -45,6 +46,7 @@ const Movies = () => {
           <p>Loading...</p>
         )}
       </MoviesContainer>
+      </main>
     </>
   )
 }

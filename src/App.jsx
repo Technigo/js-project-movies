@@ -10,13 +10,10 @@ export const App = () => {
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
-
           <Route path="/" element={<Movies />} />
           <Route path="/movies/:id" element={<MovieDetail />} />
           <Route path="*" element={<NotFound />} />
-
         </Routes>
-
       </BrowserRouter>
 
     </>
