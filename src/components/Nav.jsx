@@ -1,43 +1,51 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const Logo = styled.h1`
+const LogoText = styled.h1`
+display: none;
 padding: 0;
 margin: 0;
+`
+const Logo = styled.img`
+height: 40px;
+width: 40px;
 `
 
 const NavBar = styled.nav`
 display: flex;
 align-items: center;
 gap: 30px;
-padding: 20px;
+padding: 10px;
 text-transform: uppercase;
-font-family: 'Notable', serif;
-letter-spacing: 2px;
+font-family: Urbanist, sans-serif;
+
 `
 
 const StyledNavLink = styled(NavLink)`
   color: #000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 22px;
+
 
   &.active {
     border-bottom: 4px solid  #000;
+    padding-bottom: 2px;
   }
 
   &:hover {
-    color: #0077cc;
+  
   }
 
    @media (min-width: 600px) {
-   font-size: 20px;
+   
   }
 `;
 
 export const Nav = () => {
   return (
     <NavBar>
-      <Logo>Movie-logo</Logo>
+      <Logo src="../public/movie.svg" />
+      <LogoText>Movies</LogoText>
       <StyledNavLink to="/" end>
         Most popular
       </StyledNavLink>

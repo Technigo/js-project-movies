@@ -7,8 +7,6 @@ export const PosterSection = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
-  gap: 5px;
-  gap: 5px;
   height: 100vh;
 
   @media (min-width: 600px) {
@@ -22,7 +20,7 @@ export const PosterSection = styled.section`
   }
 `;
 export const MoviePoster = styled.article`
-  outline: 6px solid white;
+
   display: flex;
   flex-direction: column;
   grid-column: span ${(props) => props.colSpan};
@@ -31,42 +29,45 @@ export const MoviePoster = styled.article`
     props.bgImage ? `url(${props.bgImage})` : "none"};
   background-size: cover;
   background-position: center;
+  opacity: 0.8;
   position: relative;
-  min-height: 150px;
+  min-height: 120px;
 
   &:hover {
+   opacity: 1;
   }
 `;
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: "Arial";
-  font-weight: bold;
-  letter-spacing: 2px;
-  opacity: 0.6;
+  font-family: 'Agdasima', serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  
   align-items: center;
   padding: 10px;
   height: 100%;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 6vw;
-  word-break: break-word;
-  white-space: normal;
+  font-size: 8vw;
+  word-break: break-word; 
+  white-space: normal;    
   text-align: center;
-  transition: opacity 0.3s, text-shadow 0.3s;
-
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  
   &:hover {
     opacity: 1;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 0 2px #000;
+    
+
   }
 
   @media (min-width: 600px) {
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   @media (min-width: 1024px) {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 `;
 
