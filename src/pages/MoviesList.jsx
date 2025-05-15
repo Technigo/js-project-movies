@@ -7,9 +7,8 @@ import styled from "styled-components";
 const MoviesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  row-gap: 1rem;
+  row-gap: 0.5rem;
   background-color: black;
-  height: 100vh;
 
   @media (min-width: 550px) {
     grid-template-columns: repeat(2, 1fr);
