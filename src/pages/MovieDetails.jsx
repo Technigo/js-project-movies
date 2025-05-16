@@ -22,8 +22,8 @@ const MovieDetails = () => {
   return (
     <div>
       <Link to="/">Back to Movies</Link>
+      {/* <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> */}
       <h2>{movieDetails.title}</h2>
-
     </div>
   )
 }
