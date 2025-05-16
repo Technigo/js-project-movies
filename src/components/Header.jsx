@@ -55,8 +55,8 @@ export const Header = () => {
       <div>
         <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
           <Title>🎬 ScreamFlix</Title>
-          <Dropdown />
         </Link>
+        <Dropdown />
         {location.pathname.startsWith('/movies/') && <BackButton />}
       </div>
     </StyledHeader>
