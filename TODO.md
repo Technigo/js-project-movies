@@ -12,8 +12,9 @@
 - [x] background img
 - [x] style the app, make it mobile first
 - [x] style the landing page
-- [] style the details page
+- [x] style the details page
 - [x] add hover effect to card
 - [] change the style of the header
+- [] fix some last styling 
 - [] implement a loader
-- [] deploy
+- [] deploy to net
