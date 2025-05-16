@@ -133,7 +133,7 @@ export const StyledMovieInfo = styled.div`
     .movieDetails {
       width: 80%;
     }
-  }
+  
   ${device.desktop} {
     .backdropContainer {
       background-image: ${(props) =>
