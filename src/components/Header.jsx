@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { device } from "../styles/media.js";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -16,6 +17,9 @@ const StyledHeader = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
+
+  ${device.mobile} {
+  position: relative;
 `;
 
 const Title = styled.h1`
