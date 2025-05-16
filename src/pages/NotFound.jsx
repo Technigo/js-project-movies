@@ -8,7 +8,7 @@ export const StyledNotFound = styled.section`
   justify-content: center;
   height: 100vh;
 
-  canvas {
+  DotLottieReact {
     margin-bottom: 1rem;
     size: 150px;
   }
