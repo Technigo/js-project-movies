@@ -40,7 +40,7 @@ export const MoviePoster = styled.article`
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: 'Agdasima', serif;
+  font-family: 'Agdasima', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
   
@@ -58,8 +58,7 @@ export const StyledLink = styled(Link)`
   
   &:hover {
     opacity: 1;
-    
-
+  
   }
 
   @media (min-width: 600px) {

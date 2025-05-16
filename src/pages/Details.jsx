@@ -19,7 +19,8 @@ const Backdrop = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  background-color: rgba(214, 214, 214, 0.9);
+  background-color: rgba(214, 214, 214, 0.7);
+  padding: 20px;
   max-width: 800px;
   align-items: flex-start;
   justify-content: center;
@@ -29,13 +30,21 @@ const ContentWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  border-radius: 16px;
+   font-family: 'Agdasima', sans-serif;
+   letter-spacing: 1px;
+   font-size: 18px;
+ 
 `;
 
 const Poster = styled.img`
+  display: none;
   max-width: 300px;
-  border-radius: 8px;
+  
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+   @media (min-width: 600px) {
+  display: block;
+  }
 `;
 
 const DetailsH3 = styled.h3`
@@ -63,7 +72,7 @@ export const Details = () => {
 
   return (
     <>
-      <h2>Movie Details</h2>
+
       {movie && movie.title ? (
         <>
           <Backdrop backdrop={movie.backdrop_path} />
@@ -79,8 +88,8 @@ export const Details = () => {
                 <h2>{movie.title}</h2>
               </p>
               <p>{movie.overview}</p>
-              <p>{movie.release_date}</p>
-              <h3>{movie.vote_average ? movie.vote_average.toFixed(1) : ""}</h3>
+              <p>Released: {movie.release_date}</p>
+              <h3>{movie.vote_average ? movie.vote_average.toFixed(1) : ""} 🌟</h3>
               <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
             </div>
           </ContentWrapper>
@@ -88,9 +97,7 @@ export const Details = () => {
       ) : (
         <p>Movie not found!</p>
       )}
-      <Link to="/">
-        <button>Back to Movies</button>
-      </Link>
+
     </>
   );
 };
