@@ -49,6 +49,10 @@ export const StyledMovieInfo = styled.div`
     font-size: 1rem;
   }
 
+    .movieRating span {
+    color: gold;
+  }
+
   ${device.mobileL} {
   }
 
@@ -143,9 +147,6 @@ export const StyledMovieInfo = styled.div`
     }
   }
 
-  .movieRating span {
-    color: gold;
-  }
 `;
 
 export const MovieInfo = () => {
