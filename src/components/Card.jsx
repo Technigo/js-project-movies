@@ -4,11 +4,13 @@ import { Link } from 'react-router'
 
 const Card = ({ movie }) => {
   return (
-    <Link to={`/movies/${movie.id}`}>
-      <div className="card">
+    <div className="card">
+      <Link to={`/movies/${movie.id}`}>
         <h2>{movie.title}</h2>
-      </div>
-    </Link >
+        <p> Released date: {movie.release_date} </p>
+        {/* <img> </img> */}
+      </Link >
+    </div>
   );
 
 }
