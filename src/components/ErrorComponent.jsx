@@ -10,45 +10,45 @@ const MessageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px;
+  padding: 2rem;
   text-align: center;
 `;
 
 const Image = styled.img`
-  max-width: 300px;
-  filter: drop-shadow(0 0 10px #000000aa);
+  max-width: 18.75rem;
+  filter: drop-shadow(0 0 0.625rem #000000aa);
 `;
 
 const StyledH1 = styled.h1`
   color: #ffffff;
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 
   @media (min-width: 577px) {
-    font-size: 48px;
+    font-size: 3rem;
   }
 `;
 
 const StyledP = styled.p`
   color: #cccccc;
-  font-size: 16px;
-  max-width: 500px;
-  margin-bottom: 32px;
+  font-size: 1rem;
+  max-width: 31.25rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledLink = styled(Link)`
   background-color: #ffffff;
   color: #121212;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
 
   &:hover {
     background-color: #ff5050;

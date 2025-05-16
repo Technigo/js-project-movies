@@ -1,5 +1,4 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
@@ -39,8 +38,9 @@ export const NoResults = () => (
     <Emoji>🍿🤔</Emoji>
     <Message>No movies found!</Message>
     <Suggestion>
-      Maybe try a different title or check your spelling.<br />
+      Maybe try a different title or check your spelling.
+      <br />
       Popcorn is on us while you search!
     </Suggestion>
   </Wrapper>
-); 
+);

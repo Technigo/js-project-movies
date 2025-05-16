@@ -4,10 +4,10 @@ import { Rating } from "./Rating.jsx";
 import { ComingSoonTag } from "./ComingSoonTag.jsx";
 
 const MovieWrapper = styled.div`
-  padding: 50px;
+  padding: 3.125rem;
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 
   @media (min-width: 577px) {
     flex-direction: row;
@@ -16,25 +16,26 @@ const MovieWrapper = styled.div`
 `;
 
 const MovieDetailsWrapper = styled.div`
-  max-width: 400px;
+  max-width: 25rem;
+
   @media (min-width: 577px) {
-    margin: 0 0 0 20px;
+    margin: 0 0 0 1.25rem;
   }
 `;
 
 const StyledH1 = styled.h1`
-  font-size: 24px;
-  margin: 20px 0 0 0;
+  font-size: 1.5rem;
+  margin: 1.25rem 0 0 0;
   display: flex;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 `;
 
 const Title = styled.span`
-  margin: 0 10px 0 0;
-  text-shadow: 1px 1px #4d4d4d;
+  margin: 0 0.625rem 0 0;
+  text-shadow: 0.0625rem 0.0625rem #4d4d4d;
 `;
 
 export const MovieInfo = ({ details }) => {

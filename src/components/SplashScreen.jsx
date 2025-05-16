@@ -31,16 +31,16 @@ const SplashContainer = styled.div`
 
 const LogoText = styled.h1`
   color: white;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: "Arial Black", sans-serif;
   animation: ${fadeInOut} 3s ease-in-out forwards;
 
   @media (min-width: 577px) {
-    font-size: 96px;
+    font-size: 6rem;
   }
 
   @media (min-width: 770px) {
-    font-size: 128px;
+    font-size: 8rem;
   }
 `;
 

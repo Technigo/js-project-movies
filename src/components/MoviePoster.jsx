@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 const StyledPoster = styled.img`
-  width: 190px;
-  height: 285px;
-  border: 5px solid white;
+  width: 11.875rem;
+  height: 17.8125rem;
+  border: 0.3125rem solid white;
   object-fit: cover;
 
-  @media (min-width: 577px) {
-    width: 240px;
-    height: 360px;
+  @media (min-width: 36.0625rem) {
+    width: 15rem;
+    height: 22.5rem;
   }
 
-  @media (min-width: 770px) {
-    width: 352px;
-    height: 523px;
+  @media (min-width: 48.125rem) {
+    width: 22rem;
+    height: 32.6875rem;
   }
 `;
 
