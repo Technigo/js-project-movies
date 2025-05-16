@@ -32,6 +32,7 @@ h1 {
 
 p {
 font-size: 16px;
+
 @media (width:1600px){
 font-size: 18px;
 }

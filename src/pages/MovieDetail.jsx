@@ -186,7 +186,7 @@ const MovieDetail = () => {
        
       <Background $backgroundUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
         <Container>
-        <BackLink to="/"> ⬅ Back to Movies</BackLink>
+        <BackLink aria-label="Link back to homepage" to="/"> ⬅ Back to Movies</BackLink>
           {movie.poster_path && (
             <Poster
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
