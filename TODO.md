@@ -13,5 +13,7 @@
 - [x] style the app, make it mobile first
 - [x] style the landing page
 - [] style the details page
-- [] add hover effect to card
+- [x] add hover effect to card
+- [] change the style of the header
 - [] implement a loader
+- [] deploy

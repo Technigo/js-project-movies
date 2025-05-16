@@ -20,30 +20,35 @@ const MovieDetails = () => {
     , [])
 
   return (
-    <section className="movie-details"
+    <section
+      className="movie-details"
       style={{
         backgroundImage:
           window.innerWidth >= 600 && movieDetails.backdrop_path
-            ? `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path
-            })`
-            : "none", backgroundRepeat: "no-repeat"
-
-      }}>
-      <Link to="/" className="close-link" aria-label="Back to Movies"> &times;</Link>
-
+            ? `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path})`
+            : "none",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
+      <Link to="/" className="close-link" aria-label="Back to Movies">&times;</Link>
       <div className="movie-details-content">
-        <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
+        <img
+          className="movie-details-poster"
+          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          alt={movieDetails.title}
+        />
         <div className="movie-details-info">
-          <div className="movie-details-text">
-            <h2>{movieDetails.title}</h2>
-            <p>Rating: {movieDetails.vote_average}</p>
-          </div>
-          <p>{movieDetails.overview}</p>
+          <h2>
+            {movieDetails.title}
+            <span className="movie-details-rating">
+              <span role="img" aria-label="star">⭐</span>
+              {movieDetails.vote_average}
+            </span>
+          </h2>
+          <p className="movie-details-overview">{movieDetails.overview}</p>
         </div>
       </div>
-
-
-    </section >
+    </section>
   )
 }
 
