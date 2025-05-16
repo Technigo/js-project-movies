@@ -29,9 +29,8 @@ const MovieDetails = () => {
             : "none", backgroundRepeat: "no-repeat"
 
       }}>
-      <div>
-        <Link to="/">Back to Movies</Link>
-      </div>
+      <Link to="/" className="close-link" aria-label="Back to Movies"> &times;</Link>
+
       <div className="movie-details-content">
         <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
         <div className="movie-details-info">

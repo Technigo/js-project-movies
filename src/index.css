@@ -27,7 +27,27 @@ body {
   box-sizing: border-box;
 }
 
+.close-link {
+  position: absolute;
+  top: 1rem;
+  right: 0rem;
+  height: 0rem;
+  font-size: 10rem;
+  font-weight: 200;
+  color: greenyellow;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.close-link:hover {
+  transform: scale(1.2);
+
+}
+
 .movie-details {
+  position: relative;
   background: black;
   min-height: 100vh;
   color: #fff;
@@ -35,7 +55,17 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* transition: background-image 0.3s; */
+}
+
+.movie-details::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.67);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* z-index: 0; */
+  pointer-events: none;
 }
 
 .movie-details-content {

@@ -48,9 +48,6 @@
 .card:hover .card-overlay,
 .card:focus-within .card-overlay {
   opacity: 1;
-}
-
-.card h2,
-.card p {
-  margin: 0.5rem 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
