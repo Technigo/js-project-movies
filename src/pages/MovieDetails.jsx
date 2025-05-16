@@ -211,18 +211,12 @@ const MovieDetails = () => {
           <img
             src={`https://image.tmdb.org/t/p/w780${movieDetails.backdrop_path}`}
             srcSet={`
-            https://image.tmdb.org/t/p/w300${
-              movieDetails.backdrop_path || ""
-            } 300w,
-            https://image.tmdb.org/t/p/w780${
-              movieDetails.backdrop_path || ""
-            } 780w,
-            https://image.tmdb.org/t/p/w1280${
-              movieDetails.backdrop_path || ""
-            } 1280w,
-            https://image.tmdb.org/t/p/original${
-              movieDetails.backdrop_path || ""
-            } 1920w`}
+    https://image.tmdb.org/t/p/w300${movieDetails.backdrop_path || ""} 300w,
+    https://image.tmdb.org/t/p/w780${movieDetails.backdrop_path || ""} 780w,
+    https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path || ""} 1280w,
+    https://image.tmdb.org/t/p/original${
+      movieDetails.backdrop_path || ""
+    } 1920w`}
             sizes="(max-width: 768px) 300px, (max-width: 1200px) 780px, 1280px, (min-width: 1281px) 1920px"
             alt={movieDetails.title || "Movie backdrop"}
           />
