@@ -17,8 +17,9 @@ align-items: center;
 gap: 30px;
 padding: 10px;
 text-transform: uppercase;
-font-family: Urbanist, sans-serif;
-
+font-weight: bold;
+  font-family: 'Agdasima', sans-serif;
+letter-spacing: 3px;
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -28,8 +29,8 @@ const StyledNavLink = styled(NavLink)`
 
 
   &.active {
-    border-bottom: 4px solid  #000;
-    padding-bottom: 2px;
+    border-bottom: 5px solid  #000;
+
   }
 
   &:hover {
@@ -37,15 +38,15 @@ const StyledNavLink = styled(NavLink)`
   }
 
    @media (min-width: 600px) {
-   
+    font-size: 32px;
   }
 `;
 
 export const Nav = () => {
   return (
     <NavBar>
-      <Logo src="../public/movie.svg" />
-      <LogoText>Movies</LogoText>
+      {/* <Logo src="../public/movie.svg" />
+      <LogoText>Movies</LogoText> */}
       <StyledNavLink to="/" end>
         Most popular
       </StyledNavLink>

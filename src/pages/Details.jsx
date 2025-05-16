@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Backdrop = styled.div`
   display: flex;
@@ -14,41 +14,83 @@ const Backdrop = styled.div`
       ? `url(https://image.tmdb.org/t/p/w1280/${backdrop}) center/cover no-repeat`
       : "blue"};
   z-index: -1;
-  margin-bottom: 1rem;
+`;
+
+const DetailsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
-  background-color: rgba(214, 214, 214, 0.7);
+  flex-direction: column;
+  background-color: rgba(214, 214, 214, 0.8);
   padding: 20px;
   max-width: 800px;
+  min-width: 400px;
   align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  gap: 2px;
   z-index: 1;
-   font-family: 'Agdasima', sans-serif;
-   letter-spacing: 1px;
-   font-size: 18px;
- 
+  font-family: 'Agdasima', sans-serif;
+  letter-spacing: 1px;
+  font-size: 18px;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    gap: 20px;
+  }
 `;
 
 const Poster = styled.img`
   display: none;
-  max-width: 300px;
-  
+  max-width: 250px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 
    @media (min-width: 600px) {
-  display: block;
+      display: block;
   }
 `;
 
 const DetailsH3 = styled.h3`
   font-size: 16px;
+`;
+
+const Centered = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const Animation = styled.div`
+  font-size: 45px;
+  animation: ${Rotate} 1.5s linear infinite;
+`;
+
+const ErrorMsg = styled.div`
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  font-size: 2rem;
+  color: #000;
+  font-family: 'Agdasima', sans-serif;
+  text-align: center;
+  gap: 1rem;
 `;
 
 export const Details = () => {
@@ -68,13 +110,17 @@ export const Details = () => {
       .catch(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (
+    <Centered>
+      <Animation>🍿</Animation>
+    </Centered>
+  );
 
   return (
     <>
-
       {movie && movie.title ? (
-        <>
+
+        <DetailsContainer>
           <Backdrop backdrop={movie.backdrop_path} />
           <ContentWrapper>
             {movie.poster_path && (
@@ -91,13 +137,22 @@ export const Details = () => {
               <p>Released: {movie.release_date}</p>
               <h3>{movie.vote_average ? movie.vote_average.toFixed(1) : ""} 🌟</h3>
               <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
+
             </div>
           </ContentWrapper>
-        </>
-      ) : (
-        <p>Movie not found!</p>
-      )}
+        </DetailsContainer>
 
+      ) : (
+        <ErrorMsg>
+          <span role="img" aria-label="confused popcorn" style={{ fontSize: "4rem" }}>🍿🤔</span>
+          <div>
+            <strong>Oh no!</strong> <br />
+            No movie found here.<br />
+            <span style={{ fontSize: "1.2rem" }}>Try picking a movie from the list instead!</span>
+          </div>
+          <Link to="/">← Back to movies</Link>
+        </ErrorMsg>
+      )}
     </>
   );
 };

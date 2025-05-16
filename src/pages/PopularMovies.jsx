@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
 
 export const PosterSection = styled.section`
   box-sizing: border-box;
@@ -43,7 +44,6 @@ export const StyledLink = styled(Link)`
   font-family: 'Agdasima', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
-  
   align-items: center;
   padding: 10px;
   height: 100%;
@@ -70,13 +70,32 @@ export const StyledLink = styled(Link)`
   }
 `;
 
+const Centered = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Animation = styled.div`
+  font-size: 45px;
+  animation: ${Rotate} 1.5s linear infinite;
+`;
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 export const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const MovieList = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -85,10 +104,18 @@ export const PopularMovies = () => {
         setMovies(data.results);
       } catch (error) {
         console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchMovies();
   }, [MovieList]);
+
+  if (loading) return (
+    <Centered>
+      <Animation>🍿</Animation>
+    </Centered>
+  );
   return (
     <PosterSection>
       {movies.map((movie) => {
