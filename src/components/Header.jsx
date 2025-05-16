@@ -42,7 +42,6 @@ const BackButton = styled.button`
   cursor: pointer;
   margin-top: 1rem;
   padding: 0;
-
 `;
 
 export const Header = () => {

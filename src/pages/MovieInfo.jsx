@@ -181,7 +181,7 @@ export const MovieInfo = () => {
 
   if (isLoading) return <Loader />;
   if (error) return <p>{error}</p>;
-  if (!movie) return <p>No movie found.</p>;
+  if (!movie) return <p>No movie found.</p>; // Add notfound page
 
   return (
     <StyledMovieInfo $backdrop={movie.backdrop_path || ""}>

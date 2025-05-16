@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useHover } from "../hooks/useHover";
 import { device } from "../styles/media.js";
+import { Loader } from "./Loader.jsx";
 
 export const StyledCard = styled.div`
   position: relative;
@@ -98,7 +99,7 @@ export const Card = ({ movie }) => {
   const [isHovering, hoverProps] = useHover();
 
   if (!movie) {
-    return <div>Loading movie...</div>;
+    return <Loader />;
   }
 
   return (
