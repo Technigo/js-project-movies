@@ -40,10 +40,7 @@ const Spinner = styled.img`
 const LoadingIcon = () => {
   return (
     <LoadingGroup>
-      <Spinner
-        src="../../public/images/popcorn.svg"
-        alt="spinning Loading Icon"
-      />
+      <Spinner src="../../popcorn.svg" alt="spinning Loading Icon" />
       <h2>Loading...</h2>
     </LoadingGroup>
   );
