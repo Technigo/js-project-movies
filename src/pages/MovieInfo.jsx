@@ -142,6 +142,10 @@ export const StyledMovieInfo = styled.div`
           : "none"};
     }
   }
+
+  .movieRating span {
+    color: gold;
+  }
 `;
 
 export const MovieInfo = () => {
@@ -198,7 +202,11 @@ export const MovieInfo = () => {
           </p>
           <p>Language: {movie.original_language.toUpperCase()}</p>
           <p>Release date: {movie.release_date}</p>
-          <p>Rating: {movie.vote_average} / 10</p>
+          <div className="movieRating">
+            <p>
+              Rating: {movie.vote_average.toFixed(1)}/10 <span>★</span>
+            </p>
+          </div>
           <p>Runtime: {movie.runtime} min</p>
         </div>
       </div>
