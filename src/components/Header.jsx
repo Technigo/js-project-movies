@@ -1,8 +1,8 @@
+import './Header.css'
 
-
-function Header() {
+const Header = () => {
   return (
-    <header>Docu news</header>
+    <header className="header">Docu news</header>
   )
 }
 
