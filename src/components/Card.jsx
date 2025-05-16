@@ -6,28 +6,27 @@ import { device } from "../styles/media.js";
 export const StyledCard = styled.div`
   position: relative;
   display: block;
-  width: 100%;
-  max-width: 150px;
+  width: 50%;
+  max-width: none; 
   overflow: hidden;
-  border: 1px solid black;
+  border: none;
   font-size: 0.8rem;
+  margin-bottom: 0rem; 
+  padding: 0rem;
+  box-sizing: border-box;
 
   ${device.tablet} {
-    max-width: 200px;
+    width: 25%; 
   }
 
   ${device.laptop} {
-    position: relative;
-    display: block;
-    width: 100%;
-    max-width: 240px;
-    overflow: hidden;
-    border: 3px solid black;
+    width: 20%;
   }
 
-  &hover {
-    transform: translateY(-5px);
+  &:hover {
+    transform: translateY(-0px);
   }
+    
   .cardContainer {
     position: relative;
     width: 100%;
