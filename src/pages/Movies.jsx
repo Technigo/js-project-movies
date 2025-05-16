@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card.jsx";
 import styled from "styled-components";
+import LoadingIcon from "../components/LoadingIcon.jsx";
 
 const MoviesLayout = styled.section`
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
 `;
 
@@ -22,7 +24,7 @@ const Movies = () => {
         for (let page = 1; page <= 2; page++) {
           // Fetch 2 pages per year
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc,vote_count.desc&without_genres=27&with_original_language=en`
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc,vote_count.desc&without_genres=10770&with_original_language=en`
           );
           const data = await response.json();
           allMovies.push(...data.results);
@@ -63,7 +65,7 @@ const Movies = () => {
             );
           })
         ) : (
-          <h2>Loading...</h2>
+          <LoadingIcon />
         )}
       </MoviesLayout>
     </main>

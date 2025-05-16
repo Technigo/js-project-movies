@@ -18,6 +18,7 @@ body {
 }
 * {
   box-sizing: border-box;
+  box-shadow: none;
 }
 
 a {
@@ -27,7 +28,6 @@ a {
 img {
   font-size: 0;
   display: block;
-  filter: brightness(0.8);
 }
 body {
   background-color: #1e1e1e;

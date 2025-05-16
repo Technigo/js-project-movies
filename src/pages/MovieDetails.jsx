@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import LoadingIcon from "../components/LoadingIcon";
 
 const PageText = styled.div`
   transition: opacity 0.3s ease-in-out;
@@ -67,7 +68,9 @@ const Backdrop = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the container */
+    object-fit: cover;
+    object-position: center;
+    filter: blur(3px) brightness(0.5);
   }
 `;
 const GenreList = styled.ul`
@@ -110,7 +113,11 @@ const MovieDetails = () => {
   }, [movieId, apiKey]);
 
   if (!movieDetails) {
-    return <p>Loading...</p>;
+    return (
+      <>
+        <LoadingIcon />
+      </>
+    );
   }
 
   return (
@@ -129,12 +136,11 @@ const MovieDetails = () => {
                 width: "100%",
                 height: "100%",
                 aspectRatio: "16/9",
-                maxWidth: "100%",
-                maxHeight: "100%",
               }}
-              src={`https://www.youtube.com/embed/${videoKey}`}
+              loading="lazy"
+              src={`https://www.youtube.com/embed/${videoKey}?modestbranding=1&rel=0&controls=0&autoplay=0&playsinline=1`}
               title="Movie Trailer"
-              allow="accelerometer;  encrypted-media; gyroscope; closed-captioning"
+              allow="accelerometer; encrypted-media; gyroscope; closed-captioning"
               allowFullScreen
               aria-label={`${movieDetails.title} movie trailer`}
             ></iframe>
@@ -176,16 +182,17 @@ const MovieDetails = () => {
 
         <p>
           Score:{" "}
-          {Array(Math.round((movieDetails.vote_average ?? 0) / 2)) // Scale to 5 popcorns
-            .fill("🍿")
-            .join("")}
+          {movieDetails.vote_average !== undefined &&
+            Array(Math.round((movieDetails.vote_average ?? 0) / 2))
+              .fill("🍿")
+              .map((_, index) => <span key={`filled-${index}`}>🍿</span>)}
           {movieDetails.vote_average !== undefined &&
             Array(
               Math.max(0, 5 - Math.round((movieDetails.vote_average ?? 0) / 2))
-            ) // Remaining empty popcorns
+            )
               .fill("🍿")
               .map((_, index) => (
-                <span key={index} style={{ opacity: 0.2 }}>
+                <span key={`empty-${index}`} style={{ opacity: 0.2 }}>
                   🍿
                 </span>
               ))}
@@ -217,7 +224,9 @@ const MovieDetails = () => {
           />
         </Backdrop>
       ) : (
-        <p>No backdrop available</p>
+        <p style={{ position: "relative", bottom: "50%", left: "50%" }}>
+          No backdrop available
+        </p>
       )}
     </main>
   );
