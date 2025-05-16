@@ -10,7 +10,7 @@ const MovieDetails = () => {
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
-  // https://api.themoviedb.org/3/movie/{movie_id}?api_key=YOUR_API_KEY
+
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
       .then((response) => response.json())
@@ -22,8 +22,13 @@ const MovieDetails = () => {
   return (
     <div>
       <Link to="/">Back to Movies</Link>
-      {/* <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> */}
+      <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
       <h2>{movieDetails.title}</h2>
+      <p>Rating: {movieDetails.vote_average}</p>
+      <p>{movieDetails.overview}</p>
+      <img src={`https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path}`} alt={movieDetails.title} />
+
+
     </div>
   )
 }

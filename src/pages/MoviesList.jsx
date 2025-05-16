@@ -12,7 +12,8 @@ const MoviesList = () => {
 
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=99&sort_by=release_date.desc&page=1&api_key=${apiKey}`)
+
+    fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=99&with_release_type=2|3&region=US&with_watch_providers=179&primary_release_date.lte=2025-05-15&vote_count.gte=100&vote_average.gte=5&sort_by=release_date.desc&api_key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.error('Error fetching Movies:', error));
@@ -29,4 +30,5 @@ const MoviesList = () => {
 }
 
 export default MoviesList
+
 
