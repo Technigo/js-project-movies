@@ -85,6 +85,9 @@ const MoviePoster = styled.img`
 const MovieTitle = styled.h1`
   text-shadow: 1px 1px slategray;
   font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 
   @media (min-width: 1440px) {
     font-size: 2.5rem;
@@ -107,7 +110,6 @@ const MovieRating = styled.span`
   display: inline-block;
   background: white;
   color: black;
-  margin-left: 15px;
   padding: 5px 10px;
   font-size: 1.5rem;
   white-space: nowrap;
@@ -116,7 +118,7 @@ const MovieRating = styled.span`
 // Inline MovieOverview Component
 const MovieOverview = ({ movieTitle, rating, overview, popularity }) => (
   <section aria-labelledby="movie-title">
-    <MovieTitle id="movie-title">{movieTitle}
+    <MovieTitle id="movie-title" tabIndex={0}>{movieTitle}
       <MovieRating>
         ⭐️ {rating.toFixed(1)}
       </MovieRating>
