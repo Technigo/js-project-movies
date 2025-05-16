@@ -12,16 +12,8 @@ const Backdrop = styled.div`
   background: ${({ backdrop }) =>
     backdrop
       ? `url(https://image.tmdb.org/t/p/w1280/${backdrop}) center/cover no-repeat`
-      : "blue"};
+      : "white"};
   z-index: -1;
-`;
-
-const DetailsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
 `;
 
 const ContentWrapper = styled.div`
@@ -119,9 +111,7 @@ export const Details = () => {
   return (
     <>
       {movie && movie.title ? (
-
-        <DetailsContainer>
-          <Backdrop backdrop={movie.backdrop_path} />
+        <Backdrop backdrop={movie.backdrop_path}>
           <ContentWrapper>
             {movie.poster_path && (
               <Poster
@@ -140,7 +130,7 @@ export const Details = () => {
 
             </div>
           </ContentWrapper>
-        </DetailsContainer>
+        </Backdrop>
 
       ) : (
         <ErrorMsg>
