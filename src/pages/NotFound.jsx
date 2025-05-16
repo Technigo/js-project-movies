@@ -16,7 +16,7 @@ export const StyledNotFound = styled.section`
 
 export const NotFound = () => {
   return (
-    <section>
+    <StyledNotFound>
       <DotLottieReact
         src='https://lottie.host/1b9d6eee-1273-46d9-9d36-a0925490db55/j4MCsSe3nd.lottie'
         loop
@@ -24,6 +24,6 @@ export const NotFound = () => {
       />
       <h1>404 - Not Found</h1>
       <p>Sorry, the page you are looking for does not exist.</p>
-    </section>
+    </StyledNotFound>
   )
 }

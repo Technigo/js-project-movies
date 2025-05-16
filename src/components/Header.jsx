@@ -56,8 +56,7 @@ const BackButton = styled.button`
 
 export const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Nu är navigate definierad
-  console.log("useNavigate:", navigate); // Kontrollera om navigate är en funktion
+  const navigate = useNavigate();
 
   const [isTransparent, setIsTransparent] = useState(false);
 
