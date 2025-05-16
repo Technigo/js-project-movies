@@ -8,7 +8,7 @@ const Card = ({ movie }) => {
       <Link to={`/movies/${movie.id}`}>
         <h2>{movie.title}</h2>
         <p> Released date: {movie.release_date} </p>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+        <img classImage="card-img" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
       </Link >
     </div>
   );
