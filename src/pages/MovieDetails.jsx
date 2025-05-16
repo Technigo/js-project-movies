@@ -184,7 +184,7 @@ const MovieDetails = () => {
             : "Genres not available"}
         </GenreList>
 
-        <p>
+        <span>
           Score:{" "}
           {movieDetails.vote_average !== undefined &&
             Array(Math.round((movieDetails.vote_average ?? 0) / 2))
@@ -200,7 +200,7 @@ const MovieDetails = () => {
                   🍿
                 </span>
               ))}
-        </p>
+        </span>
         <p>{movieDetails.overview}</p>
         <p>
           Released on {new Date(movieDetails.release_date).toLocaleDateString()}

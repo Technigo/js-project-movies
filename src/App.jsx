@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Movies from "./pages/Movies";
 import About from "./pages/About";
 import MovieDetails from "./pages/MovieDetails";
-
 import NotFound from "./pages/NotFound";
 
 export const App = () => {
