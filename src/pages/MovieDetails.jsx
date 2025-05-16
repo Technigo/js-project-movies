@@ -91,6 +91,10 @@ const MovieDetails = () => {
   const [videoKey, setVideoKey] = useState(null);
 
   useEffect(() => {
+    console.log("Fetching movie details and videos...");
+    console.log(`Movie ID: ${movieId}`);
+    console.log(`API Key: ${apiKey}`);
+
     Promise.all([
       fetch(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`
