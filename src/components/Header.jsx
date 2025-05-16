@@ -2,8 +2,9 @@ import { Link } from "react-router";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  background-color: #101211;
   padding: 0.5rem;
+  position: fixed;
+  z-index: 100;
 `;
 const NavList = styled.ul`
   list-style: none;
@@ -20,6 +21,7 @@ const StyledLink = styled(Link)`
   transition: color 0.5s ease-in-out;
   font-weight: 600;
   font-size: 1.2rem;
+  text-shadow: 0 0 5px 5px rgb(16, 18, 17);
 
   &:hover {
     color: darkorange;
@@ -32,7 +34,7 @@ const Header = () => {
     <Nav>
       <NavList>
         <li>
-          <StyledLink to="/">Movies</StyledLink>
+          <StyledLink to="/"> Movies</StyledLink>
         </li>
         <li>
           <StyledLink to="/about">About</StyledLink>
