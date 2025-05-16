@@ -17,7 +17,7 @@ const apiKey = import.meta.env.VITE_TMDB_API_KEY
 
 // Do proper error handling, and use asyns/await or .then()
 useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${906841aea0b8a72698aa6edfc03531dd}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
     .then((response) => response.json())
     .then((data) => setMovies(data.results)) // save the movies to the state varable
     .catch((error) => console.error('Error fetching movies:', error))
