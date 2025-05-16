@@ -24,7 +24,9 @@ const MoviesList = () => {
   return (
     <>
       <Header />
-      {movies.length && movies.map(movie => <Card key={movie.id} movie={movie} />)}
+      <div className="card-list">
+        {movies.length && movies.map(movie => <Card key={movie.id} movie={movie} />)}
+      </div>
     </>
   )
 }

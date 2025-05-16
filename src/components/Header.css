@@ -1,5 +1,17 @@
 .header {
   padding: 1rem;
-  background-color: green;
+  /* background-color: rgba(0, 0, 0, 0.85); */
+  background-color: none;
   color: greenyellow;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+h1 {
+  border: 2px solid greenyellow;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 28px;
+  background: black;
 }

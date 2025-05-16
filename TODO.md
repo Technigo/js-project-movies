@@ -10,8 +10,8 @@
 - [x] ranking, 
 - [x] release date, 
 - [x] background img
-- [] style the app, make it mobile first
-- [] style the landing page
+- [x] style the app, make it mobile first
+- [x] style the landing page
 - [] style the details page
 - [] add hover effect to card
 - [] implement a loader
