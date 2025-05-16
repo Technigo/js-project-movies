@@ -20,16 +20,31 @@ const MovieDetails = () => {
     , [])
 
   return (
-    <div>
-      <Link to="/">Back to Movies</Link>
-      <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
-      <h2>{movieDetails.title}</h2>
-      <p>Rating: {movieDetails.vote_average}</p>
-      <p>{movieDetails.overview}</p>
-      <img src={`https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path}`} alt={movieDetails.title} />
+    <section className="movie-details"
+      style={{
+        backgroundImage:
+          window.innerWidth >= 600 && movieDetails.backdrop_path
+            ? `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path
+            })`
+            : "none", backgroundRepeat: "no-repeat"
+
+      }}>
+      <div>
+        <Link to="/">Back to Movies</Link>
+      </div>
+      <div className="movie-details-content">
+        <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
+        <div className="movie-details-info">
+          <div className="movie-details-text">
+            <h2>{movieDetails.title}</h2>
+            <p>Rating: {movieDetails.vote_average}</p>
+          </div>
+          <p>{movieDetails.overview}</p>
+        </div>
+      </div>
 
 
-    </div>
+    </section >
   )
 }
 
