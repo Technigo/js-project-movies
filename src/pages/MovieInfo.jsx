@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router'  // Import Link from react-router-dom to create links to other pages
+import { Link, useParams } from 'react-router'
 import { API_KEY, BASE_URL, IMAGE_BASE } from '../api' 
 import NotFound from './NotFound'
 
 const MovieInfo = () => {
-  const { id } = useParams() // Get the movie ID from the URL parameters
+  const { id } = useParams() 
   const [movieDetails, setMovieDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true) // Set loading to true before fetching data
+    setLoading(true)
     fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`)
       .then((res) => {
         if (!res.ok) throw new Error('Movie not found')
-        return res.json() // Parse the response as JSON
+        return res.json()
       })
       .then((data) => {
         setMovieDetails(data)
@@ -25,7 +25,7 @@ const MovieInfo = () => {
         setError(err.message)
         setLoading(false)
       })
-  }, [id]) // Fetch movie details when the component mounts or when the ID changes
+  }, [id]) 
 
   if (loading) {
     return (
@@ -43,7 +43,6 @@ const MovieInfo = () => {
 
   return (
     <main className="relative min-h-screen text-white">
-      {/* Backdrop */}
       {movieDetails.backdrop_path && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -51,35 +50,26 @@ const MovieInfo = () => {
             backgroundImage: `url(${IMAGE_BASE}/w1280${movieDetails.backdrop_path})`,
           }}
         >
-          {/* Overlay with correct opacity */}
           <div className="absolute inset-0 bg-black/45"></div>
         </div>
       )}
 
-      {/* Content */}
       <div
         className="
           relative z-10
           p-4 lg:p-8
           max-w-full lg:max-w-5xl
-          mx-auto
-        "
-      >
-         {/* 1) Link sits by itself at the top */}
+          mx-auto">
         <Link
-            to="/"
-            className="
-              inline-block
-              text-blue-300 hover:underline
-              drop-shadow-lg/50
-            "
-          >
+          to="/"
+          className="
+            inline-block
+            text-blue-300 hover:underline
+            drop-shadow-lg/50">
             ← Back to Movies
-          </Link>
+        </Link>
 
-        {/* 2) Poster + details flex row on desktop */}
         <div className="mt-6 lg:mt-20 flex flex-col lg:flex-row lg:items-start lg:gap-8">
-          {/* Poster */}
           {movieDetails.poster_path && (
             <img
               src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
@@ -88,12 +78,9 @@ const MovieInfo = () => {
                 w-full
                 lg:w-1/3
                 rounded shadow mb-6 lg:mb-0
-                border-6 border-white
-              "
-            />
+                border-6 border-white"/>
           )}
 
-          {/* Details */}
           <div className="flex-1 lg:pl-8">
             <h1 className="text-2xl lg:text-4xl font-bold mb-2 drop-shadow-lg">
               {movieDetails.title}
