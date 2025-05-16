@@ -53,7 +53,7 @@ const Overlay = styled.div`
 
 const Card = ({ movie }) => {
   return (
-    //Jasmin added link so that the card on homepage movies links to the moviedetail
+    
     <Link to={`/movies/${movie.id}`}>
       <CardContainer backdrop={movie.poster_path}>
         <Overlay>
