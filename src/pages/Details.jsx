@@ -20,9 +20,8 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(214, 214, 214, 0.8);
-  padding: 20px;
+  padding: 10px;
   max-width: 800px;
-  min-width: 400px;
   align-items: flex-start;
   justify-content: center;
   gap: 2px;
@@ -34,6 +33,7 @@ const ContentWrapper = styled.div`
   @media (min-width: 600px) {
     flex-direction: row;
     gap: 20px;
+    padding: 20px;
   }
 `;
 
