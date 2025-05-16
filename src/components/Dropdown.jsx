@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useDropdown } from '../hooks/useDropdown'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const StyledDropdown = styled.div`
   position: relative;
@@ -54,6 +55,16 @@ export const StyledDropdown = styled.div`
 export const Dropdown = () => {
   const [isOpen, toggleDropdown] = useDropdown(false)
   const dropdownRef = useRef(null)
+  const navigate = useNavigate()
+
+  // Decade start years (1950, 1960, etc)
+  const decades = [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020]
+
+  // Handle decade selection
+  const handleDecadeClick = (decade) => {
+    navigate(`/decade/${decade}`)
+    toggleDropdown() // Close dropdown after selection
+  }
 
   return (
     <StyledDropdown ref={dropdownRef}>
@@ -64,14 +75,17 @@ export const Dropdown = () => {
         Filter on decade ▼
       </button>
       <div className={`content ${isOpen ? 'open' : ''}`}>
-        <Link to='/category/horror' onClick={toggleDropdown}>
-          Horror
-        </Link>
-        <Link to='/category/thriller' onClick={toggleDropdown}>
-          Thriller
-        </Link>
-        <Link to='/category/sci-fi' onClick={toggleDropdown}>
-          Sci-Fi
+        {decades.map((decade) => (
+          <a
+            key={decade}
+            onClick={() => handleDecadeClick(decade)}
+            href='#' // Prevents page jumps
+          >
+            {decade}'s Horror
+          </a>
+        ))}
+        <Link to='/' onClick={toggleDropdown}>
+          All Movies
         </Link>
       </div>
     </StyledDropdown>

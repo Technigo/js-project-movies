@@ -24,7 +24,6 @@ export const api = {
       const data = await response.json()
       console.log('Data från API-funktion:', data) // Lägg till denna rad
 
-      // Extra säkerhetskontroll
       if (!data || !data.results) {
         throw new Error('Invalid API response structure')
       }
@@ -32,6 +31,23 @@ export const api = {
       return data
     } catch (error) {
       console.error('Error fetching horror movies:', error)
+      throw error
+    }
+  },
+
+  // Fetch horror movies by decade
+  fetchHorrorMoviesByDecade: async (decade) => {
+    try {
+      const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_year.gte=${decade}&primary_release_year.lte=${
+        decade + 9
+      }&with_genres=27`
+      const response = await fetch(url, defaultOptions)
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`)
+      }
+      // Rest of the function remains the same
+    } catch (error) {
+      console.error('Error fetching horror movies by decade:', error)
       throw error
     }
   },
