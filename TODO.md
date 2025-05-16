@@ -16,5 +16,6 @@
 - [x] add hover effect to card
 - [] change the style of the header
 - [] fix some last styling 
+- [] little fixes on mobile
 - [] implement a loader
 - [] deploy to net
