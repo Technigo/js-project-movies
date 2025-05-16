@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { useGoBack } from '../hooks/useGoBack'
-import { Toggle } from './Toggle'
-import { IoArrowBackCircleOutline } from 'react-icons/io5'
+import { BackButton } from './BackButton.jsx'
+import { Dropdown } from './Dropdown.jsx'
 import { device } from '../styles/media.js'
 
 const StyledHeader = styled.header`
@@ -41,28 +40,8 @@ const Nav = styled.nav`
   }
 `
 
-const StyledBackIcon = styled(IoArrowBackCircleOutline)`
-  font-size: 30px;
-  color: white;
-  margin-right: 8px;
-`
-
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-top: 1rem;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-`
-
 export const Header = () => {
   const location = useLocation()
-  const goBack = useGoBack()
 
   const [isTransparent, setIsTransparent] = useState(false)
 
@@ -76,14 +55,9 @@ export const Header = () => {
       <div>
         <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
           <Title>🎬 ScreamFlix</Title>
-          <Toggle />
+          <Dropdown />
         </Link>
-        {location.pathname.startsWith('/movies/') && (
-          <BackButton onClick={goBack}>
-            <StyledBackIcon />
-            Go back
-          </BackButton>
-        )}
+        {location.pathname.startsWith('/movies/') && <BackButton />}
       </div>
     </StyledHeader>
   )

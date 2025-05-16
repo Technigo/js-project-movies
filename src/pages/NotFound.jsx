@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import { Header } from '../components/Header.jsx'
 
 export const StyledNotFound = styled.section`
   display: flex;
