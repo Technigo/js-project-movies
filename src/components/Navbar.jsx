@@ -15,7 +15,6 @@ const Nav = styled.nav`
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
     padding: 1rem;
   }
 `;
