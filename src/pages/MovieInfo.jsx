@@ -204,7 +204,7 @@ export const MovieInfo = () => {
           <p>Release date: {movie.release_date}</p>
           <div className="movieRating">
             <p>
-              Rating: {movie.vote_average.toFixed(1)}/10 <span>★</span>
+              Rating: <span>★</span> {movie.vote_average.toFixed(1)}/10
             </p>
           </div>
           <p>Runtime: {movie.runtime} min</p>
