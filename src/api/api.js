@@ -35,22 +35,27 @@ export const api = {
     }
   },
 
-  // Fetch horror movies by decade
-  fetchHorrorMoviesByDecade: async (decade) => {
-    try {
-      const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_year.gte=${decade}&primary_release_year.lte=${
-        decade + 9
-      }&with_genres=27`
-      const response = await fetch(url, defaultOptions)
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`)
-      }
-      // Rest of the function remains the same
-    } catch (error) {
-      console.error('Error fetching horror movies by decade:', error)
-      throw error
+fetchHorrorMoviesByDecade: async (decade) => {
+  try {
+    const url = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&primary_release_date.gte=${decade}-01-01&primary_release_date.lte=${decade + 9}-12-31&with_genres=27`
+
+    const response = await fetch(url, defaultOptions)
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`)
     }
-  },
+
+    const data = await response.json()
+
+    if (!data || !data.results) {
+      throw new Error('Invalid API response structure')
+    }
+
+    return data
+  } catch (error) {
+    console.error('Error fetching horror movies by decade:', error)
+    throw error
+  }
+},
 
   // Fetch movie details by ID
   fetchMovieById: async (id) => {
