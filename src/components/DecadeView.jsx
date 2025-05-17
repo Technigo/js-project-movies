@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { api } from "../api/api";
-import { Card } from "../components/Card";
-import { Loader } from "../components/Loader";
-import { useLoader } from "../hooks/useLoader";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { api } from '../api/api';
+import { Card } from '../components/Card';
+import { Loader } from '../components/Loader';
+import { useLoader } from '../hooks/useLoader';
 
 const StyledDecadeView = styled.div`
   padding: 1rem;
@@ -47,8 +47,8 @@ export const DecadeView = () => {
 
         setMovies(horrorMovies);
       } catch (err) {
-        console.error("Failed to fetch movies:", err);
-        setError("Could not load movies. Please try again.");
+        console.error('Failed to fetch movies:', err);
+        setError('Could not load movies. Please try again.');
       }
     };
 
@@ -64,7 +64,7 @@ if (isLoading) return <Loader />
       {movies.length === 0 ? (
         <p>No horror movies found for this decade.</p>
       ) : (
-        <div className="decadesMovies">
+        <div className='decadesMovies'>
           {movies.map((movie) => (
             <Card key={movie.id} movie={movie} />
           ))}

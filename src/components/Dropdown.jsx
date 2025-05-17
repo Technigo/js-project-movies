@@ -24,8 +24,8 @@ export const StyledDropdown = styled.div`
   }
 
   .content {
-    position: absolute; // This takes it out of document flow
-    top: 100%; // Position it below the button
+    position: absolute;
+    top: 100%;
     left: 1.5rem;
     width: 150px;
     background-color: #252525;
@@ -51,7 +51,7 @@ export const StyledDropdown = styled.div`
     border: none;
     text-align: left;
     cursor: pointer;
-    font-family: inherit; // Add this to match parent font
+    font-family: inherit;
     font-size: 14px;
 
     &:hover {

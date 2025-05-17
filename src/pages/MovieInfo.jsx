@@ -76,7 +76,7 @@ export const StyledMovieInfo = styled.div`
       z-index: 0;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -99,7 +99,7 @@ export const StyledMovieInfo = styled.div`
       margin: 300px 2rem 2rem 2rem;
       margin-top: 350px; // This pulls it up to create overlap
       background-color: rgba(20, 20, 20, 0.95);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); // Add shadow for depth
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .movieDetails {
