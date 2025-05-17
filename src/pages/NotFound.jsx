@@ -31,7 +31,6 @@ export const StyledNotFound = styled.section`
 export const NotFound = () => {
   return (
     <>
-    <Header/>
     <StyledNotFound>
       <div className='animation-container'>
         <DotLottieReact

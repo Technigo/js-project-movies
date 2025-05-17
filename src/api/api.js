@@ -23,6 +23,7 @@ export const api = {
 
       const data = await response.json()
 
+
       if (!data || !data.results) {
         throw new Error('Invalid API response structure')
       }
