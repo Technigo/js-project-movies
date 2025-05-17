@@ -15,11 +15,11 @@ const StyledDecadeView = styled.div`
     text-align: center;
   }
 
-  .movies-grid {
+  .decadesMovies {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 0; /* Cards har sin egen spacing */
+    gap: 0;
   }
 `;
 
@@ -64,7 +64,7 @@ if (isLoading) return <Loader />
       {movies.length === 0 ? (
         <p>No horror movies found for this decade.</p>
       ) : (
-        <div className="movies-grid">
+        <div className="decadesMovies">
           {movies.map((movie) => (
             <Card key={movie.id} movie={movie} />
           ))}

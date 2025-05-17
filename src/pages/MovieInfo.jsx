@@ -163,7 +163,6 @@ export const MovieInfo = () => {
       try {
         const data = await withLoading(() => api.fetchMovieById(id))
         if (isMounted) {
-          console.log('Movie data:', data) // Debug log
           setMovie(data)
         }
       } catch (error) {

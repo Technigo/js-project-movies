@@ -22,7 +22,6 @@ export const api = {
       }
 
       const data = await response.json()
-      console.log('Data från API-funktion:', data) // Lägg till denna rad
 
       if (!data || !data.results) {
         throw new Error('Invalid API response structure')

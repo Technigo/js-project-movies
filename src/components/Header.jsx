@@ -54,7 +54,7 @@ export const Header = () => {
     <StyledHeader $isTransparent={isTransparent}>
       <div>
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <Title>🎬 ScreamFlix</Title>
+          <Title>ScreamFlix</Title>
         </Link>
         {location.pathname.startsWith("/movies/") && <BackButton />}
       </div>

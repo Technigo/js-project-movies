@@ -38,7 +38,6 @@ export const Home = () => {
     const fetchMovies = async () => {
       try {
         const data = await withLoading(() => api.fetchHorrorMovies());
-        console.log("API Response:", data);
         setMovies(data?.results);
       } catch (err) {
         console.error(err);
