@@ -13,17 +13,18 @@ const MovieCard = ({ title, release_date, vote_average, poster_path }) => {
 
       <div
         className="
-          absolute inset-0 
-          bg-black bg-opacity-0 
-          opacity-0 
-          group-hover:bg-opacity-100 
-          group-hover:opacity-70 
-          flex flex-col justify-center items-center 
-          text-white p-4
-          transition ease-in-out duration-300">
-        <h2 className="text-lg font-bold">{title}</h2>
-        <p className="text-sm">{release_date.slice(0, 4)}</p>
-        <p className="text-sm">{vote_average.toFixed(1)} ⭐</p>
+          absolute inset-0
+          bg-black bg-opacity-0
+          opacity-0
+          group-hover:opacity-80
+          flex flex-col justify-end items-start  /* bottom-align & left-align */
+          text-white text-left p-4
+          transition ease-in-out duration-300
+        "
+      >
+        <h2 className="text-3xl font-bold">{title}</h2>
+        <p className="text-base">{release_date.slice(0, 4)}</p>
+        <p className="text-base">{vote_average.toFixed(1)} ⭐</p>
       </div>
     </div>
   )
