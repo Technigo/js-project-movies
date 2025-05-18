@@ -47,7 +47,7 @@ js-project-movies/
 # Custom Hooks
 
 - useLoader: Manages loading states for async operations
-- useDropdown: Controls dropdown menu open/close state
+- useDropdown: Controls the dropdown menu open/close state
 - useGoBack: Handles browser history navigation
 
 # Getting Started
@@ -80,4 +80,4 @@ Ghost icons created by Freepik - Flaticon
 
 [Cathi](https://github.com/violacathrine) & [Linda](https://github.com/LindaSchonfeldt)
 
-**Note**: _ScreamFlix is a personal project and is not affiliated with any commercial streaming service._
+**Note**: _ScreamFlix is a personal project and is not affiliated with any commercial streaming services._
