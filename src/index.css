@@ -88,6 +88,12 @@ body {
 
 }
 
+.movie-details-poster {
+  border: 3px solid #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  background: #111;
+}
+
 @media (min-width: 600px) {
 
   .card-list {
@@ -115,9 +121,6 @@ body {
     width: 90vw;
     max-width: 340px;
     aspect-ratio: 2/3;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
-    background: #111;
   }
 
   .movie-details-poster {
@@ -145,7 +148,7 @@ body {
 
   .movie-details-rating {
     background: #fff;
-    /* color: #222; */
+    color: #222;
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 0.4em;

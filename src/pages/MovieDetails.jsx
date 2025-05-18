@@ -23,10 +23,9 @@ const MovieDetails = () => {
     <section
       className="movie-details"
       style={{
-        backgroundImage:
-          window.innerWidth >= 600 && movieDetails.backdrop_path
-            ? `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path})`
-            : "none",
+        backgroundImage: movieDetails.backdrop_path
+          ? `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path})`
+          : "none",
         backgroundRepeat: "no-repeat"
       }}
     >
@@ -42,7 +41,7 @@ const MovieDetails = () => {
             {movieDetails.title}
             <span className="movie-details-rating">
               <span role="img" aria-label="star">⭐</span>
-              {movieDetails.vote_average}
+              &nbsp;&nbsp;{movieDetails.vote_average ? Number(movieDetails.vote_average).toFixed(1) : "N/A"}
             </span>
           </h2>
           <p className="movie-details-overview">{movieDetails.overview}</p>

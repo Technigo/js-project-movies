@@ -15,7 +15,8 @@
 - [x] style the details page
 - [x] add hover effect to card
 - [] change the style of the header
-- [] fix some last styling 
-- [] little fixes on mobile
+- [x] fix some last styling 
+- [x] little fixes on mobile
 - [] implement a loader
+- [] fix the no page styling
 - [] deploy to net

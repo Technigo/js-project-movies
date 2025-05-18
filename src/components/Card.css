@@ -30,6 +30,7 @@
 }
 
 .card-overlay {
+  font-size: 26px;
   position: absolute;
   inset: 0;
   background: rgba(172, 255, 47, 0.719);
