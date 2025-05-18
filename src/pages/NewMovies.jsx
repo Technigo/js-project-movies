@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { PosterSection, MoviePoster, StyledLink } from "./PopularMovies";
 import styled, { keyframes } from "styled-components";
 
-
 const Centered = styled.div`
   display: flex;
   justify-content: center;

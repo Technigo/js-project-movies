@@ -6,9 +6,8 @@ const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background: ${({ backdrop }) =>
     backdrop
       ? `url(https://image.tmdb.org/t/p/w1280/${backdrop}) center/cover no-repeat`
@@ -73,7 +72,7 @@ const Animation = styled.div`
 `;
 
 const ErrorMsg = styled.div`
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
