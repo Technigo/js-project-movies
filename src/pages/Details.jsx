@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { Loader } from "../components/Loader";
+import { ErrorMsg } from "../components/ErrorMsg";
 
 const Backdrop = styled.div`
   display: flex;
@@ -45,65 +47,30 @@ const Poster = styled.img`
   }
 `;
 
-const DetailsH3 = styled.h3`
-  font-size: 16px;
-`;
-
-const Centered = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const Rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
-const Animation = styled.div`
-  font-size: 45px;
-  animation: ${Rotate} 1.5s linear infinite;
-`;
-
-const ErrorMsg = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 60vh;
-  font-size: 2rem;
-  color: #000;
-  font-family: 'Agdasima', sans-serif;
-  text-align: center;
-  gap: 1rem;
-`;
-
 export const Details = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=6e12c92fda59e113d79a5c9c5abd897b`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setMovie(data);
+        if (data.success === false) {
+          setMovie(null);
+        } else {
+          setMovie(data);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, [id]);
 
   if (loading) return (
-    <Centered>
-      <Animation>🍿</Animation>
-    </Centered>
+    <Loader />
   );
 
   return (
@@ -131,15 +98,7 @@ export const Details = () => {
         </Backdrop>
 
       ) : (
-        <ErrorMsg>
-          <span role="img" aria-label="confused popcorn" style={{ fontSize: "4rem" }}>🍿🤔</span>
-          <div>
-            <strong>Oh no!</strong> <br />
-            No movie found here.<br />
-            <span style={{ fontSize: "1.2rem" }}>Try picking a movie from the list instead!</span>
-          </div>
-          <Link to="/">← Back to movies</Link>
-        </ErrorMsg>
+        <ErrorMsg />
       )}
     </>
   );

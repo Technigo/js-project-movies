@@ -1,23 +1,7 @@
 import { useEffect, useState } from "react";
 import { PosterSection, MoviePoster, StyledLink } from "./PopularMovies";
-import styled, { keyframes } from "styled-components";
+import { Loader } from "../components/Loader";
 
-const Centered = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const Rotate = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-const Animation = styled.div`
-  font-size: 45px;
-  animation: ${Rotate} 1.5s linear infinite;
-`;
 
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -48,9 +32,7 @@ export const NewMovies = () => {
   }, [MovieList]);
 
   if (loading) return (
-    <Centered>
-      <Animation>🍿</Animation>
-    </Centered>
+    <Loader />
   );
 
   return (
