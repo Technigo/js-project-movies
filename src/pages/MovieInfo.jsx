@@ -1,4 +1,3 @@
-// src/pages/MovieInfo.jsx
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router'
 import { API_KEY, BASE_URL, IMAGE_BASE } from '../api'
@@ -72,13 +71,13 @@ const MovieInfo = () => {
           max-w-full lg:max-w-5xl
           mx-auto
           md:absolute md:bottom-4 md:left-4
-          md:max-w-2xl
+          md:max-w-[45rem]
         "
       >
         <div className="
             mt-3 lg:mt-20
             flex flex-col
-            md:flex-row md:items-start
+            md:flex-row md:items-end
           ">
           {/* Poster (half width on mobile, one-third on tablet+) */}
           {movieDetails.poster_path && (
@@ -86,7 +85,7 @@ const MovieInfo = () => {
               src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
               alt={`${movieDetails.title} poster`}
               className="
-                w-1/2        /* ~50% width on mobile */
+                w-1/2        /* around 50% width on mobile */
                 md:w-1/3     /* one-third width on tablet+ */
                 rounded shadow mb-6 md:mb-0
                 border-6 border-white
