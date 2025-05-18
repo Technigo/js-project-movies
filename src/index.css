@@ -16,7 +16,7 @@ body {
   background-color: black;
   color: #222;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 
 .card-list {
@@ -94,6 +94,46 @@ body {
   background: #111;
 }
 
+.movie-details-overview {
+  line-height: 1.2;
+}
+
+.movie-details-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 600px;
+  color: white;
+}
+
+.movie-details-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.movie-details-rating {
+  background: #fff;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.4em;
+  padding: 0.2em 0.6em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.movie-title-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
 @media (min-width: 600px) {
 
   .card-list {
@@ -128,39 +168,8 @@ body {
   }
 
 
-  .movie-details-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 600px;
-    color: white;
-  }
-
-  .movie-details-info h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .movie-details-rating {
-    background: #fff;
-    color: #222;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 0.4em;
-    padding: 0.2em 0.6em;
-    margin-left: 1rem;
-    display: inline-flex;
-    align-items: center;
-  }
-
   .movie-details-overview {
     font-size: 1.1rem;
-    line-height: 1.6;
     margin: 0;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   }
@@ -177,5 +186,16 @@ body {
 @media (min-width: 1024px) {
   .card-list {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .movie-title-vote {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .movie-details-rating {
+    margin-bottom: 0;
+    margin-right: 0;
   }
 }

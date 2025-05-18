@@ -34,16 +34,16 @@ const MovieDetails = () => {
         <img
           className="movie-details-poster"
           src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-          alt={movieDetails.title}
+          alt={movieDetails.title ? `Poster for ${movieDetails.title}` : "Movie poster"}
         />
         <div className="movie-details-info">
-          <h2>
-            {movieDetails.title}
+          <div className="movie-title-vote">
             <span className="movie-details-rating">
               <span role="img" aria-label="star">⭐</span>
-              &nbsp;&nbsp;{movieDetails.vote_average ? Number(movieDetails.vote_average).toFixed(1) : "N/A"}
+              {movieDetails.vote_average ? Math.round(movieDetails.vote_average * 10) / 10 : "N/A"}
             </span>
-          </h2>
+            <h2>{movieDetails.title}</h2>
+          </div>
           <p className="movie-details-overview">{movieDetails.overview}</p>
         </div>
       </div>
