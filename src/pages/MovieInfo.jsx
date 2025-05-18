@@ -59,7 +59,9 @@ const MovieInfo = () => {
           relative z-10
           p-4 lg:p-8
           max-w-full lg:max-w-5xl
-          mx-auto">
+          mx-auto
+          md:absolute md:bottom-4 md:left-4
+          md:max-w-md">
         <Link
           to="/"
           className="
@@ -69,15 +71,16 @@ const MovieInfo = () => {
             ← Back to Movies
         </Link>
 
-        <div className="mt-6 lg:mt-20 flex flex-col lg:flex-row lg:items-start lg:gap-8">
+        <div className="mt-3 lg:mt-20 flex flex-col lg:flex-row lg:items-start lg:gap-8">
           {movieDetails.poster_path && (
             <img
               src={`${IMAGE_BASE}/w500${movieDetails.poster_path}`}
               alt={`${movieDetails.title} poster`}
               className="
-                w-full
+                w-2/3
+                sm:w-1/3
                 lg:w-1/3
-                rounded shadow mb-6 lg:mb-0
+                shadow mb-6 lg:mb-0
                 border-6 border-white"/>
           )}
 
@@ -89,11 +92,8 @@ const MovieInfo = () => {
               {movieDetails.release_date?.slice(0,4)} &middot; {movieDetails.vote_average?.toFixed(1)} ⭐
             </p>
             {movieDetails.overview && (
-              <section className="text-center lg:text-left">
-                <h2 className="text-xl lg:text-2xl font-semibold mb-2 drop-shadow-md">
-                  About:
-                </h2>
-                <p className="text-base lg:text-lg leading-relaxed drop-shadow-sm">
+              <section className="text-left">
+                <p className="text-base lg:text-lg drop-shadow-sm">
                   {movieDetails.overview}
                 </p>
               </section>
