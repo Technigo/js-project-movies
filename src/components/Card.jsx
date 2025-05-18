@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useHover } from "../hooks/useHover";
-import { device } from "../styles/media.js";
-import { Loader } from "./Loader.jsx";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useHover } from '../hooks/useHover';
+import { device } from '../styles/media.js';
+import { Loader } from './Loader.jsx';
 
 export const StyledCard = styled.div`
   position: relative;
@@ -115,10 +115,10 @@ export const Card = ({ movie }) => {
 
           {/* Overlay that appears on hover */}
           {isHovering && (
-            <div className="cardOverlay">
-              <h2 className="movieTitle">{movie.title}</h2>
-              <p className="movieRelease">Released: {movie.release_date}</p>
-              <div className="movieRating">
+            <div className='cardOverlay'>
+              <h2 className='movieTitle'>{movie.title}</h2>
+              <p className='movieRelease'>Released: {movie.release_date}</p>
+              <div className='movieRating'>
                 <span>★</span> {movie.vote_average.toFixed(1)}/10
               </div>
             </div>

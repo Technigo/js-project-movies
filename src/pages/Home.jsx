@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { useEffect, useState } from "react";
-import { api } from "../api/api";
-import { Card } from "../components/Card.jsx";
-import { device } from "../styles/media.js";
-import { useLoader } from "../hooks/useLoader";
-import { Loader } from "../components/Loader.jsx";
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { api } from '../api/api';
+import { Card } from '../components/Card.jsx';
+import { device } from '../styles/media.js';
+import { useLoader } from '../hooks/useLoader';
+import { Loader } from '../components/Loader.jsx';
 
 export const StyledHome = styled.section`
   width: 100%;
@@ -32,29 +32,28 @@ export const StyledHome = styled.section`
 export const Home = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
-  const { isLoading, withLoading } = useLoader(true); // Ändrad destructuring
+  const { isLoading, withLoading } = useLoader(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const data = await withLoading(() => api.fetchHorrorMovies());
-        console.log("API Response:", data);
         setMovies(data?.results);
       } catch (err) {
         console.error(err);
-        setError("Something went wrong when fetching movies.");
+        setError('Something went wrong when fetching movies.');
       }
     };
 
     fetchMovies();
-  }, [withLoading]); // Fortfarande beroende på withLoading
+  }, [withLoading]);
 
   if (isLoading) return <Loader />;
   if (error) return <p>{error}</p>;
 
   return (
     <StyledHome>
-      <div className="movies">
+      <div className='movies'>
         {movies.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}
