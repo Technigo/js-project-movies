@@ -14,9 +14,10 @@
 - [x] style the landing page
 - [x] style the details page
 - [x] add hover effect to card
-- [] change the style of the header
+- [x] change the style of the header
 - [x] fix some last styling 
 - [x] little fixes on mobile
+- [x] fix accessibility 
 - [] implement a loader
-- [] fix the no page styling
-- [] deploy to net
+- [x] fix the no page styling
+- [x] deploy to net
