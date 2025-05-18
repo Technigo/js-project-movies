@@ -1,0 +1,23 @@
+## TO DO ##
+- [x] look though this week material again
+- [x] tuesday class
+- [x] sketch project design, 
+- [x] components, 
+- [x] how should the routes look?  
+- [x] set up new project
+- [x] fetch API 
+- [x] import img home page, 
+- [x] ranking, 
+- [x] release date, 
+- [x] background img
+- [x] style the app, make it mobile first
+- [x] style the landing page
+- [x] style the details page
+- [x] add hover effect to card
+- [x] change the style of the header
+- [x] fix some last styling 
+- [x] little fixes on mobile
+- [x] fix accessibility 
+- [] implement a loader
+- [x] fix the no page styling
+- [x] deploy to net
