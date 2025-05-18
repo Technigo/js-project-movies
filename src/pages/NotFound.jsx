@@ -31,18 +31,18 @@ export const StyledNotFound = styled.section`
 export const NotFound = () => {
   return (
     <>
-    <StyledNotFound>
-      <div className='animation-container'>
-        <DotLottieReact
-          src='https://lottie.host/1b9d6eee-1273-46d9-9d36-a0925490db55/j4MCsSe3nd.lottie'
-          loop
-          autoplay
-          style={{ width: 'auto', height: '100%' }}
-        />
-      </div>
-      <h1>404 - Not Found</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
-    </StyledNotFound>
+      <StyledNotFound>
+        <div className='animation-container'>
+          <DotLottieReact
+            src='https://lottie.host/1b9d6eee-1273-46d9-9d36-a0925490db55/j4MCsSe3nd.lottie'
+            loop
+            autoplay
+            style={{ width: 'auto', height: '100%' }}
+          />
+        </div>
+        <h1>404 - Not Found</h1>
+        <p>Sorry, the page you are looking for does not exist.</p>
+      </StyledNotFound>
     </>
   )
 }

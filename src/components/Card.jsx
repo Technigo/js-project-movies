@@ -1,23 +1,23 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useHover } from '../hooks/useHover';
-import { device } from '../styles/media.js';
-import { Loader } from './Loader.jsx';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { useHover } from '../hooks/useHover'
+import { device } from '../styles/media.js'
+import { Loader } from './Loader.jsx'
 
 export const StyledCard = styled.div`
   position: relative;
   display: block;
   width: 50%;
-  max-width: none; 
+  max-width: none;
   overflow: hidden;
   border: none;
   font-size: 0.8rem;
-  margin-bottom: 0rem; 
+  margin-bottom: 0rem;
   padding: 0rem;
   box-sizing: border-box;
 
   ${device.tablet} {
-    width: 25%; 
+    width: 25%;
   }
 
   ${device.laptop} {
@@ -27,7 +27,7 @@ export const StyledCard = styled.div`
   &:hover {
     transform: translateY(-0px);
   }
-    
+
   .cardContainer {
     position: relative;
     width: 100%;
@@ -92,25 +92,25 @@ export const StyledCard = styled.div`
   .movieRating span {
     color: gold;
   }
-`;
+`
 
 // Create Card component that takes a movie object as a prop
 export const Card = ({ movie }) => {
-  const [isHovering, hoverProps] = useHover();
+  const [isHovering, hoverProps] = useHover()
 
   if (!movie) {
-    return <Loader />;
+    return <Loader />
   }
 
   return (
     <StyledCard>
       <Link to={`/movies/${movie.id}`}>
-        <div className="cardContainer" {...hoverProps}>
+        <div className='cardContainer' {...hoverProps}>
           {/* The movie poster */}
           <img
             src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             alt={`Poster for ${movie.id}`}
-            className="moviePoster"
+            className='moviePoster'
           />
 
           {/* Overlay that appears on hover */}
@@ -126,5 +126,5 @@ export const Card = ({ movie }) => {
         </div>
       </Link>
     </StyledCard>
-  );
-};
+  )
+}
