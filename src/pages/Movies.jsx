@@ -24,7 +24,7 @@ const Movies = () => {
         for (let page = 1; page <= 3; page++) {
           // Fetch 2 pages per year
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc&vote_count.desc&without_genres=10770&with_original_language=en`
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc,vote_count.desc&without_genres=10770&with_original_language=en`
           );
           const data = await response.json();
           allMovies.push(...data.results);
