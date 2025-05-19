@@ -22,9 +22,9 @@ const MovieCard = ({ title, release_date, vote_average, poster_path }) => {
           transition ease-in-out duration-300
         "
       >
-        <h2 className="text-3xl font-bold">{title}</h2>
-        <p className="text-base">{release_date.slice(0, 4)}</p>
-        <p className="text-base">{vote_average.toFixed(1)} ⭐</p>
+        <h2 className="font-neue-display font-black text-3xl">{title}</h2>
+        <p className="font-neue-text font-roman">{release_date.slice(0, 4)}</p>
+        <p className="font-neue-text font-roman text-base">{vote_average.toFixed(1)} ⭐</p>
       </div>
     </div>
   )

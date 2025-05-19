@@ -43,39 +43,41 @@ const MovieInfo = () => {
     <main className="relative min-h-screen text-white">
       {/* Backdrop */}
       {movieDetails.backdrop_path && (
-        <div
-          className="absolute inset-0 bg-cover bg-center z-0"
-          style={{
-            backgroundImage: `url(${IMAGE_BASE}/w1280${movieDetails.backdrop_path})`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/45"></div>
-        </div>
-      )}
+  <div
+    className="fixed inset-0 bg-cover bg-center z-0"
+    style={{
+      backgroundImage: `url(${IMAGE_BASE}/w1280${movieDetails.backdrop_path})`,
+    }}
+  >
+    <div className="absolute inset-0 bg-black/45"></div>
+  </div>
+)}
 
       {/* Always-on-top Back link */}
-      <div className="relative z-20 p-4 lg:p-8">
+      <div className="absolute md:left-8 z-20 p-4 lg:p-8">
         <Link
           to="/"
-          className="inline-block text-blue-300 hover:underline drop-shadow-lg"
+          className="font-neue-display font-semibold text-xl inline-block text-white hover:underline drop-shadow-lg"
         >
-          ← Movies
+          ⇦ Movies
         </Link>
       </div>
 
       {/* Content container pinned at bottom-left on tablet+ */}
       <div
         className="
-          relative z-10
-          p-4 lg:p-8
-          max-w-full lg:max-w-5xl
-          mx-auto
-          md:absolute md:bottom-4 md:left-4
+          absolute z-10 /* Always on top of backdrop */
+          top-10
+          md:top-auto
+          md:bottom-25 md:left-8 md:right-8
+          pt-4 lg:pt-8 // Padding for content
+          p-4 lg:p-8 / * Padding for content */
+          max-w-full lg:max-w-[70%] /* Full width on mobile, max-width on larger screens */
           md:max-w-[45rem]
         "
       >
         <div className="
-            mt-3 lg:mt-20
+            mt-3 lg:mt-20 /* Margin for spacing */
             flex flex-col
             md:flex-row md:items-end
           ">
@@ -87,7 +89,7 @@ const MovieInfo = () => {
               className="
                 w-1/2        /* around 50% width on mobile */
                 md:w-1/3     /* one-third width on tablet+ */
-                rounded shadow mb-6 md:mb-0
+                shadow mb-6 md:mb-0
                 border-6 border-white
               "
             />
@@ -95,16 +97,16 @@ const MovieInfo = () => {
 
           {/* Details */}
           <div className="flex-1 md:pl-8">
-            <h1 className="text-2xl lg:text-4xl font-bold mb-2 drop-shadow-lg">
+            <h1 className="font-neue-display text-2xl lg:text-4xl font-bold leading-none mb-2 drop-shadow-lg">
               {movieDetails.title}
             </h1>
-            <p className="text-sm lg:text-base text-gray-300 mb-4">
+            <p className="font-neue-text text-sm lg:text-base leading-none text-gray-300 mb-4">
               {movieDetails.release_date?.slice(0, 4)} &middot;{' '}
               {movieDetails.vote_average?.toFixed(1)} ⭐
             </p>
             {movieDetails.overview && (
               <section className="text-left">
-                <p className="text-base lg:text-lg leading-relaxed drop-shadow-sm">
+                <p className="font-neue-text text-base lg:text-lg leading-none lg:max-w-2xl drop-shadow-sm">
                   {movieDetails.overview}
                 </p>
               </section>

@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-black;
+  }
+}
+
+@layer utilities {
+  .font-condor {
+    font-family: condor, sans-serif;
+  }
+  .font-neue-display {
+    font-family: "neue-haas-grotesk-display", sans-serif;
+  }
+  .font-neue-text {
+    font-family: "neue-haas-grotesk-text", sans-serif;
+  }
+}
