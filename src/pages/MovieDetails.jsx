@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import LoadingIcon from "../components/LoadingIcon";
@@ -85,16 +85,13 @@ const GenreList = styled.ul`
 
 const MovieDetails = () => {
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-  const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails] = useState(null);
   const [videoKey, setVideoKey] = useState(null);
 
   useEffect(() => {
-    console.log("Fetching movie details and videos...");
-    console.log(`Movie ID: ${movieId}`);
-    console.log(`API Key: ${apiKey}`);
-
     Promise.all([
       fetch(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`
@@ -104,6 +101,11 @@ const MovieDetails = () => {
       ).then((response) => response.json()),
     ])
       .then(([movieData, videoData]) => {
+        // Redirect if movie not found (status_code 34)
+        if (movieData.status_code === 34) {
+          navigate("/notfound", { replace: true });
+          return;
+        }
         setMovieDetails(movieData);
 
         const trailer = videoData.results.find(
@@ -113,14 +115,18 @@ const MovieDetails = () => {
           setVideoKey(trailer.key);
         }
       })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [movieId, apiKey]);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        navigate("/notfound", { replace: true });
+      });
+  }, [movieId, apiKey, navigate]);
 
   if (!movieDetails) {
     return (
-      <>
+      <main>
+        <h1 hidden>Loading movie details...</h1>
         <LoadingIcon />
-      </>
+      </main>
     );
   }
 
@@ -206,26 +212,17 @@ const MovieDetails = () => {
           Released on {new Date(movieDetails.release_date).toLocaleDateString()}
         </p>
       </PageText>
-      {movieDetails.backdrop_path ? (
-        <Backdrop>
-          <img
-            src={`https://image.tmdb.org/t/p/w780${movieDetails.backdrop_path}`}
-            srcSet={`
-    https://image.tmdb.org/t/p/w300${movieDetails.backdrop_path || ""} 300w,
-    https://image.tmdb.org/t/p/w780${movieDetails.backdrop_path || ""} 780w,
-    https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path || ""} 1280w,
-    https://image.tmdb.org/t/p/original${
-      movieDetails.backdrop_path || ""
-    } 1920w`}
-            sizes="(max-width: 768px) 300px, (max-width: 1200px) 780px, 1280px, (min-width: 1281px) 1920px"
-            alt={movieDetails.title || "Movie backdrop"}
-          />
-        </Backdrop>
-      ) : (
-        <p style={{ position: "relative", bottom: "50%", left: "50%" }}>
-          No backdrop available
-        </p>
-      )}
+
+      <Backdrop>
+        <img
+          src={`https://image.tmdb.org/t/p/w780${movieDetails.backdrop_path}`}
+          srcSet={` https://image.tmdb.org/t/p/original${
+            movieDetails.backdrop_path || ""
+          } 1920w`}
+          sizes="(max-width: 768px) 300px, (max-width: 1200px) 780px, 1280px, (min-width: 1281px) 1920px"
+          alt={movieDetails.title || "Movie backdrop"}
+        />
+      </Backdrop>
     </main>
   );
 };
