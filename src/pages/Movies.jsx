@@ -15,23 +15,41 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
+  if (!apiKey) {
+    console.error(
+      "API key is missing. Please set VITE_TMDB_API_KEY in your environment."
+    );
+    return null;
+  }
+
   useEffect(() => {
     const fetchMoviesForDecade = async () => {
-      const decadeStart = 1990; // Change this to the start year of the decade you want
-      const allMovies = [];
+      const decadeStart = 1990;
+      const fetchPromises = [];
 
       for (let year = decadeStart; year < decadeStart + 10; year++) {
         for (let page = 1; page <= 3; page++) {
-          // Fetch 2 pages per year
-          const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc,vote_count.desc&without_genres=10770&with_original_language=en`
+          const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${year}&page=${page}&sort_by=vote_average.desc,vote_count.desc&without_genres=10770&with_original_language=en`;
+          fetchPromises.push(
+            fetch(url)
+              .then((res) => {
+                if (!res.ok) {
+                  throw new Error(`Failed for ${year}, page ${page}`);
+                }
+                return res.json();
+              })
+              .then((data) => data.results || [])
+              .catch((err) => {
+                console.error(err);
+                return [];
+              })
           );
-          const data = await response.json();
-          allMovies.push(...data.results);
         }
       }
 
-      // Sort all movies by vote_average and vote_count, then take the top 25
+      const allResults = await Promise.all(fetchPromises);
+      const allMovies = allResults.flat();
+
       const topMovies = allMovies
         .sort(
           (a, b) =>
@@ -45,7 +63,7 @@ const Movies = () => {
     fetchMoviesForDecade().catch((error) =>
       console.error("Error fetching data:", error)
     );
-  }, [apiKey]);
+  }, []);
 
   return (
     <main>
@@ -60,7 +78,7 @@ const Movies = () => {
                 movie={movie.title}
                 overview={movie.overview}
                 release_date={movie.release_date}
-                poster_path={`/images/t/p/w500${movie.poster_path}`}
+                poster_path={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               />
             );
           })
