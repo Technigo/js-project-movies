@@ -66,8 +66,12 @@ const StyledLink = styled(Link)`
 const Card = ({ movie, release_date, poster_path, id }) => {
   return (
     <CardLayout>
-      <Link to={`/movie/${id}`} style={{ textDecoration: "none" }}>
-        <img src={poster_path} alt={``} />{" "}
+      <Link
+        to={`/movie/${id}`}
+        aria-label={`View details about ${movie}`}
+        style={{ textDecoration: "none" }}
+      >
+        <img src={poster_path} alt={`Poster of ${movie}`} />{" "}
       </Link>
       <CardText>
         <h2>{movie}</h2>

@@ -5,6 +5,8 @@ const Nav = styled.nav`
   padding: 0.5rem;
   position: fixed;
   z-index: 100;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 const NavList = styled.ul`
   list-style: none;

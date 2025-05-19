@@ -15,14 +15,14 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
-  if (!apiKey) {
-    console.error(
-      "API key is missing. Please set VITE_TMDB_API_KEY in your environment."
-    );
-    return null;
-  }
-
   useEffect(() => {
+    if (!apiKey) {
+      console.error(
+        "API key is missing. Please set VITE_TMDB_API_KEY in your environment."
+      );
+      return;
+    }
+
     const fetchMoviesForDecade = async () => {
       const decadeStart = 1990;
       const fetchPromises = [];
@@ -34,7 +34,7 @@ const Movies = () => {
             fetch(url)
               .then((res) => {
                 if (!res.ok) {
-                  throw new Error(`Failed for ${year}, page ${page}`);
+                  throw new Error(`Oops! ${res.status} ${res.statusText}`);
                 }
                 return res.json();
               })
@@ -63,7 +63,7 @@ const Movies = () => {
     fetchMoviesForDecade().catch((error) =>
       console.error("Error fetching data:", error)
     );
-  }, []);
+  }, [apiKey]);
 
   return (
     <main>
