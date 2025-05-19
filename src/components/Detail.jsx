@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w780';
@@ -20,6 +21,7 @@ export const Detail = () => {
 
   return (
     <section className="movie-detail">
+      <Link to="/" className="back-button">← Back to Movies</Link>
       <img
         src={`${IMAGE_BASE_URL}${movie.backdrop_path}`}
         alt={movie.title}

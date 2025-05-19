@@ -3,8 +3,6 @@
 }
 
 
-/* Global Reset */
-
 
 * {
   margin: 0;
@@ -20,16 +18,20 @@ body {
   padding: 1rem;
 }
 
-/* Links */
 a {
   text-decoration: none;
   color: inherit;
+  background-color: #111;
+}
+
+p {
+  background-color: #111;
 }
 
 a:focus,
 a:hover {
-  outline: 2px dashed #ff4081;
-  outline-offset: 3px;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
 /* Movie List Grid */
@@ -47,6 +49,7 @@ a:hover {
   overflow: hidden;
   border-radius: 12px;
   transition: transform 0.2s ease-in-out;
+  background-color: #111;
 }
 
 .movie-card:hover {
@@ -103,4 +106,15 @@ a:hover {
   .movie-list {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
+}
+
+.back-button {
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background: #e50914;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
 }
