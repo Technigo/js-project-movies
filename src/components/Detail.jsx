@@ -6,7 +6,7 @@ const API_KEY = import.meta.env.VITE_TMDB_KEY;
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w780';
 
 export const Detail = () => {
-  const { id } = useParams(); // ✅ grab the id
+  const { id } = useParams(); 
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
