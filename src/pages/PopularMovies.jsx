@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Loader } from "../components/Loader";
 
-
 export const PosterSection = styled.section`
   box-sizing: border-box;
   display: grid;
@@ -22,7 +21,6 @@ export const PosterSection = styled.section`
   }
 `;
 export const MoviePoster = styled.article`
-
   display: flex;
   flex-direction: column;
   grid-column: span ${(props) => props.colSpan};
@@ -36,13 +34,13 @@ export const MoviePoster = styled.article`
   min-height: 120px;
 
   &:hover {
-   opacity: 1;
+    opacity: 1;
   }
 `;
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: 'Agdasima', sans-serif;
+  font-family: "Agdasima", sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
   align-items: center;
@@ -52,14 +50,13 @@ export const StyledLink = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   font-size: 8vw;
-  word-break: break-word; 
-  white-space: normal;    
+  word-break: break-word;
+  white-space: normal;
   text-align: center;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  
+
   &:hover {
     opacity: 1;
-  
   }
 
   @media (min-width: 600px) {
@@ -95,9 +92,18 @@ export const PopularMovies = () => {
     fetchMovies();
   }, [MovieList]);
 
+<<<<<<< Updated upstream
   if (loading) return (
     <Loader />
   );
+=======
+  if (loading)
+    return (
+      <Centered>
+        <Animation>🍿</Animation>
+      </Centered>
+    );
+>>>>>>> Stashed changes
   return (
     <PosterSection>
       {movies.map((movie) => {

@@ -2,6 +2,25 @@ import { useEffect, useState } from "react";
 import { PosterSection, MoviePoster, StyledLink } from "./PopularMovies";
 import { Loader } from "../components/Loader";
 
+<<<<<<< Updated upstream
+=======
+const Centered = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Animation = styled.div`
+  font-size: 45px;
+  animation: ${Rotate} 1.5s linear infinite;
+`;
+>>>>>>> Stashed changes
 
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -31,9 +50,18 @@ export const NewMovies = () => {
     fetchMovies();
   }, [MovieList]);
 
+<<<<<<< Updated upstream
   if (loading) return (
     <Loader />
   );
+=======
+  if (loading)
+    return (
+      <Centered>
+        <Animation>🍿</Animation>
+      </Centered>
+    );
+>>>>>>> Stashed changes
 
   return (
     <PosterSection>
@@ -51,7 +79,6 @@ export const NewMovies = () => {
             bgImage={bgImage}
           >
             <StyledLink to={`/movie/${movie.id}`}>{movie.title}</StyledLink>
-
           </MoviePoster>
         );
       })}
