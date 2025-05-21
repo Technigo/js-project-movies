@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Loader } from "../components/Loader";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Loader } from '../components/Loader';
 
 export const PosterSection = styled.section`
   box-sizing: border-box;
@@ -26,7 +26,7 @@ export const MoviePoster = styled.article`
   grid-column: span ${(props) => props.colSpan};
   grid-row: span ${(props) => props.rowSpan};
   background-image: ${(props) =>
-    props.bgImage ? `url(${props.bgImage})` : "none"};
+    props.bgImage ? `url(${props.bgImage})` : 'none'};
   background-size: cover;
   background-position: center;
   opacity: 0.8;
@@ -40,7 +40,7 @@ export const MoviePoster = styled.article`
 
 export const StyledLink = styled(Link)`
   display: flex;
-  font-family: "Agdasima", sans-serif;
+  font-family: 'Agdasima', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
   align-items: center;
@@ -84,7 +84,7 @@ export const PopularMovies = () => {
         const data = await response.json();
         setMovies(data.results);
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.error('Error fetching movies:', error);
       } finally {
         setLoading(false);
       }
@@ -92,18 +92,7 @@ export const PopularMovies = () => {
     fetchMovies();
   }, [MovieList]);
 
-<<<<<<< Updated upstream
-  if (loading) return (
-    <Loader />
-  );
-=======
-  if (loading)
-    return (
-      <Centered>
-        <Animation>🍿</Animation>
-      </Centered>
-    );
->>>>>>> Stashed changes
+  if (loading) return <Loader />;
   return (
     <PosterSection>
       {movies.map((movie) => {

@@ -1,8 +1,8 @@
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Loader } from "../components/Loader";
-import { ErrorMsg } from "../components/ErrorMsg";
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Loader } from '../components/Loader';
+import { ErrorMsg } from '../components/ErrorMsg';
 
 const Backdrop = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Backdrop = styled.div`
   background: ${({ backdrop }) =>
     backdrop
       ? `url(https://image.tmdb.org/t/p/w1280/${backdrop}) center/cover no-repeat`
-      : "white"};
+      : 'white'};
   z-index: -1;
 `;
 
@@ -42,8 +42,8 @@ const Poster = styled.img`
   max-width: 250px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 
-   @media (min-width: 600px) {
-      display: block;
+  @media (min-width: 600px) {
+    display: block;
   }
 `;
 
@@ -54,9 +54,7 @@ export const Details = () => {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
-    )
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success === false) {
@@ -69,9 +67,7 @@ export const Details = () => {
       .catch(() => setLoading(false));
   }, [id]);
 
-  if (loading) return (
-    <Loader />
-  );
+  if (loading) return <Loader />;
 
   return (
     <>
@@ -90,13 +86,13 @@ export const Details = () => {
               </p>
               <p>{movie.overview}</p>
               <p>Released: {movie.release_date}</p>
-              <h3>{movie.vote_average ? movie.vote_average.toFixed(1) : ""} 🌟</h3>
-              <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
-
+              <h3>
+                {movie.vote_average ? movie.vote_average.toFixed(1) : ''} 🌟
+              </h3>
+              <p>{movie.genres.map((genre) => genre.name).join(', ')}</p>
             </div>
           </ContentWrapper>
         </Backdrop>
-
       ) : (
         <ErrorMsg />
       )}
