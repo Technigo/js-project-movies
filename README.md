@@ -28,7 +28,7 @@ Check out the live website at [Movies App on Netlify](https://movies-app-rn.netl
 ## How to Run Locally
 
 1. Clone this repository  
-   `git clone https://github.com/RicardoNicolau/js-project-movies.git`
+   `git clone https://github.com/devbyrico/js-project-movies.git`
 2. Navigate to the project folder  
    `cd js-project-movies`
 3. Install dependencies  
