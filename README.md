@@ -47,4 +47,4 @@ Check out the live website at [Movies App on Netlify](https://movies-app-rn.netl
 - Save liked movies using localStorage
 - Pagination or infinite scroll
 
-© 2025 Movies App. All Rights Reserved. | Developed & Designed by Ricardo Nicolau
+© 2025 Movies App. All Rights Reserved. | Developed & Designed by DevByRico
