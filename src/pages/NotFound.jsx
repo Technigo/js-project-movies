@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-import { useGoBack } from '../hooks/useGoBack'
 import { BackButton } from '../components/BackButton'
 
 export const StyledNotFound = styled.section`
@@ -30,7 +29,6 @@ export const StyledNotFound = styled.section`
 `
 
 export const NotFound = () => {
-  const goBack = useGoBack()
   return (
     <StyledNotFound>
       <div className='animation-container'>
@@ -43,7 +41,7 @@ export const NotFound = () => {
       </div>
       <h1>404 - Not Found</h1>
       <p>Sorry, the page you are looking for does not exist.</p>
-      <BackButton onClick={goBack}>Go Back</BackButton>
+      <BackButton>Go Back</BackButton>
     </StyledNotFound>
   )
 }
