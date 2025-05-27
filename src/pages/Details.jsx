@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Loader } from '../components/Loader';
 import { ErrorMsg } from '../components/ErrorMsg';
+import { BackButton } from '../components/Back';
 
 const Backdrop = styled.div`
   display: flex;
@@ -74,6 +75,7 @@ export const Details = () => {
       {movie && movie.title ? (
         <Backdrop backdrop={movie.backdrop_path}>
           <ContentWrapper>
+            <BackButton />
             {movie.poster_path && (
               <Poster
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

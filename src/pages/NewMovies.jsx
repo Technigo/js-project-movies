@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { PosterSection, MoviePoster, StyledLink } from './PopularMovies';
 import { Loader } from '../components/Loader';
 
