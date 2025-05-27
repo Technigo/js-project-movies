@@ -8,7 +8,7 @@ const NotFound = () => {
         textAlign: "center",
       }}
     >
-      <h1 style={{ fontSize: "5rem" }}> 404 - Not Found</h1>
+      <h2 style={{ fontSize: "5rem" }}> 404 - Not Found</h2>
       <p style={{ fontSize: "2rem" }}>
         The page you are looking for does not exist.
         <br /> Click movies to go back to the homepage.

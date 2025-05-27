@@ -132,7 +132,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <h1 hidden>The movie displayed is {movieDetails.title}</h1>
+      <h2 hidden>The movie displayed is {movieDetails.title}</h2>
 
       <PageText>
         {videoKey ? (

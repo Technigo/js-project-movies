@@ -35,6 +35,7 @@ const Header = () => {
   const location = useLocation();
   return (
     <Nav>
+      <H1>Welcome back to the 90s!</H1>
       <NavList>
         {location.pathname.startsWith("/movie/") && (
           <li>

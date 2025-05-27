@@ -67,7 +67,7 @@ const Movies = () => {
 
   return (
     <main>
-      <h1 hidden> Pick a movie form the 90s!</h1>
+      <h2 hidden> Pick a movie from the 90s you may have missed.</h2>
       <MoviesLayout>
         {movies.length ? (
           movies.map((movie) => {
