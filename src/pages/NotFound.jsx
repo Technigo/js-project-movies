@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-import { Header } from '../components/Header.jsx'
+import { useGoBack } from '../hooks/useGoBack'
+import { BackButton } from '../components/BackButton'
 
 export const StyledNotFound = styled.section`
   display: flex;
@@ -11,8 +12,8 @@ export const StyledNotFound = styled.section`
   box-sizing: border-box;
 
   .animation-container {
-    width: 100%;
-    height: 30vh;
+    width: auto;
+    height: 60vh;
     margin-bottom: 2rem;
   }
 
@@ -29,20 +30,20 @@ export const StyledNotFound = styled.section`
 `
 
 export const NotFound = () => {
+  const goBack = useGoBack()
   return (
-    <>
-      <StyledNotFound>
-        <div className='animation-container'>
-          <DotLottieReact
-            src='https://lottie.host/1b9d6eee-1273-46d9-9d36-a0925490db55/j4MCsSe3nd.lottie'
-            loop
-            autoplay
-            style={{ width: 'auto', height: '100%' }}
-          />
-        </div>
-        <h1>404 - Not Found</h1>
-        <p>Sorry, the page you are looking for does not exist.</p>
-      </StyledNotFound>
-    </>
+    <StyledNotFound>
+      <div className='animation-container'>
+        <DotLottieReact
+          src='https://lottie.host/1b9d6eee-1273-46d9-9d36-a0925490db55/j4MCsSe3nd.lottie'
+          loop
+          autoplay
+          style={{ width: '100%', height: '100%' }}
+        />
+      </div>
+      <h1>404 - Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+      <BackButton onClick={goBack}>Go Back</BackButton>
+    </StyledNotFound>
   )
 }
