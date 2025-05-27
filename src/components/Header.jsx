@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -32,12 +32,15 @@ const StyledLink = styled(Link)`
 `;
 
 const Header = () => {
+  const location = useLocation();
   return (
     <Nav>
       <NavList>
-        <li>
-          <StyledLink to="/"> Movies</StyledLink>
-        </li>
+        {location.pathname.startsWith("/movie/") && (
+          <li>
+            <StyledLink to="/">Return to Movies</StyledLink>
+          </li>
+        )}
         <li>
           <StyledLink to="/about">About</StyledLink>
         </li>
