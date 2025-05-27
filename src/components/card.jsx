@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 const CardContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 300px;
   margin: auto;
   overflow: hidden;
   border-radius: 8px;
