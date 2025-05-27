@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const BackLink = styled(Link)`
   text-decoration: none;
@@ -23,6 +22,7 @@ const BackLink = styled(Link)`
     margin-left: 50px;
   }
 `;
+
 const Background = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 100%)),
     url(${(props) => props.$backgroundUrl});
@@ -176,7 +176,6 @@ const MovieDetail = () => {
         >
           <Container>
             <BackLink aria-label="Link back to homepage" to="/">
-              {" "}
               ⬅ Back to Movies
             </BackLink>
             {movie.poster_path && (
