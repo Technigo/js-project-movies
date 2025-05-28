@@ -60,6 +60,7 @@ const Container = styled.div`
     gap: 20px;
   }
 `;
+
 const Poster = styled.img`
   width: 200px;
   border: 5px solid var(--color-white);
@@ -90,6 +91,9 @@ const InfoWrapper = styled.div`
     align-items: flex-start;
     text-align: left;
     justify-self: start;
+  }
+  @media (min-width: 668px) {
+    margin-top: 400px;
   }
 `;
 const HeadText = styled.div`
