@@ -1,3 +1,246 @@
+/*this is for global styling*/
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.card-list {
+  border-top: greenyellow 3px solid;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.close-link {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  font-size: 10rem;
+  font-weight: 200;
+  color: greenyellow;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 100;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.close-link:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #1aff00, 0 0 20px #15ff48, 0 0 30px #00ff33;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.movie-details::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.movie-details-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 60vh;
+  color: white;
+  padding: 1rem;
+
+}
+
+.movie-details-poster {
+  border: 3px solid #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  background: #111;
+}
+
+.movie-details-overview {
+  line-height: 1.2;
+}
+
+.movie-details-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 600px;
+  color: white;
+}
+
+.movie-details-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.movie-details-rating {
+  background: #fff;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.4em;
+  padding: 0.2em 0.6em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.movie-title-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+  color: greenyellow;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  color: greenyellow;
+  margin-bottom: 1rem;
+}
+
+
+.not-found p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.not-found a {
+  display: inline-block;
+  padding: 0.75em 2em;
+  background: greenyellow;
+  color: #111;
+  border-radius: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.not-found a:hover {
+  background: #fff;
+  color: #111;
+  transform: scale(1.05);
+}
+
+@media (min-width: 480px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .movie-details {
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  .movie-details-content {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 0 0 3rem 3rem;
+    width: auto;
+    position: relative;
+  }
+
+  .movie-details-poster {
+    width: 90vw;
+    max-width: 340px;
+    aspect-ratio: 2/3;
+  }
+
+  .movie-details-poster {
+    width: 340px;
+  }
+
+
+  .movie-details-overview {
+    font-size: 1.1rem;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .movie-details-content img {
+    left: 0;
+    bottom: 0;
+    width: 450px;
+    max-width: 30vw;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .movie-title-vote {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .movie-details-rating {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
 }
