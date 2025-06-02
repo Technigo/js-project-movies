@@ -6,16 +6,12 @@ import NotFoundPage from "./pages/NotFoundPage.jsx"
 
 export const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MoviesList />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
-
-
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MoviesList />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
