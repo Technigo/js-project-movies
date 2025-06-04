@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Link, useParams, useNavigate } from "react-router-dom";
 
 const BackLink = styled(Link)`
   text-decoration: none;
@@ -93,7 +93,7 @@ const InfoWrapper = styled.div`
     justify-self: start;
   }
   @media (min-width: 668px) {
-    margin-top: 400px;
+    margin-top: 650px;
   }
 `;
 const HeadText = styled.div`
